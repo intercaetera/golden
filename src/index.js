@@ -20,6 +20,10 @@ function createWindow () {
     backgroundColor: "#2E3440"
   })
 
+  global.config = {
+    current: null
+  }
+
   // and load the index.html of the app.
   win.loadURL(url.format({
     pathname: path.join(__dirname, 'web', 'index.jade'),

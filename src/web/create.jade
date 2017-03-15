@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  .wrapper.component.center
+    .container.column#create
+      h1.yellow#create-header New Tournament
+      input(type="text", placeholder="Tournament name...")#name.large
+      input(type="text", placeholder="Host...")#host
+      input(type="text", placeholder="Location...")#location
+      a(href="#").button.large.important.yellow#create-button Create
+      a(href="#")#return Return
+  script(src="scripts/create.js")

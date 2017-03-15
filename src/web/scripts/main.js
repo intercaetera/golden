@@ -3,7 +3,7 @@ import path from 'path'
 import fs from 'fs'
 
 $("#start").addEventListener("click", () => {
-  fadeStuff('tournament.jade')
+  fadeStuff('create.jade')
 })
 
 $("#load").addEventListener("click", () => {

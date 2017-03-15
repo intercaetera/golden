@@ -1,3 +1,10 @@
+import circular from 'circular-json'
+import fs from 'fs'
+import path from 'path'
+import { remote } from 'electron'
+
+let structure = {}
+
 class Player {
   constructor(nick, name, surname, points=0, sos=0, opponents=[]) {
     this.nick = nick
@@ -53,10 +60,23 @@ class Round {
     })
 
     let matches = []
-    for(let i=0; i<sorted.length; i+=2) {
-      matches[i/2] = new Match(sorted[i], sorted[i+1])
+    if(sorted.length % 2 === 0) {
+      for(let i=0; i<sorted.length; i+=2) {
+        matches[i/2] = new Match(sorted[i], sorted[i+1])
+      }
+    }
+    else {
+      for(let i=0; i<sorted.length-1; i+=2) {
+        matches[i/2] = new Match(sorted[i], sorted[i+1])
+      }
     }
 
     this.matches = matches
   }
 }
+
+let current = remote.getGlobal("config").current
+
+fs.readFile(path.join(__dirname, "tournaments", current+".json"), "utf8", (err, data) => {
+  structure = JSON.parse(data)
+})
