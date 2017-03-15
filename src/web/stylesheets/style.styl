@@ -87,11 +87,17 @@ a
   border 1px text solid
   border-radius 5px
 
-  transition all .5s ease-in-out
+  transition all .7s ease-in-out
 
   &:active, &:hover
     color texthilit
     border-color texthilit
+
+  &.yellow
+    color text
+    &:active, &:hover
+      border-color nyellow
+      background nyellow
 
 .hidden
   display none
@@ -120,9 +126,14 @@ a
   max-width 960px
   margin auto
 
+
 //=====================================================================================
-#main-header
+#main-header, #main-logo
   animation loadComponent 1.2s ease-in-out
+
+#main-logo
+  height 40%
+  width auto
 
 #main-menu
   width 100%
@@ -150,3 +161,11 @@ a
   100%
     transform translateY(0)
     opacity 1
+
+@keyframes fadeComponent
+  0%
+    transform translateY(0)
+    opacity 1
+  100%
+    transform translateY(-10%)
+    opacity 0

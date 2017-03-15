@@ -3,9 +3,9 @@ extends layout
 block content
   .wrapper.center
     .container.column
-      h1.yellow#main-header Golden
+      img(src="images/logo.svg").yellow#main-logo
       .container.column#main-menu
-        a(href="tournament.jade").button.center Start
-        a(href="#").button.center#load Load
-        a(href="#").button.center#exit Exit
+        a(href="#").button.center.yellow#start Start
+        a(href="#").button.center.yellow#load Load
+        a(href="#").button.center.yellow#exit Exit
   script(src="scripts/main.js")

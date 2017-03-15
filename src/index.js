@@ -15,8 +15,9 @@ function createWindow () {
   win = new BrowserWindow({
     width: 800,
     height: 600,
-    fullscreen: true,
-    autoHideMenuBar: true
+    //fullscreen: true,
+    autoHideMenuBar: true,
+    backgroundColor: "#2E3440"
   })
 
   // and load the index.html of the app.
