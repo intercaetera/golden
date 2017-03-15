@@ -1,0 +1,97 @@
+*
+  margin 0
+  padding 0
+  box-sizing border-box
+
+//Base colors
+bgcolor = #2E3440
+bghilit = #3B4252
+text = #4C566A
+texthilit = #ECEFF4
+
+//Accent colors
+nblue = #5E81AC
+nred = #BF616A
+norange = #D08770
+nyellow = #EBCB8B
+ngreen = #A3BE8C
+nviolet = #B48EAD
+
+//Spacing
+spacing-tiny = 8px
+spacing-small = 16px
+spacing-base = 24px
+spacing-large = 48px
+spacing-xlarge = 64px
+
+//Font size
+size-title1 = 44pt
+size-title2 = 32pt
+size-title3 = 24pt
+size-large = 19pt
+size-regular = 17pt
+size-small = 14pt
+size-micro = 8pt
+
+//Text color classes
+.blue
+  color nblue
+.red
+  color nred
+.orange
+  color norange
+.yellow
+  color nyellow
+.green
+  color ngreen
+.blue
+  color nblue
+
+//Globals
+body
+  min-width 100vw
+  min-height 100vh
+  background bgcolor
+
+h1, h2, h3
+  font-family "Roboto", "Helvetica", "Arial", sans-serif
+  color texthilit
+
+h1
+  font-weight 900
+  font-size size-title1
+  padding spacing-xlarge
+
+h2
+  font-weight 700
+  font-size size-title2
+  padding spacing-large
+
+h3
+  font-weight 700
+  font-size size-title3
+  padding spacing-base
+
+//Flex classes
+.center
+  display flex
+  align-items center
+  justify-content center
+
+.column
+  display flex
+  flex-direction column
+  justify-content center
+  align-items center
+
+.row
+  display flex
+  justify-content space-around
+
+.wrapper
+  height 100%
+  width 100%
+
+.container
+  max-width 960px
+  margin auto
