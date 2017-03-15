@@ -3,6 +3,8 @@
   padding 0
   box-sizing border-box
 
+  font-family "Roboto"
+
 //Base colors
 bgcolor = #2E3440
 bghilit = #3B4252
@@ -60,17 +62,36 @@ h1, h2, h3
 h1
   font-weight 900
   font-size size-title1
-  padding spacing-xlarge
+  padding spacing-base
 
 h2
   font-weight 700
   font-size size-title2
-  padding spacing-large
+  padding spacing-base
 
 h3
   font-weight 700
   font-size size-title3
   padding spacing-base
+
+a
+  text-decoration none
+  color text
+
+.button
+  appearance none
+  outline none
+  padding spacing-small
+  margin spacing-small
+
+  border 1px text solid
+  border-radius 5px
+
+  transition all .5s ease-in-out
+
+  &:active, &:hover
+    color texthilit
+    border-color texthilit
 
 //Flex classes
 .center
@@ -95,3 +116,24 @@ h3
 .container
   max-width 960px
   margin auto
+
+//=====================================================================================
+#main-header
+  animation loadComponent 1.2s ease-in-out
+
+for each in 1..4
+  #main-menu:nth-child({each})
+    .button
+      animation-delay 0.2 * {each}
+      width 100%
+
+//=====================================================================================
+
+//Animations
+@keyframes loadComponent
+  0%
+    transform translateY(-10%)
+    opacity 0
+  100%
+    transform translateY(0)
+    opacity 1
