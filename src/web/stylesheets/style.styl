@@ -53,6 +53,9 @@ size-micro = 8px
 .large
   font-size size-large
 
+.small
+  font-size size-small
+
 //Globals
 body
   min-width 100vw
@@ -83,13 +86,12 @@ a
   text-decoration none
   color text
 
-input[type='text']
+input[type='text'], input[type='number'], select
   background none
   appearance none
   outline none
   border none
 
-  font-size size-small
   color texthilit
   padding spacing-small
   border-bottom 1px bghilit solid
@@ -186,6 +188,36 @@ input[type='text']
   .button
     text-align center
     width 100%
+
+#main-bar
+  width 100%
+
+  #time
+    flex 2
+
+  #options
+    flex 1
+    width 100%
+
+#add-player
+  visibility hidden
+  transform scale(1, 0)
+  transform-origin center top
+
+  transition all .4s ease-in-out
+
+  &.active
+    visibility visible
+    transform scale(1, 1)
+
+  #buttons
+    width 40%
+
+  .row
+    width 100%
+    input, select
+      margin 0 spacing-tiny
+      width 100%
 
 //=====================================================================================
 

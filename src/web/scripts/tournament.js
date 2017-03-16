@@ -80,3 +80,27 @@ let current = remote.getGlobal("config").current
 fs.readFile(path.join(__dirname, "tournaments", current+".json"), "utf8", (err, data) => {
   structure = JSON.parse(data)
 })
+
+$("#add-btn").addEventListener("click", () => {
+  $("#add-player").classList.add("active")
+})
+
+$("#cancel-btn").addEventListener("click", () => {
+  $("#add-player").classList.remove("active")
+})
+
+$("#add-btn-finish").addEventListener("click", () => {
+  if(!($("#name").value.trim())) {
+    alert("Nickname cannot be empty.")
+    return
+  }
+
+  let nick = $("#nick").value
+  let name = $("#nick").name
+  let surname = $("#nick").surname
+  let points = $("#nick").points
+  let sos = $("#nick").sos
+
+  structure.tournamentData
+
+})

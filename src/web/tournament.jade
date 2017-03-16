@@ -2,9 +2,30 @@ extends layout
 
 block content
   .wrapper
-    .main-bar.row.center
-      h1 00:00
-      .options.row
-        a(href="#") Add player
+    .row.center#main-bar
+      h1#time 00:00
+      .row#options
+        a(href="#")#add-btn Add
+        a(href="#")#matches-btn Matches
+    .container.column#add-player
+      .row
+        input(type='text', placeholder='Nickname')#nick.large
+      .row
+        input(type='text', placeholder='Name (optional)')#name.small
+        input(type='text', placeholder='Surname (optional)')#surname.small
+      .row
+        input(type='number', placeholder='Points (optional)')#points.small
+        input(type='number', placeholder='SoS (optional)')#sos.small
+
+      .row
+        select#corp
+          option Jinteki
+          option HB
+        select#runner
+          option Whizzard
+          option Andromeda
+      .row#buttons
+        a(href="#").button#add-btn-finish Add
+        a(href="#").button#cancel-btn Cancel
 
   script(src="scripts/tournament.js")
