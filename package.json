@@ -4,7 +4,8 @@
     "babel-cli": "^6.24.0",
     "babel-preset-latest": "^6.24.0",
     "babel-register": "^6.24.0",
-    "electron-compilers": "^5.5.1"
+    "electron-compilers": "^5.5.1",
+    "mocha": "^3.2.0"
   },
   "dependencies": {
     "circular-json": "^0.3.1",

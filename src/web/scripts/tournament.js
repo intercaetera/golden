@@ -2,10 +2,9 @@ import circular from 'circular-json'
 import fs from 'fs'
 import path from 'path'
 import { remote } from 'electron'
+import utils from './utils'
 
-let structure = {}
-
-class Player {
+export class Player {
   constructor(nick, name, surname, points=0, sos=0, opponents=[]) {
     this.nick = nick
     this.name = name
@@ -13,6 +12,7 @@ class Player {
     this.points = points
     this.sos = sos
     this.opponents = opponents
+    this.bye = false
   }
 
   addPoints(points) {
@@ -20,6 +20,11 @@ class Player {
   }
 
   calculateSos() {
+    if(this.opponents.length === 0) {
+      this.sos = 0
+      return
+    }
+
     let sos = 0
     for(let each of this.opponents) {
       let acc = each.points / each.opponents.length
@@ -30,7 +35,7 @@ class Player {
   }
 }
 
-class Match {
+export class Match {
   constructor(player1, player2) {
     this.player1 = player1
     this.player2 = player2
@@ -46,10 +51,25 @@ class Match {
     this.player1.calculateSos()
     this.player2.calculateSos()
   }
+
+  bye() {
+    this.player1.addPoints(6)
+    this.player1.bye = true
+    this.player1.calculateSos()
+  }
 }
 
-class Round {
-  constructor(players) {
+export class Round {
+  constructor(playerArray) {
+    //Copy the array cause reasons.
+    let players = playerArray.slice()
+
+    this.matches = []
+
+    //Shuffle the array. Only really relevant in the first round.
+    shuffle(players)
+
+    //Sort the array by points and then by sos.
     const sorted = players.sort((a, b) => {
       if(a.points === b.points) {
         return (a.sos < b.sos) ? -1 : (a.sos > b.sos) ? 1 : 0
@@ -59,48 +79,36 @@ class Round {
       }
     })
 
-    let matches = []
-    if(sorted.length % 2 === 0) {
-      for(let i=0; i<sorted.length; i+=2) {
-        matches[i/2] = new Match(sorted[i], sorted[i+1])
-      }
-    }
-    else {
-      for(let i=0; i<sorted.length-1; i+=2) {
-        matches[i/2] = new Match(sorted[i], sorted[i+1])
-      }
-    }
+    while(sorted.length > 0) {
+      //Set the first player.
+      let player1 = sorted.shift()
+      let player2
 
-    this.matches = matches
+      //Set the second player, make sure he was not played before.
+      let i=0
+      while(true) {
+        if(player1.opponents.includes(sorted[i])) {
+          i++
+        }
+        else {
+          player2 = sorted.shift()
+          break
+        }
+      }
+
+      //Create a match.
+      this.matches.push(new Match(player1, player2))
+
+      //Give the bye to the last player.
+      if(!this.matches[this.matches.length-1].player2)
+        this.matches[this.matches.length-1].bye()
+    }
   }
 }
 
-let current = remote.getGlobal("config").current
-
-fs.readFile(path.join(__dirname, "tournaments", current+".json"), "utf8", (err, data) => {
-  structure = JSON.parse(data)
-})
-
-$("#add-btn").addEventListener("click", () => {
-  $("#add-player").classList.add("active")
-})
-
-$("#cancel-btn").addEventListener("click", () => {
-  $("#add-player").classList.remove("active")
-})
-
-$("#add-btn-finish").addEventListener("click", () => {
-  if(!($("#name").value.trim())) {
-    alert("Nickname cannot be empty.")
-    return
-  }
-
-  let nick = $("#nick").value
-  let name = $("#nick").name
-  let surname = $("#nick").surname
-  let points = $("#nick").points
-  let sos = $("#nick").sos
-
-  structure.tournamentData
-
-})
+function shuffle(a) {
+    for (let i = a.length; i; i--) {
+        let j = Math.floor(Math.random() * i);
+        [a[i - 1], a[j]] = [a[j], a[i - 1]];
+    }
+}

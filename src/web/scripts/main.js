@@ -25,8 +25,8 @@ $("#exit").addEventListener("click", () => {
 })
 
 function fadeStuff(destination) {
-  $("#main-logo").style.animation = "fadeComponent 1.2s ease-in-out forwards"
-  $("#main-menu").style.animation = "fadeComponent .7s ease-in-out .5s forwards"
+  $("#main-logo").style.animation = "fadeComponent .7s ease-in-out forwards"
+  $("#main-menu").style.animation = "fadeComponent .4s ease-in-out .5s forwards"
 
   setTimeout(() => {
     location.pathname = path.join(__dirname, destination)
