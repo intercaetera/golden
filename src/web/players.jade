@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  .wrapper.fade
+    .row.center#main-bar
+      h1#time 00:00
+      .row#options
+        a(href="#")#add-btn Add
+        a(href="#")#matches-btn Matches
+        a(href="#").secondary#exit-btn Exit
+    .container.column.active#add-player
+      .row.full
+        input(type='text', placeholder='Nickname')#nick.large.full
+      .row.full
+        input(type='text', placeholder='Name (optional)')#name.small.full
+        input(type='text', placeholder='Surname (optional)')#surname.small.full
+      .row.full
+        input(type='number', placeholder='Points (optional)')#points.small.full
+        input(type='number', placeholder='SoS (optional)')#sos.small.full
+
+      .row.full
+        select#corp.full
+        select#runner.full
+      .row#buttons
+        a(href="#").button#add-btn-finish Add
+        a(href="#").button#cancel-btn Cancel
+
+  script(src="scripts/players.js")

@@ -2,7 +2,6 @@ import circular from 'circular-json'
 import fs from 'fs'
 import path from 'path'
 import { remote } from 'electron'
-import utils from './utils'
 
 export class Player {
   constructor(nick, name, surname, superbye, points=0, sos=0, opponents=[]) {

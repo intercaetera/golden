@@ -9,7 +9,8 @@ $("#create-button").addEventListener("click", () => {
     meta: {
       name: $("#name").value,
       host: $("#host").value,
-      location: $("#location").value
+      location: $("#location").value,
+      rank: $("#rank").value
     },
     tournamentData: {
       players: [],
@@ -20,7 +21,7 @@ $("#create-button").addEventListener("click", () => {
   fs.writeFile(path.join(__dirname, "tournaments", structure.meta.name+".json"), circular.stringify(structure), "utf8", (err) => {
     if(err) throw err
     remote.getGlobal("config").current = structure.meta.name
-    fadeStuff("tournament.jade")
+    fadeStuff("players.jade")
   })
 
 

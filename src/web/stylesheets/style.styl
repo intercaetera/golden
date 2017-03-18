@@ -65,9 +65,7 @@ body
   min-width 100vw
   min-height 100vh
 
-  background linear-gradient(270deg, bgcolor, bghilit)
-  background-size 800% 800%
-  animation backgroundAnimation 13s ease infinite;
+  background bgcolor
 
 
 h1, h2, h3
@@ -228,10 +226,10 @@ input[type='text'], input[type='number'], select
     width 40%
 
   .row
-    width 100%
-    input, select
+    padding spacing-tiny
+
+    &>*
       margin 0 spacing-tiny
-      width 100%
 
 //=====================================================================================
 
