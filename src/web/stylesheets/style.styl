@@ -5,11 +5,15 @@
 
   font-family "Roboto"
 
+//Fonts
+header-font = "Raleway"
+main-font = "Roboto"
+
 //Base colors
-bgcolor = #2E3440
-bghilit = #3B4252
-textdim = #4C566A
-text = #ECEFF4
+bgcolor = #EBCB8B
+bghilit = #D8B265
+textdim = #757068
+text = #524B3E
 
 //Accent colors
 nblue = #5E81AC
@@ -33,7 +37,7 @@ size-title3 = 24px
 size-large = 19px
 size-regular = 17px
 size-small = 14px
-size-micro = 8px
+size-micro = 9px
 
 //Text color classes
 .blue
@@ -60,31 +64,44 @@ size-micro = 8px
 body
   min-width 100vw
   min-height 100vh
-  background bgcolor
+
+  background linear-gradient(270deg, bgcolor, bghilit)
+  background-size 800% 800%
+  animation backgroundAnimation 13s ease infinite;
+
 
 h1, h2, h3
-  font-family "Roboto", "Helvetica", "Arial", sans-serif
+  font-family header-font
   color text
   text-align center
 
 h1
-  font-weight 900
+  font-weight 300
   font-size size-title1
   padding spacing-base
 
 h2
-  font-weight 700
+  font-weight 300
   font-size size-title2
   padding spacing-base
 
 h3
-  font-weight 700
+  font-weight 400
   font-size size-title3
   padding spacing-base
 
 a
   text-decoration none
   color text
+
+  transition all .4s ease-in-out
+
+  &.secondary
+    color textdim
+    font-size size-small
+
+    &:hover, &:active
+      color text
 
 input[type='text'], input[type='number'], select
   background none
@@ -94,12 +111,17 @@ input[type='text'], input[type='number'], select
 
   color text
   padding spacing-small
-  border-bottom 1px bghilit solid
+  border-bottom 1px text solid
 
   transition all .4s ease-in-out
 
+  &::-webkit-input-placeholder
+    color rgba(text, .5)
+
   &:focus
-    background bghilit
+    background rgba(textdim, .3)
+
+
 
 .button
   appearance none
@@ -114,21 +136,9 @@ input[type='text'], input[type='number'], select
   transition all .4s ease-in-out
 
   &:active, &:hover
-    color textdim
+    color bgcolor
     border-color text
     background-color text
-
-  &.important
-    color text
-    border-color text
-    &:active, &hover
-      background text
-
-  &.yellow
-    &:active, &:hover
-      border-color nyellow
-      background nyellow
-      color textdim
 
 .hidden
   display none
@@ -160,9 +170,11 @@ input[type='text'], input[type='number'], select
 .fade
   animation loadComponent .7s ease-in-out forwards
 
+.full
+  width 100%
 
 //=====================================================================================
-#main-header, #main-logo, .component
+#index, #main-logo, .component
   animation loadComponent 1.2s ease-in-out
 
 #main-logo
@@ -170,8 +182,6 @@ input[type='text'], input[type='number'], select
   width auto
 
 #main-menu
-  width 100%
-
   .button
     opacity 0
     width 100%
@@ -241,3 +251,11 @@ input[type='text'], input[type='number'], select
   100%
     transform translateY(-10%)
     opacity 0
+
+@keyframes backgroundAnimation
+    0%
+      background-position:0% 50%
+    50%
+      background-position:100% 50%
+    100%
+      background-position:0% 50%

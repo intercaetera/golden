@@ -21,5 +21,4 @@ Golden is currently in development stage and release versions are not yet prepar
 - `yarn test` - Runs mocha tests
 
 ### TODO:
-- Redo the UI, cause Jesus Christ on a bike it looks horrible.
 - Implement the tournament.js into the actual UI.

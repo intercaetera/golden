@@ -17,7 +17,7 @@ function createWindow () {
     height: 600,
     //fullscreen: true,
     autoHideMenuBar: true,
-    backgroundColor: "#2E3440"
+    backgroundColor: "#D8B265"
   })
 
   global.config = {
