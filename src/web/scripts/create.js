@@ -13,7 +13,7 @@ $("#create-button").addEventListener("click", () => {
     },
     tournamentData: {
       players: [],
-      rounds: {}
+      rounds: []
     }
   }
 

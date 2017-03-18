@@ -5,7 +5,7 @@ import { remote } from 'electron'
 import utils from './utils'
 
 export class Player {
-  constructor(nick, name, surname, points=0, sos=0, opponents=[]) {
+  constructor(nick, name, surname, superbye, points=0, sos=0, opponents=[]) {
     this.nick = nick
     this.name = name
     this.surname = surname
@@ -13,6 +13,7 @@ export class Player {
     this.sos = sos
     this.opponents = opponents
     this.bye = false
+    this.superbye = superbye || false
   }
 
   addPoints(points) {
@@ -20,11 +21,13 @@ export class Player {
   }
 
   calculateSos() {
+    //If the player hasn't played anyone (i. e. has a bye), avoid division by 0.
     if(this.opponents.length === 0) {
       this.sos = 0
       return
     }
 
+    //Get strength of schedule according to the FFG algorithm.
     let sos = 0
     for(let each of this.opponents) {
       let acc = each.points / each.opponents.length
@@ -32,6 +35,16 @@ export class Player {
     }
     sos = sos / this.opponents.length
     this.sos = sos
+  }
+
+  awardBye() {
+    if(this.bye) {
+      throw new Error("The player already has a bye!")
+    } else {
+      this.addPoints(6)
+      this.bye = true
+      this.calculateSos()
+    }
   }
 }
 
@@ -51,17 +64,11 @@ export class Match {
     this.player1.calculateSos()
     this.player2.calculateSos()
   }
-
-  bye() {
-    this.player1.addPoints(6)
-    this.player1.bye = true
-    this.player1.calculateSos()
-  }
 }
 
 export class Round {
   constructor(playerArray) {
-    //Copy the array cause reasons.
+    //Copy the array cause we will mutate it later.
     let players = playerArray.slice()
 
     this.matches = []
@@ -70,7 +77,7 @@ export class Round {
     shuffle(players)
 
     //Sort the array by points and then by sos.
-    const sorted = players.sort((a, b) => {
+    let sorted = players.sort((a, b) => {
       if(a.points === b.points) {
         return (a.sos < b.sos) ? -1 : (a.sos > b.sos) ? 1 : 0
       }
@@ -80,12 +87,44 @@ export class Round {
     })
 
     while(sorted.length > 0) {
+
+      //Award superbyes
+      let i = 1
+      while(i>1) {
+        let each = sorted[sorted.length-i]
+
+        if(each.superbye) {
+          each.awardBye()
+          each.superbye = false
+          sorted.splice(sorted.length-i, 1)
+        }
+        else {
+          i++
+        }
+      }
+
+      //If there's an odd number of players, give the lowest ranked one a bye.
+      if(sorted.length % 2 !== 0) {
+        i = 1
+        do {
+          let each = sorted[sorted.length-i]
+          if(each.bye) {
+            i++
+          }
+          else {
+            each.awardBye()
+            sorted.splice(sorted.length-i, 1)
+            break
+          }
+        }while(i>0)
+      }
+
       //Set the first player.
       let player1 = sorted.shift()
-      let player2
 
       //Set the second player, make sure he was not played before.
-      let i=0
+      let player2
+      i=0
       while(true) {
         if(player1.opponents.includes(sorted[i])) {
           i++
@@ -98,10 +137,6 @@ export class Round {
 
       //Create a match.
       this.matches.push(new Match(player1, player2))
-
-      //Give the bye to the last player.
-      if(!this.matches[this.matches.length-1].player2)
-        this.matches[this.matches.length-1].bye()
     }
   }
 }

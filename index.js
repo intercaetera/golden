@@ -1,2 +1,4 @@
-require('babel-register')
+require('babel-register')({
+  retainLines: true
+})
 require('./src')
