@@ -86,39 +86,39 @@ export class Round {
       }
     })
 
-    while(sorted.length > 0) {
+    //Award superbyes
+    let i = 1
+    while(i>1) {
+      let each = sorted[sorted.length-i]
 
-      //Award superbyes
-      let i = 1
-      while(i>1) {
+      if(each.superbye) {
+        each.awardBye()
+        each.superbye = false
+        sorted.splice(sorted.length-i, 1)
+      }
+      else {
+        i++
+      }
+    }
+
+    //If there's an odd number of players, give the lowest ranked one a bye.
+    if(sorted.length % 2 !== 0) {
+      i = 1
+      do {
         let each = sorted[sorted.length-i]
-
-        if(each.superbye) {
-          each.awardBye()
-          each.superbye = false
-          sorted.splice(sorted.length-i, 1)
-        }
-        else {
+        if(each.bye) {
           i++
         }
-      }
+        else {
+          each.awardBye()
+          sorted.splice(sorted.length-i, 1)
+          break
+        }
+      }while(i>0)
+    }
 
-      //If there's an odd number of players, give the lowest ranked one a bye.
-      if(sorted.length % 2 !== 0) {
-        i = 1
-        do {
-          let each = sorted[sorted.length-i]
-          if(each.bye) {
-            i++
-          }
-          else {
-            each.awardBye()
-            sorted.splice(sorted.length-i, 1)
-            break
-          }
-        }while(i>0)
-      }
-
+    //Handle the matches.
+    while(sorted.length > 0) {
       //Set the first player.
       let player1 = sorted.shift()
 
