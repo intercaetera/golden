@@ -3,15 +3,21 @@
     {
       "name": "The Masque",
       "subtitle": "Cyber General"
-    },
+    }
+  ],
+  "Apex": [
     {
       "name": "Apex",
       "subtitle": "Invasive Predator"
-    },
+    }
+  ],
+  "Adam": [
     {
       "name": "Adam",
       "subtitle": "Compulsive Hacker"
-    },
+    }
+  ],
+  "Sunny": [
     {
       "name": "Sunny Lebeau",
       "subtitle": "Security Specialist"

@@ -4,12 +4,16 @@ import path from 'path'
 import { remote } from 'electron'
 
 export class Player {
-  constructor(nick, name, surname, superbye, points=0, sos=0, opponents=[]) {
+  constructor(nick, name, surname, superbye, points=0, sos=0, corpfaction, corpid, runnerfaction, runnerid, opponents=[]) {
     this.nick = nick
     this.name = name
     this.surname = surname
     this.points = points
     this.sos = sos
+    this.corpfaction = corpfaction
+    this.corpid = corpid
+    this.runnerfaction = runnerfaction
+    this.runnerid = runnerid
     this.opponents = opponents
     this.bye = false
     this.superbye = superbye || false
