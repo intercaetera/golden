@@ -87,17 +87,24 @@ $("#add-btn-finish").addEventListener("click", () => {
     player.runnerid
   ))
 
-  $("#nick").value = ""
-  $("#name").value = ""
-  $("#surname").value = ""
-  $("#points").value = ""
-  $("#sos").value = ""
-  $("#superbye").checked = false
+  fs.writeFile(path.join(__dirname, "tournaments", structure.meta.name+".json"), circular.stringify(structure), "utf8", (err) => {
+    if(err) throw err
+
+    //Clear the form after submitting.
+    $("#nick").value = ""
+    $("#name").value = ""
+    $("#surname").value = ""
+    $("#points").value = ""
+    $("#sos").value = ""
+    $("#superbye").checked = false
+  })
+
+
 
 })
 
 $("#add-btn").addEventListener("click", () => {
-  $("#add-player").classList.add("active")
+  $("#add-player").classList.toggle("active")
 })
 
 $("#exit-btn").addEventListener("click", () => {

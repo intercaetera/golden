@@ -8,7 +8,7 @@ block content
         a(href="#")#add-btn Add
         a(href="#")#matches-btn Matches
         a(href="#").secondary#exit-btn Exit
-    .container.column.active#add-player
+    .container.column#add-player
       .row.full
         input(type='text', placeholder='Nickname')#nick.large.full
       .row.full
@@ -27,5 +27,26 @@ block content
       .row#buttons
         a(href="#").button#add-btn-finish Add
         a(href="#").button#cancel-btn Cancel
-
+    .container.column.full#players
+      .row.center.full.player
+        h2 1
+        .column.center.full
+          h3 MrHudson
+          h6 Hudson Thomas
+        .column.pull-left.full
+          .row
+            i.icon-jinteki.display.color
+            h6 Jinteki Biotech: Life Imagined
+          .row.pull-left
+            i.icon-criminal.display.color
+            h6 Andromeda: Dispossessed Ristie
+        .column.center
+          h3 17
+          h6 Points
+        .column.center
+          h3 4.2
+          h6 Avg
+        .column.center
+          h3 2.75
+          h6 SOS
   script(src="scripts/players.js")

@@ -17,13 +17,16 @@ text = #524B3E
 
 //Accent colors
 nblue = #5E81AC
-nred = #BF616A
 norange = #D08770
-nyellow = #EBCB8B
 ngreen = #A3BE8C
-nviolet = #B48EAD
+
+nred = #BF616A
+nyellow = #EBCB8B
+npurple = #66335C
+ndarkgreen = #6B7C5C
 
 //Spacing
+spacing-micro = 4px
 spacing-tiny = 8px
 spacing-small = 16px
 spacing-base = 24px
@@ -76,17 +79,14 @@ h1, h2, h3
 h1
   font-weight 300
   font-size size-title1
-  padding spacing-base
 
 h2
   font-weight 300
   font-size size-title2
-  padding spacing-base
 
 h3
   font-weight 400
   font-size size-title3
-  padding spacing-base
 
 h6
   font-weight bold
@@ -161,11 +161,6 @@ input[type='checkbox']
   &:checked:after
     opacity 1
 
-
-
-
-
-
 .button
   appearance none
   outline none
@@ -197,6 +192,10 @@ input[type='checkbox']
   flex-direction column
   justify-content center
   align-items center
+  padding 0 spacing-small
+
+  &.pull-left
+    justify-content flex-start
 
 .row
   display flex
@@ -216,6 +215,27 @@ input[type='checkbox']
 
 .full
   width 100%
+
+[class^="icon-"], [class*=" icon-"]
+  &.display
+    padding spacing-micro
+
+  &.color
+    &.icon-jinteki-simple, &.icon-jinteki
+      color nred
+    &.icon-weyland-consortium
+      color ndarkgreen
+    &.icon-haas-bioroid
+      color npurple
+    &.icon-nbn
+      color bghilit
+
+    &.icon-shaper, &.icon-shaper-smooth
+      color ngreen
+    &.icon-criminal
+      color nblue
+    &.icon-anarch
+      color norange
 
 //=====================================================================================
 #index, #main-logo, .component
@@ -249,6 +269,7 @@ input[type='checkbox']
 
 #main-bar
   width 100%
+  padding spacing-base 0
 
   #time
     flex 2
@@ -259,6 +280,7 @@ input[type='checkbox']
 
 #add-player
   visibility hidden
+  height 0
   transform scale(1, 0)
   transform-origin center top
 
@@ -266,6 +288,7 @@ input[type='checkbox']
 
   &.active
     visibility visible
+    height 25em
     transform scale(1, 1)
 
   #buttons
@@ -276,6 +299,11 @@ input[type='checkbox']
 
     &>*
       margin 0 spacing-tiny
+
+.player
+  justify-content space-between
+  padding spacing-base 0
+  align-items center
 
 //=====================================================================================
 
