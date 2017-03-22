@@ -5,17 +5,15 @@
       input(type="text", placeholder="Name").form-control
     .form-group
       label Corp
-      select.form-control
-        optgroup(label="Haas-Bioroid")
-          option Engineering the Future
-          option Architects of Tomorrow
+      select.form-control#add-player-corp
     .form-group
       label Runner
-      select.form-control
-        optgroup(label="Anarch")
-          option Whizzard
-          option Noise
+      select.form-control#add-player-runner
     .checkbox
       label
         input(type="checkbox").
         | Superbye
+    .form-group
+      .btn-group
+        button.btn.btn-primary Add player
+        button.btn.btn-default Cancel

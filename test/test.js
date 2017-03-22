@@ -1,5 +1,5 @@
 var assert = require("assert");
-var t = require("../src/web/scripts/tournament.js")
+var t = require("../src/web/js/tournament.js")
 var circular = require('circular-json')
 
 describe('tournament', function(){
@@ -118,7 +118,9 @@ describe('tournament', function(){
       })
     }
   })
-});
+})
+
+
 
 function randomOutcome(match) {
   let rand = Math.floor(Math.random() * 5)
