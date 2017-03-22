@@ -1,8 +1,59 @@
+
+// Golden by MrHudson.
+
 html
+
   head
-    meta(charset='UTF-8')
-    link(rel='stylesheet', type="text/css", href='stylesheets/fonts.styl')
-    link(rel='stylesheet', type="text/css", href="stylesheets/style.styl")
-    script(src="scripts/utils.js")
+    link(rel='stylesheet', href="css/style.styl")
+    link(rel='stylesheet', href="css/photon.css")
+
+    script(src="js/utils.js")
+
+    title Golden
+
   body
-    block content
+    .window
+      header.toolbar
+        .toolbar-actions
+          .btn-group
+            button(title="Save").btn.btn-default
+              i.icon.icon-download
+              span.padded-less Save
+            button(title="End tournament and showcase").btn.btn-default
+              i.icon.icon-publish
+            button(title="End tournament").btn.btn-default
+              i.icon.icon-cancel
+          .btn-group
+            button(title="Add player").btn.btn-default#btn-add-player
+              i.icon.icon-user-add
+              span.padded-less Add player
+            button(title="New round").btn.btn-default
+              i.icon.icon-paper-plane
+              span.padded-less New Round
+      .window-content
+        include addplayer
+
+        .pane-group
+          .pane-sm.sidebar
+            h2.padded-horizontally-more 00:00
+            nav.nav-group
+              h5.nav-group-title Tournament
+              a.nav-group-item#nav-welcome Welcome
+              a.nav-group-item#nav-players Players
+              a.nav-group-item#nav-matches Matches
+
+            nav.nav-group
+              h5.nav-group-title Utilities
+              a.nav-group-item Timer
+              a.nav-group-item Stats
+
+          .pane.page#welcome
+            include welcome
+          .pane.page.inactive#leaderboard
+            include players
+          .pane.page.inactive#matches
+            include matches
+          .pane.page.inactive#players
+            include players
+
+    script(src="js/pagination.js")

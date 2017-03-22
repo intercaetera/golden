@@ -15,9 +15,7 @@ function createWindow () {
   win = new BrowserWindow({
     width: 800,
     height: 600,
-    //fullscreen: true,
-    autoHideMenuBar: true,
-    backgroundColor: "#D8B265"
+    autoHideMenuBar: true
   })
 
   global.config = {
@@ -26,7 +24,7 @@ function createWindow () {
 
   // and load the index.html of the app.
   win.loadURL(url.format({
-    pathname: path.join(__dirname, 'web', 'index.jade'),
+    pathname: path.join(__dirname, 'web', 'layout.jade'),
     protocol: 'file:',
     slashes: true
   }))
