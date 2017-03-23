@@ -40,6 +40,9 @@ $("#btn-add-player").addEventListener("click", () => {
   $("#add-player").classList.toggle("inactive")
 })
 
+$("#btn-new-tournament").addEventListener("click", () => {
+  $("#new-tournament").classList.toggle("inactive")
+})
 
 /************************************************
  ********************* PAGES ********************

@@ -1,5 +1,5 @@
 
-// Golden by MrHudson--sd-///s0df//
+// Golden by MrHudson--sd-///s0df/-
 
 doctype html
 html
@@ -31,8 +31,11 @@ html
             button(title="New round").btn.btn-default
               i.icon.icon-paper-plane
               span.padded-less New Round
+              
       .window-content
         include addplayer
+
+        include newtournament
 
         .pane-group
           .pane-sm.sidebar
@@ -58,3 +61,4 @@ html
             include players
 
     script(src="js/pagination.js")
+    script(src="js/main.js")
