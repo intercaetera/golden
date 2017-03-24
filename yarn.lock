@@ -147,6 +147,10 @@ asynckit@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
 
+autonomy@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/autonomy/-/autonomy-1.0.1.tgz#bcb40f7cbf59f7d8bf18a89186f3f409e36e87bc"
+
 autoprefixer@^6.3.1:
   version "6.7.7"
   resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-6.7.7.tgz#1dbd1c835658e35ce3f9984099db00585c782014"
@@ -1184,6 +1188,13 @@ domutils@1.5, domutils@1.5.1:
     dom-serializer "0"
     domelementtype "1"
 
+duel@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/duel/-/duel-3.2.0.tgz#5f9e71c89f3d0886670f2ba23c88e91837ecb3b5"
+  dependencies:
+    interlude "^1.1.0"
+    tournament "^3.1.0"
+
 eachr@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/eachr/-/eachr-3.2.0.tgz#2c35e43ea086516f7997cf80b7aa64d55a4a4484"
@@ -1670,6 +1681,14 @@ inherits@2, inherits@^2.0.1, inherits@~2.0.0, inherits@~2.0.1:
 ini@~1.3.0:
   version "1.3.4"
   resolved "https://registry.yarnpkg.com/ini/-/ini-1.3.4.tgz#0537cb79daf59b59a1a517dff706c86ec039162e"
+
+interlude@^1.1.0:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/interlude/-/interlude-1.1.1.tgz#973a5c8c958c61d943caf40c30736751b3a17655"
+  dependencies:
+    autonomy "^1.0.0"
+    operators "^0.1.6"
+    subset "^0.1.6"
 
 invariant@^2.2.0:
   version "2.2.2"
@@ -2297,6 +2316,10 @@ once@~1.3.3:
   resolved "https://registry.yarnpkg.com/once/-/once-1.3.3.tgz#b2e261557ce4c314ec8304f3fa82663e4297ca20"
   dependencies:
     wrappy "1"
+
+operators@^0.1.6:
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/operators/-/operators-0.1.7.tgz#8c7fc9a8159f2814401231fcbc1ff899d60bafa9"
 
 optimist@~0.3.5:
   version "0.3.7"
@@ -3099,6 +3122,10 @@ stylus@0.54.5, stylus@^0.54.5:
     sax "0.5.x"
     source-map "0.1.x"
 
+subset@^0.1.6:
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/subset/-/subset-0.1.7.tgz#67870a3337c5e90c78a71264de2861242a9eca5e"
+
 sumchecker@^1.2.0:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/sumchecker/-/sumchecker-1.3.1.tgz#79bb3b4456dd04f18ebdbc0d703a1d1daec5105d"
@@ -3191,6 +3218,12 @@ tough-cookie@^2.2.0, tough-cookie@~2.3.0:
   resolved "https://registry.yarnpkg.com/tough-cookie/-/tough-cookie-2.3.2.tgz#f081f76e4c85720e6c37a5faced737150d84072a"
   dependencies:
     punycode "^1.4.1"
+
+tournament@^3.1.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/tournament/-/tournament-3.2.0.tgz#a3d767ca2bcc531f352205a7c889b5d7dac77609"
+  dependencies:
+    interlude "^1.1.0"
 
 toutsuite@^0.6.0:
   version "0.6.0"

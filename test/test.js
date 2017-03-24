@@ -118,6 +118,26 @@ describe('tournament', function(){
       })
     }
   })
+
+  describe("Cut", () => {
+
+    const PLAYERS = 8
+
+    let players = []
+
+    for(let i=0; i<PLAYERS; i++) {
+      players[i] = new t.Player(i.toString())
+    }
+
+    const cut = new t.Cut(players)
+
+    //Score an entire tournament.
+    cut.declareWinner(cut.match(players[0]), players[0])
+    cut.declareWinner(cut.match(players[1]), players[1])
+    cut.declareWinner(cut.match(players[2]), players[2])
+    cut.declareWinner(cut.match(players[3]), players[3])
+
+  })
 })
 
 

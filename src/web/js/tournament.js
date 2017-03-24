@@ -1,3 +1,5 @@
+import Duel from 'duel'
+
 export class Player {
   constructor(nick, name, surname, superbye, points=0, sos=0, corpfaction, corpid, runnerfaction, runnerid, opponents=[]) {
     this.nick = nick
@@ -135,6 +137,50 @@ export class Round {
 
       //Create a match.
       this.matches.push(new Match(player1, player2))
+    }
+  }
+}
+
+export class Cut {
+  constructor(players) {
+    let sorted = players.sort((a, b) => {
+      if(a.points === b.points) {
+        return (a.sos < b.sos) ? -1 : (a.sos > b.sos) ? 1 : 0
+      }
+      else {
+        return (a.points < b.points) ? -1 : 1
+      }
+    })
+
+    for(let i=1; i<=sorted.length; i++) {
+      sorted[i-1].seed = i
+    }
+
+    this.bracket = new Duel(sorted.length, {last: 2})
+  }
+
+  //Gets the upcoming/current match of a player for scoring.
+  match(player) {
+    return this.bracket.upcoming(player.seed)[0]
+  }
+
+  roundWinner() {
+    return this.bracket.currentRound(1)
+  }
+
+  roundLoser() {
+    return this.bracket.currentRound(2)
+  }
+
+  //Determine the score of a match and then score it.
+  declareWinner(match, player) {
+    let ids = match.p
+
+    if(ids[0] == player.seed) {
+      this.bracket.score(match.id, [1, 0])
+    }
+    else if(ids[1] == player.seed) {
+      this.bracket.score(match.id, [0, 1])
     }
   }
 }
