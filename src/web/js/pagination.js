@@ -7,6 +7,8 @@ import RUNNERS from './js/data/RUNNERS.json'
 /************************************************
  ***************** INITIAL EVENTS ***************
  ************************************************/
+
+ //Populate add-player select fields.
 for(let each in CORPS) {
  const optgroup = document.createElement("optgroup")
  $("#add-player-corp").appendChild(optgroup)
@@ -33,15 +35,33 @@ for(let each in RUNNERS) {
  }
 }
 
+//Prevent autosubmission of forms.
+let forms = document.querySelectorAll("form")
+for(let each of forms) {
+  each.addEventListener("submit", (e) => {
+    e.preventDefault()
+  })
+}
+
 /************************************************
  ********************* BUTTONS ******************
  ************************************************/
 $("#btn-add-player").addEventListener("click", () => {
   $("#add-player").classList.toggle("inactive")
+  $("#new-tournament").classList.add("inactive")
+})
+
+$("#add-player-cancel").addEventListener("click", () => {
+  $("#add-player").classList.add("inactive")
 })
 
 $("#btn-new-tournament").addEventListener("click", () => {
   $("#new-tournament").classList.toggle("inactive")
+  $("#add-player").classList.add("inactive")
+})
+
+$("#new-tournament-cancel").addEventListener("click", () => {
+  $("#new-tournament").classList.add("inactive")
 })
 
 /************************************************

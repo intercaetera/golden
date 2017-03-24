@@ -1,3 +1,5 @@
+import t from '../src/web/js/tournament'
+
 let structure = {
   "meta": {
     "name": "",
@@ -12,7 +14,9 @@ let structure = {
   ]
 }
 
+console.log(t);
+
 // Handle new player button.
-$("#add-player-confirm").addEventListener("click", () => {
-  
+$("#add-player form").addEventListener("submit", () => {
+  console.log(t);
 })
