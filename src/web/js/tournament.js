@@ -1,19 +1,17 @@
 import Duel from 'duel'
 
 export class Player {
-  constructor(nick, name, surname, superbye, points=0, sos=0, corpfaction, corpid, runnerfaction, runnerid, opponents=[]) {
-    this.nick = nick
-    this.name = name
-    this.surname = surname
-    this.points = points
-    this.sos = sos
-    this.corpfaction = corpfaction
-    this.corpid = corpid
-    this.runnerfaction = runnerfaction
-    this.runnerid = runnerid
-    this.opponents = opponents
+  constructor(obj) {
+    this.name = obj.name
+    this.points = obj.points || 0
+    this.sos = obj.sos || 0
+    this.corpfaction = obj.corpfaction
+    this.corpid = obj.corpid
+    this.runnerfaction = obj.runnerfaction
+    this.runnerid = obj.runnerid
+    this.opponents = obj.opponents || []
     this.bye = false
-    this.superbye = superbye || false
+    this.superbye = obj.superbye || false
   }
 
   addPoints(points) {
