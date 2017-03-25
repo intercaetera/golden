@@ -1,5 +1,5 @@
 
-// Golden by MrHudson--sd-///s0df/-lsaaaa
+// Golden by MrHudson--asasd-///s0dfa-lsaaaaaaa
 
 doctype html
 html
@@ -29,7 +29,7 @@ html
             button(title="Add player").btn.btn-default#btn-add-player
               i.icon.icon-user-add
               span.padded-less Add player
-            button(title="New round").btn.btn-default
+            button(title="New round").btn.btn-default#btn-new-round
               i.icon.icon-paper-plane
               span.padded-less New Round
 
@@ -45,6 +45,7 @@ html
               h5.nav-group-title Tournament
               a.nav-group-item#nav-welcome Welcome
               a.nav-group-item#nav-players Players
+              a.nav-group-item#nav-rounds Rounds
               a.nav-group-item#nav-matches Matches
 
             nav.nav-group
@@ -56,6 +57,8 @@ html
             include welcome
           .pane.page.inactive#players
             include players
+          .pane.page.inactive#rounds
+            include rounds
           .pane.page.inactive#matches
             include matches
 

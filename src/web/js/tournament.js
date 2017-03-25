@@ -55,17 +55,29 @@ export class Match {
   constructor(player1, player2) {
     this.player1 = player1
     this.player2 = player2
+
+    this.score1 = 0
+    this.score2 = 0
+
+    this.scored = false
   }
 
   outcome(pointsForFirst, pointsForSecond) {
-    this.player1.addPoints(pointsForFirst)
-    this.player2.addPoints(pointsForSecond)
+    if(!this.scored) {
+      this.player1.addPoints(pointsForFirst)
+      this.player2.addPoints(pointsForSecond)
 
-    this.player1.opponents.push(this.player2)
-    this.player2.opponents.push(this.player1)
+      this.player1.opponents.push(this.player2)
+      this.player2.opponents.push(this.player1)
 
-    this.player1.calculateSos()
-    this.player2.calculateSos()
+      this.player1.calculateSos()
+      this.player2.calculateSos()
+
+      this.score1 = pointsForFirst
+      this.score2 = pointsForSecond
+
+      this.scored = true
+    }
   }
 }
 

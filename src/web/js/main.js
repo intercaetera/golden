@@ -6,15 +6,9 @@ let structure = {
     "location": "",
     "host": ""
   },
-  "players": [
-
-  ],
-  "rounds": [
-
-  ],
-  "cut": {
-
-  }
+  "players": [ ],
+  "rounds": [ ],
+  "cut": { }
 }
 
 // Handle new player button.
@@ -51,9 +45,6 @@ $("#add-player form").addEventListener("submit", () => {
 
   redrawPlayers()
 })
-
-$("#nav-players").addEventListener("click", redrawPlayers)
-
 function redrawPlayers() {
 
   structure.players = structure.players.sort((a, b) => {
@@ -153,3 +144,85 @@ function redrawPlayers() {
     }
   }
 }
+
+// Generate a new round
+$("#btn-new-round").addEventListener("click", () => {
+  let round = new Round(structure.players)
+  structure.rounds.push(round)
+
+  redrawMatches()
+})
+function redrawMatches() {
+
+  //Clear the table.
+  let tbody = $("#matches").querySelector("tbody")
+  while(tbody.firstChild) {
+    tbody.removeChild(tbody.firstChild)
+  }
+
+  //Avoid an exception when there are no rounds yet.
+  if(structure.rounds.length === 0) return
+
+  // Generate a table row for each match.
+  let lastRound = structure.rounds[structure.rounds.length-1].matches
+  for(let each of lastRound) {
+    createTableElement(each)
+  }
+
+  function createTableElement(match) {
+    let tr = document.createElement("tr")
+    $("#matches").querySelector('tbody').appendChild(tr)
+
+    createTableCell(match.player1.name)
+    createTableCell(match.player2.name)
+
+    //WRITE EVERYTHING TWICE!!!!1
+    createScoringCell(match.score1)
+    createScoringCell(match.score2)
+
+    let button = document.createElement('button')
+    createTableCell().appendChild(button)
+    button.textContent = "Score"
+    button.classList.add("btn", "btn-default", "btn-mini")
+    button.addEventListener("click", () => {
+      let score = tr.querySelectorAll(".scoring")
+      console.log(score);
+      match.outcome(score[0].value, score[1].value)
+      button.classList.add('inactive')
+    })
+
+    if(match.scored) button.classList.add('inactive')
+
+    function createScoringCell(src) {
+      let td = document.createElement('td')
+      tr.appendChild(td)
+
+      let select = document.createElement('select')
+      td.appendChild(select)
+      select.classList.add("scoring")
+
+      for(let i=0; i<=6; i++) {
+        let option = document.createElement('option')
+        select.appendChild(option)
+        option.value = i
+        option.textContent = i
+      }
+
+      select.selectedIndex = src
+    }
+
+    function createTableCell(content) {
+      let td = document.createElement('td')
+      tr.appendChild(td)
+      td.textContent = content
+
+      return td
+    }
+  }
+}
+
+// Redraw the players table on entering the page.
+$("#nav-players").addEventListener("click", redrawPlayers)
+
+// Redraw the matches on entering the page.
+$("#nav-matches").addEventListener("click", redrawMatches)

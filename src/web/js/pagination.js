@@ -76,6 +76,10 @@ $("#nav-players").addEventListener("click", () => {
   show($("#players"))
 })
 
+$("#nav-rounds").addEventListener("click", () => {
+  show($("#rounds"))
+})
+
 $("#nav-matches").addEventListener("click", () => {
   show($("#matches"))
 })
