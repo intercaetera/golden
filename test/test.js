@@ -10,6 +10,24 @@ describe('tournament', function(){
       assert.equal(0, player.points);
       assert.equal(0, player.sos)
     })
+
+    it("Dropped players are not taken into account when generating rounds.", () => {
+
+      const PLAYERS = 5
+
+      let players = []
+
+      for(let i=0; i<PLAYERS; i++) {
+        players[i] = new t.Player(i.toString())
+      }
+
+      players[4].drop = true
+
+      let round = new t.Round(players)
+
+      assert.equal(2, round.matches.length)
+
+    })
   })
 
   describe('Round', () => {
@@ -71,6 +89,8 @@ describe('tournament', function(){
       assert.equal(false, flag)
 
     })
+
+
   })
 
   describe('Tournament', () => {

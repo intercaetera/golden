@@ -48,9 +48,22 @@ $("#add-player form").addEventListener("submit", () => {
 
   //Construct a class and push it to the structure.
   structure.players.push(new Player(playerObject))
+
+  redrawPlayers()
 })
 
-$("#nav-players").addEventListener("click", () => {
+$("#nav-players").addEventListener("click", redrawPlayers)
+
+function redrawPlayers() {
+
+  structure.players = structure.players.sort((a, b) => {
+    if(a.points === b.points) {
+      return (a.sos < b.sos) ? 1 : (a.sos > b.sos) ? -1 : 0
+    }
+    else {
+      return (a.points < b.points) ? 1 : -1
+    }
+  })
 
   let tbody = $("#players").querySelector("tbody")
   while(tbody.firstChild) {
@@ -66,6 +79,7 @@ $("#nav-players").addEventListener("click", () => {
 
     let tr = document.createElement("tr")
     tbody.appendChild(tr)
+    if(player.drop) tr.classList.add("dropped")
 
     createTableCell(player.name)
 
@@ -94,6 +108,16 @@ $("#nav-players").addEventListener("click", () => {
 
     createTableCell(average)
 
+    let drop = document.createElement("button")
+    createTableCell().appendChild(drop)
+    drop.textContent = "Drop"
+    drop.classList.add("btn", "btn-negative", "btn-mini")
+
+    drop.addEventListener("click", () => {
+      let i = structure.players.indexOf(player)
+      structure.players[i].drop = true
+      redrawPlayers()
+    })
 
 
     function createTableCell(content, faction) {
@@ -124,6 +148,8 @@ $("#nav-players").addEventListener("click", () => {
         span.textContent = content
       }
       else td.textContent = content
+
+      return td
     }
   }
-})
+}

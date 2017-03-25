@@ -12,6 +12,7 @@ export class Player {
     this.opponents = obj.opponents || []
     this.bye = false
     this.superbye = obj.superbye || false
+    this.drop = obj.drop || false
   }
 
   addPoints(points) {
@@ -44,6 +45,10 @@ export class Player {
       this.calculateSos()
     }
   }
+
+  drop() {
+    this.drop = true
+  }
 }
 
 export class Match {
@@ -72,6 +77,7 @@ export class Round {
     this.matches = []
 
     //Shuffle the array. Only really relevant in the first round.
+    removeDropped(players)
     shuffle(players)
 
     //Sort the array by points and then by sos.
@@ -188,4 +194,10 @@ function shuffle(a) {
         let j = Math.floor(Math.random() * i);
         [a[i - 1], a[j]] = [a[j], a[i - 1]];
     }
+}
+
+function removeDropped(a) {
+  a = a.filter((each) => {
+    if(!each.drop) return each
+  })
 }
