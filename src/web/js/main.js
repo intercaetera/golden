@@ -1,6 +1,6 @@
 import { Player, Round, Match, Cut } from './js/tournament'
 import { remote } from 'electron'
-import circular from 'circular-json-es6'
+import circular from 'serializr'
 import fs from 'fs'
 import path from 'path'
 
@@ -351,20 +351,20 @@ $("#btn-load-tournament").addEventListener("click", () => {
       if(err) throw err
       structure = circular.parse(data)
 
-      // Handle JSON being fucking retarded (preserve classes and their methods).
-      for(let each of structure.players) {
-        each = new Player(each)
-      }
-
-      for(let each of structure.rounds.matches) {
-        for(let more of each) {
-          more = new Match(more)
-
-          more.player1 = new Player(more.player1)
-          more.player2 = new Player(more.player2)
-
-        }
-      }
+      // // Handle JSON being fucking retarded (preserve classes and their methods).
+      // for(let each of structure.players) {
+      //   each = new Player(each)
+      // }
+      //
+      // for(let each of structure.rounds.matches) {
+      //   for(let more of each) {
+      //     more = new Match(more)
+      //
+      //     more.player1 = new Player(more.player1)
+      //     more.player2 = new Player(more.player2)
+      //
+      //   }
+      // }
     })
   })
 })

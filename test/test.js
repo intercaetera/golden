@@ -1,5 +1,6 @@
 var assert = require("assert");
 var t = require("../src/web/js/tournament.js")
+var serializr = require('serializr')
 
 describe('tournament', function(){
   describe('Player', function(){
@@ -159,6 +160,22 @@ describe('tournament', function(){
   })
 })
 
+describe("Other", () => {
+
+  let player = new t.Player({name: "1"})
+  let opponent = new t.Player({name: "opp"})
+
+  let match = new t.Match({player1: player, player2: opponent})
+
+  let playerString = serializr.serialize(t.PlayerSchema, player)
+
+  player = serializr.deserialize(t.PlayerSchema, playerString)
+
+  match.outcome(6, 0)
+
+  console.log(player);
+
+})
 
 
 function randomOutcome(match) {
