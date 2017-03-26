@@ -5,6 +5,7 @@ export class Player {
     this.name = obj.name
     this.points = obj.points || 0
     this.sos = obj.sos || 0
+    this.esos = obj.esos || 0
     this.corpfaction = obj.corpfaction
     this.corpid = obj.corpid
     this.runnerfaction = obj.runnerfaction
@@ -36,6 +37,23 @@ export class Player {
     this.sos = sos
   }
 
+  calculateExtendedSos() {
+    // Avoid division by 0
+    if(this.opponents.length === 0) {
+      this.esos = 0
+      return
+    }
+
+    let esos = 0
+    for(let each of this.opponents) {
+      esos += each.sos
+    }
+    esos = esos / this.opponents.length
+    this.esos = esos
+  }
+
+
+
   awardBye() {
     if(this.bye) {
       throw new Error("The player already has a bye!")
@@ -52,14 +70,14 @@ export class Player {
 }
 
 export class Match {
-  constructor(player1, player2) {
-    this.player1 = player1
-    this.player2 = player2
+  constructor(obj) {
+    this.player1 = obj.player1
+    this.player2 = obj.player2
 
-    this.score1 = 0
-    this.score2 = 0
+    this.score1 = obj.score1 || 0
+    this.score2 = obj.score2 || 0
 
-    this.scored = false
+    this.scored = obj.scored || false
   }
 
   outcome(pointsForFirst, pointsForSecond) {
@@ -94,13 +112,18 @@ export class Round {
 
     //Sort the array by points and then by sos.
     let sorted = players.sort((a, b) => {
-      if(a.points === b.points) {
+      if(a.points === b.points && a.sos === b.sos) {
+        return (a.esos < b.esos) ? -1 : (a.esos > b.esos) ? 1 : 0
+      }
+      else if(a.points === b.points) {
         return (a.sos < b.sos) ? -1 : (a.sos > b.sos) ? 1 : 0
       }
       else {
         return (a.points < b.points) ? -1 : 1
       }
     })
+
+    this.players = sorted
 
     //Award superbyes
     let i = 1
@@ -152,7 +175,7 @@ export class Round {
       }
 
       //Create a match.
-      this.matches.push(new Match(player1, player2))
+      this.matches.push(new Match({player1: player1, player2: player2}))
     }
   }
 }

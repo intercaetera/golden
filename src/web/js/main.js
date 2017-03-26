@@ -1,58 +1,35 @@
 import { Player, Round, Match, Cut } from './js/tournament'
+import { remote } from 'electron'
+import circular from 'circular-json-es6'
+import fs from 'fs'
+import path from 'path'
 
 let structure = {
   "meta": {
     "name": "",
     "location": "",
-    "host": ""
+    "host": "",
+    "rank": ""
   },
   "players": [ ],
   "rounds": [ ],
   "cut": { }
 }
 
-// Handle new player button.
-$("#add-player form").addEventListener("submit", () => {
+let filePath
+const DEFAULT_PATH = path.join(__dirname, 'tournaments')
 
-  //Pull data from the #add-player form.
-  const name = $("#add-player-name").value.trim()
-
-  if(!name) {
-    alert("Player name cannot be empty!")
-    return
-  }
-
-  const superbye = $("#add-player-superbye").checked
-
-  const corpfaction = $("#add-player-corp").value
-  const corpid = $("#add-player-corp").options[$("#add-player-corp").selectedIndex].text
-
-  const runnerfaction = $("#add-player-runner").value
-  const runnerid = $("#add-player-runner").options[$("#add-player-runner").selectedIndex].text
-
-  //Create an object to pass to the class constructor.
-  const playerObject = {
-    name: name,
-    superbye: superbye,
-    corpfaction: corpfaction,
-    corpid: corpid,
-    runnerfaction: runnerfaction,
-    runnerid: runnerid
-  }
-
-  //Construct a class and push it to the structure.
-  structure.players.push(new Player(playerObject))
-
-  redrawPlayers()
-})
 function redrawPlayers() {
 
   structure.players = structure.players.sort((a, b) => {
-    if(a.points === b.points) {
-      return (a.sos < b.sos) ? 1 : (a.sos > b.sos) ? -1 : 0
+    if(a.points === b.points && a.sos === b.sos) {
+      return (a.esos < b.esos) ? -1 : (a.esos > b.esos) ? 1 : 0
+    }
+    else if(a.points === b.points) {
+      return (a.sos < b.sos) ? -1 : (a.sos > b.sos) ? 1 : 0
     }
     else {
-      return (a.points < b.points) ? 1 : -1
+      return (a.points < b.points) ? -1 : 1
     }
   })
 
@@ -121,18 +98,7 @@ function redrawPlayers() {
 
         i.classList.add("padded-horizontally")
 
-        if(faction == 'Haas-Bioroid') i.classList.add('icon-haas-bioroid')
-        if(faction == 'Jinteki') i.classList.add('icon-jinteki-simple')
-        if(faction == 'Weyland Consortium') i.classList.add('icon-weyland-consortium')
-        if(faction == 'NBN') i.classList.add('icon-nbn')
-
-        if(faction == 'Shaper') i.classList.add('icon-shaper-smooth')
-        if(faction == 'Criminal') i.classList.add('icon-criminal')
-        if(faction == 'Anarch') i.classList.add('icon-anarch')
-
-        if(faction == 'Apex') i.classList.add('icon-apex')
-        if(faction == 'Adam') i.classList.add('icon-adam')
-        if(faction == 'Sunny') i.classList.add('icon-sunny')
+        i.classList.add(convertFactionToIcon(faction))
 
         let span = document.createElement('span')
         td.appendChild(span)
@@ -144,14 +110,6 @@ function redrawPlayers() {
     }
   }
 }
-
-// Generate a new round
-$("#btn-new-round").addEventListener("click", () => {
-  let round = new Round(structure.players)
-  structure.rounds.push(round)
-
-  redrawMatches()
-})
 function redrawMatches() {
 
   //Clear the table.
@@ -186,8 +144,9 @@ function redrawMatches() {
     button.classList.add("btn", "btn-default", "btn-mini")
     button.addEventListener("click", () => {
       let score = tr.querySelectorAll(".scoring")
-      console.log(score);
-      match.outcome(score[0].value, score[1].value)
+      console.log(match);
+      console.log(parseInt(score[0].value), parseInt(score[1].value));
+      match.outcome(parseInt(score[0].value), parseInt(score[1].value))
       button.classList.add('inactive')
     })
 
@@ -220,9 +179,192 @@ function redrawMatches() {
     }
   }
 }
+function redrawRounds() {
+
+  //Clear the view.
+  let rounds = $("#rounds")
+  while(rounds.firstChild) {
+    rounds.removeChild(rounds.firstChild)
+  }
+
+  for(let each of structure.rounds) {
+    let table = document.createElement("table")
+    $("#rounds").appendChild(table)
+
+    let thead = document.createElement("thead")
+    table.appendChild(thead)
+
+    let tr = document.createElement("tr")
+    thead.appendChild(tr)
+
+    tr.appendChild(createTableCell("Table"))
+    tr.appendChild(createTableCell("Player 1"))
+    tr.appendChild(createTableCell("Player 2"))
+    tr.appendChild(createTableCell("Score"))
+
+    let tbody = document.createElement("tbody")
+    table.appendChild(tbody)
+
+    let i = 0
+    for(let match of each.matches) {
+      i++
+
+      let tr = document.createElement("tr")
+      tbody.appendChild(tr)
+
+      tr.appendChild(createTableCell(i))
+      tr.appendChild(createTableCell(match.player1.name))
+      tr.appendChild(createTableCell(match.player2.name))
+
+      let result = `${match.score1} : ${match.score2}`
+
+      tr.appendChild(createTableCell(result))
+    }
+
+  }
+
+  function createTableCell(content) {
+    let td = document.createElement('td')
+    td.textContent = content
+
+    return td
+  }
+}
+
+// Handle new player button.
+$("#add-player form").addEventListener("submit", () => {
+
+  //Pull data from the #add-player form.
+  const name = $("#add-player-name").value.trim()
+
+  if(!name) {
+    alert("Player name cannot be empty!")
+    return
+  }
+
+  const superbye = $("#add-player-superbye").checked
+
+  const corpfaction = $("#add-player-corp").value
+  const corpid = $("#add-player-corp").options[$("#add-player-corp").selectedIndex].text
+
+  const runnerfaction = $("#add-player-runner").value
+  const runnerid = $("#add-player-runner").options[$("#add-player-runner").selectedIndex].text
+
+  //Create an object to pass to the class constructor.
+  const playerObject = {
+    name: name,
+    superbye: superbye,
+    corpfaction: corpfaction,
+    corpid: corpid,
+    runnerfaction: runnerfaction,
+    runnerid: runnerid
+  }
+
+  //Construct a class and push it to the structure.
+  structure.players.push(new Player(playerObject))
+
+  redrawPlayers()
+})
+
+// Generate a new round
+$("#btn-new-round").addEventListener("click", () => {
+  let round = new Round(structure.players)
+  structure.rounds.push(round)
+
+  redrawMatches()
+})
+
+// Generate the rounds view.
+$("#nav-rounds").addEventListener("click", redrawRounds)
 
 // Redraw the players table on entering the page.
 $("#nav-players").addEventListener("click", redrawPlayers)
 
 // Redraw the matches on entering the page.
 $("#nav-matches").addEventListener("click", redrawMatches)
+
+
+//Create a new tournament
+$("#new-tournament-confirm").addEventListener("click", () => {
+  structure.meta = {
+    "name": $("#new-tournament-name").value.trim(),
+    "host": $("#new-tournament-host").value.trim(),
+    "location": $("#new-tournament-location").value.trim(),
+    "rank": $("#new-tournament-rank").value
+  }
+
+  remote.dialog.showSaveDialog(remote.getCurrentWindow(), {
+    title: "Save tournament",
+    filters: [
+      { name: "Circular JSON (cjson)", extensions: [ 'cjson' ] },
+      { name: "JSON (json)", extensions: ['json'] },
+      { name: "All files (*)", extensions: ['*'] }
+    ],
+    defaultPath: path.join(DEFAULT_PATH, `${structure.meta.name}.cjson`)
+  }, (source) => {
+    console.log(source);
+    if(!source) {
+      alert("Error: Tournament was not saved.")
+      return
+    }
+    else {
+      filePath = source
+      fs.writeFile(filePath, circular.stringify(structure), (err) => {
+        if(err) throw err
+      })
+    }
+  })
+})
+
+// Save a tournament.
+$("#btn-save-tournament").addEventListener("click", () => {
+  if(filePath) {
+    fs.writeFile(filePath, circular.stringify(structure), (err) => {
+      if(err) throw err
+    })
+  }
+  else {
+    fs.writeFile(path.join(DEFAULT_PATH, "Untitled.cjson"), circular.stringify(structure), (err) => {
+      if(err) throw err
+    })
+  }
+})
+
+// Load a tournament
+$("#btn-load-tournament").addEventListener("click", () => {
+  remote.dialog.showOpenDialog(remote.getCurrentWindow(), {
+    title: "Load a tournament",
+    filters: [
+      { name: "Circular JSON (cjson)", extensions: [ 'cjson' ] },
+      { name: "JSON (json)", extensions: ['json'] },
+      { name: "All files (*)", extensions: ['*'] }
+    ],
+    defaultPath: DEFAULT_PATH,
+    properties: ["openFile"]
+   }, (source) => {
+
+    if(!source) return
+
+    filePath = source[0]
+
+    fs.readFile(filePath, "utf-8", (err, data) => {
+      if(err) throw err
+      structure = circular.parse(data)
+
+      // Handle JSON being fucking retarded (preserve classes and their methods).
+      for(let each of structure.players) {
+        each = new Player(each)
+      }
+
+      for(let each of structure.rounds.matches) {
+        for(let more of each) {
+          more = new Match(more)
+
+          more.player1 = new Player(more.player1)
+          more.player2 = new Player(more.player2)
+
+        }
+      }
+    })
+  })
+})
