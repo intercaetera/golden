@@ -351,7 +351,6 @@ $("#btn-load-tournament").addEventListener("click", () => {
       if(err) throw err
       structure = circular.parse(data)
 
-<<<<<<< HEAD
       // Handle JSON being fucking retarded (preserve classes and their methods).
       for(let i=0; i<structure.players.length; i++) {
         structure.players[i] = new Player(structure.players[i])
@@ -375,22 +374,6 @@ $("#btn-load-tournament").addEventListener("click", () => {
         //   }
         // }
       }
-=======
-      // // Handle JSON being fucking retarded (preserve classes and their methods).
-      // for(let each of structure.players) {
-      //   each = new Player(each)
-      // }
-      //
-      // for(let each of structure.rounds.matches) {
-      //   for(let more of each) {
-      //     more = new Match(more)
-      //
-      //     more.player1 = new Player(more.player1)
-      //     more.player2 = new Player(more.player2)
-      //
-      //   }
-      // }
->>>>>>> d745ec36f4d5c393737f079e9982f5e5a6309427
     })
   })
 })
