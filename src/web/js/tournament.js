@@ -1,4 +1,5 @@
 import Duel from 'duel'
+import { ModelSchema, createModelSchema, primitive, reference, list, object, identifier } from 'serializr'
 
 export class Player {
   constructor(obj) {
@@ -68,6 +69,21 @@ export class Player {
     this.drop = true
   }
 }
+
+export const PlayerSchema = createModelSchema(Player, {
+  name: identifier(),
+  points: primitive(),
+  sos: primitive(),
+  esos: primitive(),
+  corpfaction: primitive(),
+  corpid: primitive(),
+  runnerfaction: primitive(),
+  runnerid: primitive(),
+  opponents: list(reference()),
+  bye: primitive(),
+  superbye: primitive(),
+  drop: primitive()
+}, (context) => new Player(context.json))
 
 export class Match {
   constructor(obj) {
