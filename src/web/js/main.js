@@ -352,18 +352,27 @@ $("#btn-load-tournament").addEventListener("click", () => {
       structure = circular.parse(data)
 
       // Handle JSON being fucking retarded (preserve classes and their methods).
-      for(let each of structure.players) {
-        each = new Player(each)
+      for(let i=0; i<structure.players.length; i++) {
+        structure.players[i] = new Player(structure.players[i])
       }
 
-      for(let each of structure.rounds.matches) {
-        for(let more of each) {
-          more = new Match(more)
-
-          more.player1 = new Player(more.player1)
-          more.player2 = new Player(more.player2)
-
+      if(structure.rounds.matches) {
+        for(let i=0; i<structure.rounds.length; i++) {
+          for(let j=0; j<structure.rounds[i].matches.length; j++) {
+            structure.rounds[i].matches[j] = new Match(structure.rounds[i].matches[j])
+          }
         }
+        // for(let each of structure.rounds) {
+        //   for(let more of each.matches) {
+        //     more = new Match(more)
+        //
+        //     console.log(more);
+        //
+        //     more.player1 = new Player(more.player1)
+        //     more.player2 = new Player(more.player2)
+        //
+        //   }
+        // }
       }
     })
   })
