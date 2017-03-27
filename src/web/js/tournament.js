@@ -1,8 +1,10 @@
 import Duel from 'duel'
+import uuid from 'uuid'
 
 export class Player {
   constructor(obj) {
     this.name = obj.name
+    this.uuid = uuid.v4()
     this.points = obj.points || 0
     this.sos = obj.sos || 0
     this.esos = obj.esos || 0

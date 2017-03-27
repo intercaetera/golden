@@ -1,8 +1,9 @@
 import { Player, Round, Match, Cut } from './js/tournament'
 import { remote } from 'electron'
-import circular from 'serializr'
+import circular from 'circular-json-es6'
 import fs from 'fs'
 import path from 'path'
+import uuid from 'uuid'
 
 let structure = {
   "meta": {
@@ -302,14 +303,13 @@ $("#new-tournament-confirm").addEventListener("click", () => {
     ],
     defaultPath: path.join(DEFAULT_PATH, `${structure.meta.name}.cjson`)
   }, (source) => {
-    console.log(source);
     if(!source) {
       alert("Error: Tournament was not saved.")
       return
     }
     else {
       filePath = source
-      fs.writeFile(filePath, circular.stringify(structure), (err) => {
+      fs.writeFile(filePath, serialize(structure), (err) => {
         if(err) throw err
       })
     }
@@ -319,12 +319,12 @@ $("#new-tournament-confirm").addEventListener("click", () => {
 // Save a tournament.
 $("#btn-save-tournament").addEventListener("click", () => {
   if(filePath) {
-    fs.writeFile(filePath, circular.stringify(structure), (err) => {
+    fs.writeFile(filePath, serialize(structure), (err) => {
       if(err) throw err
     })
   }
   else {
-    fs.writeFile(path.join(DEFAULT_PATH, "Untitled.cjson"), circular.stringify(structure), (err) => {
+    fs.writeFile(path.join(DEFAULT_PATH, "Untitled.cjson"), serialize(structure), (err) => {
       if(err) throw err
     })
   }
@@ -356,24 +356,54 @@ $("#btn-load-tournament").addEventListener("click", () => {
         structure.players[i] = new Player(structure.players[i])
       }
 
-      if(structure.rounds.matches) {
-        for(let i=0; i<structure.rounds.length; i++) {
-          for(let j=0; j<structure.rounds[i].matches.length; j++) {
-            structure.rounds[i].matches[j] = new Match(structure.rounds[i].matches[j])
+      if(structure.rounds) {
+        for(let each of structure.rounds) {
+          for(let more of each.matches) {
+
+            console.log(more);
+
+            more = new Match(more)
+
+            console.log(more);
+
+            more.player1 = new Player(more.player1)
+            more.player2 = new Player(more.player2)
+
           }
         }
-        // for(let each of structure.rounds) {
-        //   for(let more of each.matches) {
-        //     more = new Match(more)
-        //
-        //     console.log(more);
-        //
-        //     more.player1 = new Player(more.player1)
-        //     more.player2 = new Player(more.player2)
-        //
-        //   }
-        // }
       }
     })
   })
 })
+
+function serialize(s) {
+  let output = {}
+
+  output.meta = s.meta
+
+  output.players = []
+
+  for(let each of s.players) {
+    for(let more of s.players.opponents) {
+
+    }
+  }
+
+  output.matches = []
+
+  let roundNumber = 0
+  for(let each of s.rounds) {
+
+    output.matches.push(each.matches)
+
+    for(let more of each.matches) {
+      more.round = roundNumber
+      more.player1 = more.player1.uuid
+      more.player2 = more.player2.uuid
+      output.matches.push(more)
+    }
+    roundNumber++
+  }
+
+  return JSON.stringify(output)
+}
