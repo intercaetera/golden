@@ -376,34 +376,122 @@ $("#btn-load-tournament").addEventListener("click", () => {
   })
 })
 
-function serialize(s) {
+/*
+meta: {}
+players: [
+  {
+    uuid: uuid
+    ...
+    opponents: [
+      uuid,
+      uuid,
+      ...
+    ]
+  }
+]
+
+rounds: [
+  {
+    matches: [
+      {
+        player1: uuid,
+        player2: uuid,
+        score1: Number,
+        score2: Number,
+        scored: Boolean
+      }
+    ]
+  },
+]
+*/
+
+function serialise(input) {
   let output = {}
 
-  output.meta = s.meta
+  output.meta = input.meta
 
   output.players = []
 
-  for(let each of s.players) {
-    for(let more of s.players.opponents) {
+  for(let i=0; i<input.players.length; i++) {
+    output.players[i] = input.players[i]
 
+    for(let j=0; j<input.players[i].opponents.length; j++) {
+      output.players[i].opponents[j] = input.players[i].opponents[j].id
     }
   }
 
-  output.matches = []
+  output.rounds = []
 
-  let roundNumber = 0
-  for(let each of s.rounds) {
-
-    output.matches.push(each.matches)
-
-    for(let more of each.matches) {
-      more.round = roundNumber
-      more.player1 = more.player1.uuid
-      more.player2 = more.player2.uuid
-      output.matches.push(more)
+  for(let i=0; i<input.rounds.length; i++) {
+    output.rounds[i] = {
+      matches: []
     }
-    roundNumber++
+
+    for(let j=0; j<input.rounds[i].matches.length; j++) {
+      output.rounds[i].matches[j] = {
+        player1: input.rounds[i].matches[j].player1.id,
+        player2: input.rounds[i].matches[j].player1.id,
+        score1: input.rounds[i].matches[j].score1,
+        score2: input.rounds[i].matches[j].score2,
+        scored: input.rounds[i].matches[j].scored
+      }
+    }
   }
 
   return JSON.stringify(output)
+}
+
+function deserialise(input) {
+  input = JSON.parse(input)
+  let output = {}
+
+  output.meta = input.meta
+
+  output.players = []
+
+  for(let i=0; i<input.players.length; i++) {
+    output.players[i] = new Player(input.players[i])
+  }
+
+  for(let i=0; i<input.players.length; i++) {
+    for(let j=0; j<input.players[i].opponents.length; j++) {
+      console.log(input.players[i].opponents);
+      output.players[i].opponents[j] = findPlayer(output.players, input.players[i].opponents[j])
+    }
+  }
+
+  output.rounds = []
+
+  for(let i=0; i<input.rounds.length; i++) {
+
+    let matches = []
+    for(let j=0; j<input.rounds[i].matches.length; j++) {
+      let p1id = input.rounds[i].matches[j].player1
+      let p2id = input.rounds[i].matches[j].player2
+
+      let current = {
+        player1: findPlayer(output.players, p1id),
+        player2: findPlayer(output.players, p2id),
+        score1: input.rounds[i].matches[j].score1,
+        score2: input.rounds[i].matches[j].score2,
+        scored: input.rounds[i].matches[j].scored
+      }
+
+      matches = new Match(current)
+    }
+
+    output.rounds[i] = new Round(undefined, matches)
+  }
+
+  function findPlayer(array, uuid) {
+    for(let each of array) {
+      console.log(each.id, uuid);
+      if(each.id === uuid) {
+        console.log("gotcha");
+        return each
+      }
+    }
+  }
+
+  return output
 }

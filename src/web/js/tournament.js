@@ -4,7 +4,7 @@ import uuid from 'uuid'
 export class Player {
   constructor(obj) {
     this.name = obj.name
-    this.uuid = uuid.v4()
+    this.id = obj.id || uuid.v4()
     this.points = obj.points || 0
     this.sos = obj.sos || 0
     this.esos = obj.esos || 0
@@ -102,82 +102,87 @@ export class Match {
 }
 
 export class Round {
-  constructor(playerArray) {
-    //Copy the array cause we will mutate it later.
-    let players = playerArray.slice()
+  constructor(playerArray, matchesArray) {
+    if(playerArray) {
+      //Copy the array cause we will mutate it later.
+      let players = playerArray.slice()
 
-    this.matches = []
+      this.matches = []
 
-    //Shuffle the array. Only really relevant in the first round.
-    removeDropped(players)
-    shuffle(players)
+      //Shuffle the array. Only really relevant in the first round.
+      removeDropped(players)
+      shuffle(players)
 
-    //Sort the array by points and then by sos.
-    let sorted = players.sort((a, b) => {
-      if(a.points === b.points && a.sos === b.sos) {
-        return (a.esos < b.esos) ? -1 : (a.esos > b.esos) ? 1 : 0
-      }
-      else if(a.points === b.points) {
-        return (a.sos < b.sos) ? -1 : (a.sos > b.sos) ? 1 : 0
-      }
-      else {
-        return (a.points < b.points) ? -1 : 1
-      }
-    })
+      //Sort the array by points and then by sos.
+      let sorted = players.sort((a, b) => {
+        if(a.points === b.points && a.sos === b.sos) {
+          return (a.esos < b.esos) ? -1 : (a.esos > b.esos) ? 1 : 0
+        }
+        else if(a.points === b.points) {
+          return (a.sos < b.sos) ? -1 : (a.sos > b.sos) ? 1 : 0
+        }
+        else {
+          return (a.points < b.points) ? -1 : 1
+        }
+      })
 
-    this.players = sorted
+      this.players = sorted
 
-    //Award superbyes
-    let i = 1
-    while(i>1) {
-      let each = sorted[sorted.length-i]
-
-      if(each.superbye) {
-        each.awardBye()
-        each.superbye = false
-        sorted.splice(sorted.length-i, 1)
-      }
-      else {
-        i++
-      }
-    }
-
-    //If there's an odd number of players, give the lowest ranked one a bye.
-    if(sorted.length % 2 !== 0) {
-      i = 1
-      do {
+      //Award superbyes
+      let i = 1
+      while(i>1) {
         let each = sorted[sorted.length-i]
-        if(each.bye) {
-          i++
-        }
-        else {
+
+        if(each.superbye) {
           each.awardBye()
+          each.superbye = false
           sorted.splice(sorted.length-i, 1)
-          break
-        }
-      }while(i>0)
-    }
-
-    //Handle the matches.
-    while(sorted.length > 0) {
-      //Set the first player.
-      let player1 = sorted.shift()
-
-      //Set the second player, make sure he was not played before.
-      let player2
-      i=0
-      while(true) {
-        if(player1.opponents.includes(sorted[i])) {
-          i++
         }
         else {
-          player2 = sorted.shift()
-          break
+          i++
         }
       }
 
-      //Create a match.
-      this.matches.push(new Match({player1: player1, player2: player2}))
+      //If there's an odd number of players, give the lowest ranked one a bye.
+      if(sorted.length % 2 !== 0) {
+        i = 1
+        do {
+          let each = sorted[sorted.length-i]
+          if(each.bye) {
+            i++
+          }
+          else {
+            each.awardBye()
+            sorted.splice(sorted.length-i, 1)
+            break
+          }
+        }while(i>0)
+      }
+
+      //Handle the matches.
+      while(sorted.length > 0) {
+        //Set the first player.
+        let player1 = sorted.shift()
+
+        //Set the second player, make sure he was not played before.
+        let player2
+        i=0
+        while(true) {
+          if(player1.opponents.includes(sorted[i])) {
+            i++
+          }
+          else {
+            player2 = sorted.shift()
+            break
+          }
+        }
+
+        //Create a match.
+        this.matches.push(new Match({player1: player1, player2: player2}))
+      }
+    }
+    else if(matchesArray) {
+      this.matches = matchesArray
     }
   }
 }
