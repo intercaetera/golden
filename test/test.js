@@ -136,6 +136,8 @@ describe('tournament', function(){
         }
       })
     }
+
+
   })
 
   describe("Cut", () => {
@@ -157,23 +159,6 @@ describe('tournament', function(){
     cut.declareWinner(cut.match(players[3]), players[3])
 
   })
-})
-
-describe("Other", () => {
-
-  let player = new t.Player({name: "1"})
-  let opponent = new t.Player({name: "opp"})
-
-  let match = new t.Match({player1: player, player2: opponent})
-
-  let playerString = serializr.serialize(t.PlayerSchema, player)
-
-  player = serializr.deserialize(t.PlayerSchema, playerString)
-
-  match.outcome(6, 0)
-
-  console.log(player);
-
 })
 
 

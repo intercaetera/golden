@@ -76,6 +76,8 @@ export class Match {
     this.player1 = obj.player1
     this.player2 = obj.player2
 
+    this.table = obj.table
+
     this.score1 = obj.score1 || 0
     this.score2 = obj.score2 || 0
 
@@ -110,7 +112,7 @@ export class Round {
       this.matches = []
 
       //Shuffle the array. Only really relevant in the first round.
-      removeDropped(players)
+      players = removeDropped(players)
       shuffle(players)
 
       //Sort the array by points and then by sos.
@@ -130,10 +132,11 @@ export class Round {
 
       //Award superbyes
       let i = 1
-      while(i>1) {
+      while(i<sorted.length) {
         let each = sorted[sorted.length-i]
 
         if(each.superbye) {
+          console.log(each);
           each.awardBye()
           each.superbye = false
           sorted.splice(sorted.length-i, 1)
@@ -145,21 +148,22 @@ export class Round {
 
       //If there's an odd number of players, give the lowest ranked one a bye.
       if(sorted.length % 2 !== 0) {
-        i = 1
+        i = 0
         do {
-          let each = sorted[sorted.length-i]
+          let each = sorted[i]
           if(each.bye) {
             i++
           }
           else {
             each.awardBye()
-            sorted.splice(sorted.length-i, 1)
+            sorted.splice(i, 1)
             break
           }
         }while(i>0)
       }
 
       //Handle the matches.
+      let table = Math.floor(sorted.length/2)
       while(sorted.length > 0) {
         //Set the first player.
         let player1 = sorted.shift()
@@ -178,7 +182,8 @@ export class Round {
         }
 
         //Create a match.
-        this.matches.push(new Match({player1: player1, player2: player2}))
+        this.matches.push(new Match({player1: player1, player2: player2, table: table}))
+        table--
       }
     }
     else if(matchesArray) {
@@ -242,4 +247,6 @@ function removeDropped(a) {
   a = a.filter((each) => {
     if(!each.drop) return each
   })
+
+  return a
 }

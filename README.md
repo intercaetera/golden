@@ -21,4 +21,6 @@ Golden is currently in development stage and release versions are not yet prepar
 - `yarn test` - Runs mocha tests
 
 ### TODO:
-- Implement the tournament.js into the actual UI.
+- Bugtest swiss
+- Implement the cut
+- Implement tournament endings and export

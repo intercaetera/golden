@@ -122,7 +122,10 @@ function redrawMatches() {
   if(structure.rounds.length === 0) return
 
   // Generate a table row for each match.
-  let lastRound = structure.rounds[structure.rounds.length-1].matches
+  let lastRound = structure.rounds[structure.rounds.length-1].matches.sort((a, b) => {
+    return (a.table > b.table) ? 1 : -1
+  })
+
   for(let each of lastRound) {
     createTableElement(each)
   }
@@ -130,6 +133,8 @@ function redrawMatches() {
   function createTableElement(match) {
     let tr = document.createElement("tr")
     $("#matches").querySelector('tbody').appendChild(tr)
+
+    createTableCell(match.table)
 
     createTableCell(match.player1.name)
     createTableCell(match.player2.name)
@@ -187,7 +192,15 @@ function redrawRounds() {
     rounds.removeChild(rounds.firstChild)
   }
 
+  let i=0
   for(let each of structure.rounds) {
+    i++
+
+    let h3 = document.createElement("h3")
+    $("#rounds").appendChild(h3)
+    h3.textContent = `Round ${i}`
+    h3.classList.add("padded-horizontally-more")
+
     let table = document.createElement("table")
     $("#rounds").appendChild(table)
 
@@ -205,14 +218,11 @@ function redrawRounds() {
     let tbody = document.createElement("tbody")
     table.appendChild(tbody)
 
-    let i = 0
-    for(let match of each.matches.reverse()) {
-      i++
-
+    for(let match of each.matches) {
       let tr = document.createElement("tr")
       tbody.appendChild(tr)
 
-      tr.appendChild(createTableCell(i))
+      tr.appendChild(createTableCell(match.table))
       tr.appendChild(createTableCell(match.player1.name))
       tr.appendChild(createTableCell(match.player2.name))
 
@@ -355,10 +365,8 @@ $("#btn-load-tournament").addEventListener("click", () => {
 
 // Easter egg
 let accumulator = 0
-$("#welcome-logo").addEventListener("click", (e) => {
-  console.log(e.target);
-
-  if(accumulator>7) {
+$("#welcome-logo").addEventListener("click", () => {
+  if(accumulator>=5) {
     $("#welcome-logo").src = "assets/img/logo-rearranged.svg"
     accumulator=0
   }
@@ -479,9 +487,7 @@ function deserialise(input) {
 
   function findPlayer(array, uuid) {
     for(let each of array) {
-      console.log(each.id, uuid);
       if(each.id === uuid) {
-        console.log("gotcha");
         return each
       }
     }
