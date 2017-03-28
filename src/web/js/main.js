@@ -1,6 +1,5 @@
 import { Player, Round, Match, Cut } from './js/tournament'
 import { remote } from 'electron'
-import circular from 'circular-json-es6'
 import fs from 'fs'
 import path from 'path'
 import uuid from 'uuid'
@@ -24,13 +23,13 @@ function redrawPlayers() {
 
   structure.players = structure.players.sort((a, b) => {
     if(a.points === b.points && a.sos === b.sos) {
-      return (a.esos < b.esos) ? -1 : (a.esos > b.esos) ? 1 : 0
+      return (a.esos > b.esos) ? -1 : (a.esos > b.esos) ? 1 : 0
     }
     else if(a.points === b.points) {
-      return (a.sos < b.sos) ? -1 : (a.sos > b.sos) ? 1 : 0
+      return (a.sos > b.sos) ? -1 : (a.sos > b.sos) ? 1 : 0
     }
     else {
-      return (a.points < b.points) ? -1 : 1
+      return (a.points > b.points) ? -1 : 1
     }
   })
 
@@ -207,7 +206,7 @@ function redrawRounds() {
     table.appendChild(tbody)
 
     let i = 0
-    for(let match of each.matches) {
+    for(let match of each.matches.reverse()) {
       i++
 
       let tr = document.createElement("tr")
@@ -309,7 +308,7 @@ $("#new-tournament-confirm").addEventListener("click", () => {
     }
     else {
       filePath = source
-      fs.writeFile(filePath, serialize(structure), (err) => {
+      fs.writeFile(filePath, serialise(structure), (err) => {
         if(err) throw err
       })
     }
@@ -319,12 +318,12 @@ $("#new-tournament-confirm").addEventListener("click", () => {
 // Save a tournament.
 $("#btn-save-tournament").addEventListener("click", () => {
   if(filePath) {
-    fs.writeFile(filePath, serialize(structure), (err) => {
+    fs.writeFile(filePath, serialise(structure), (err) => {
       if(err) throw err
     })
   }
   else {
-    fs.writeFile(path.join(DEFAULT_PATH, "Untitled.cjson"), serialize(structure), (err) => {
+    fs.writeFile(path.join(DEFAULT_PATH, "Untitled.cjson"), serialise(structure), (err) => {
       if(err) throw err
     })
   }
@@ -349,29 +348,7 @@ $("#btn-load-tournament").addEventListener("click", () => {
 
     fs.readFile(filePath, "utf-8", (err, data) => {
       if(err) throw err
-      structure = circular.parse(data)
-
-      // Handle JSON being fucking retarded (preserve classes and their methods).
-      for(let i=0; i<structure.players.length; i++) {
-        structure.players[i] = new Player(structure.players[i])
-      }
-
-      if(structure.rounds) {
-        for(let each of structure.rounds) {
-          for(let more of each.matches) {
-
-            console.log(more);
-
-            more = new Match(more)
-
-            console.log(more);
-
-            more.player1 = new Player(more.player1)
-            more.player2 = new Player(more.player2)
-
-          }
-        }
-      }
+      structure = deserialise(data)
     })
   })
 })
@@ -415,30 +392,34 @@ function serialise(input) {
   for(let i=0; i<input.players.length; i++) {
     output.players[i] = input.players[i]
 
-    for(let j=0; j<input.players[i].opponents.length; j++) {
-      output.players[i].opponents[j] = input.players[i].opponents[j].id
+    if(input.players[i].opponents) {
+      for(let j=0; j<input.players[i].opponents.length; j++) {
+        output.players[i].opponents[j] = input.players[i].opponents[j].id
+      }
+    }
+    else {
+      output.players[i].opponents = []
     }
   }
 
   output.rounds = []
 
   for(let i=0; i<input.rounds.length; i++) {
-    output.rounds[i] = {
-      matches: []
-    }
+    if(input.rounds[i].matches) {
+      output.rounds[i] = {
+        matches: []
+      }
 
-    for(let j=0; j<input.rounds[i].matches.length; j++) {
-      output.rounds[i].matches[j] = {
-        player1: input.rounds[i].matches[j].player1.id,
-        player2: input.rounds[i].matches[j].player1.id,
-        score1: input.rounds[i].matches[j].score1,
-        score2: input.rounds[i].matches[j].score2,
-        scored: input.rounds[i].matches[j].scored
+      for(let j=0; j<input.rounds[i].matches.length; j++) {
+        output.rounds[i].matches[j] = input.rounds[i].matches[j]
+
+        output.rounds[i].matches[j].player1 = input.rounds[i].matches[j].player1.id
+        output.rounds[i].matches[j].player2 = input.rounds[i].matches[j].player2.id
       }
     }
   }
 
-  return JSON.stringify(output)
+  return JSON.stringify(output, null, 2)
 }
 
 function deserialise(input) {
@@ -469,15 +450,12 @@ function deserialise(input) {
       let p1id = input.rounds[i].matches[j].player1
       let p2id = input.rounds[i].matches[j].player2
 
-      let current = {
-        player1: findPlayer(output.players, p1id),
-        player2: findPlayer(output.players, p2id),
-        score1: input.rounds[i].matches[j].score1,
-        score2: input.rounds[i].matches[j].score2,
-        scored: input.rounds[i].matches[j].scored
-      }
+      let current = input.rounds[i].matches[j]
 
-      matches = new Match(current)
+      current.player1 = findPlayer(output.players, p1id)
+      current.player2 = findPlayer(output.players, p2id)
+
+      matches.push(new Match(current))
     }
 
     output.rounds[i] = new Round(undefined, matches)

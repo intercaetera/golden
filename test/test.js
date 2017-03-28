@@ -1,6 +1,5 @@
 var assert = require("assert");
 var t = require("../src/web/js/tournament.js")
-var serializr = require('serializr')
 
 describe('tournament', function(){
   describe('Player', function(){

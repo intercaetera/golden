@@ -1,1 +1,127 @@
-{"meta":{"name":"Default Tournament","host":"MrHudson","location":"Null Island","rank":"regionals"},"players":[{"name":"Apollodor","points":0,"sos":0,"esos":0,"corpfaction":"Haas-Bioroid","corpid":"Haas Bioroid: Engineering the Future","runnerfaction":"Anarch","runnerid":"Whizzard: Master Gamer","opponents":[],"bye":false,"superbye":false,"drop":false},{"name":"Sedtre","points":0,"sos":0,"esos":0,"corpfaction":"Jinteki","corpid":"Jinteki: Personal Evolution","runnerfaction":"Shaper","runnerid":"Kate 'Mac' McCaffrey: Digital Tinker","opponents":[],"bye":false,"superbye":false,"drop":false},{"name":"Flow","points":0,"sos":0,"esos":0,"corpfaction":"NBN","corpid":"NBN: Making News","runnerfaction":"Criminal","runnerid":"Andromeda: Dispossessed Ristie","opponents":[],"bye":false,"superbye":false,"drop":false},{"name":"Khromi","points":0,"sos":0,"esos":0,"corpfaction":"Weyland Consortium","corpid":"Weyland Consortium: Building a Better World","runnerfaction":"Apex","runnerid":"Apex: Invasive Predator","opponents":[],"bye":false,"superbye":false,"drop":false}],"rounds":[{"matches":[{"player1":{"name":"Apollodor","points":0,"sos":0,"esos":0,"corpfaction":"Haas-Bioroid","corpid":"Haas Bioroid: Engineering the Future","runnerfaction":"Anarch","runnerid":"Whizzard: Master Gamer","opponents":[],"bye":false,"superbye":false,"drop":false},"player2":{"name":"Sedtre","points":0,"sos":0,"esos":0,"corpfaction":"Jinteki","corpid":"Jinteki: Personal Evolution","runnerfaction":"Shaper","runnerid":"Kate 'Mac' McCaffrey: Digital Tinker","opponents":[],"bye":false,"superbye":false,"drop":false},"score1":0,"score2":0,"scored":false},{"player1":{"name":"Flow","points":0,"sos":0,"esos":0,"corpfaction":"NBN","corpid":"NBN: Making News","runnerfaction":"Criminal","runnerid":"Andromeda: Dispossessed Ristie","opponents":[],"bye":false,"superbye":false,"drop":false},"player2":{"name":"Khromi","points":0,"sos":0,"esos":0,"corpfaction":"Weyland Consortium","corpid":"Weyland Consortium: Building a Better World","runnerfaction":"Apex","runnerid":"Apex: Invasive Predator","opponents":[],"bye":false,"superbye":false,"drop":false},"score1":0,"score2":0,"scored":false}],"players":[]}],"cut":{}}
+{
+  "meta": {
+    "name": "Default Tournament",
+    "host": "Nobody",
+    "location": "Null Island",
+    "rank": "store"
+  },
+  "players": [
+    {
+      "name": "Apollodor",
+      "id": "580ecdc1-8665-431c-b8ab-0c41ce47b585",
+      "points": 0,
+      "sos": 0,
+      "esos": 0,
+      "corpfaction": "Neutral",
+      "corpid": "The Shadow: Pulling the Strings",
+      "runnerfaction": "Neutral",
+      "runnerid": "The Masque: Cyber General",
+      "opponents": [],
+      "bye": false,
+      "superbye": false,
+      "drop": false
+    },
+    {
+      "name": "Sedtre",
+      "id": "4fd81715-7f41-458f-a4ad-b3dc60db1e56",
+      "points": 0,
+      "sos": 0,
+      "esos": 0,
+      "corpfaction": "Haas-Bioroid",
+      "corpid": "Haas Bioroid: Engineering the Future",
+      "runnerfaction": "Anarch",
+      "runnerid": "Whizzard: Master Gamer",
+      "opponents": [],
+      "bye": false,
+      "superbye": false,
+      "drop": false
+    },
+    {
+      "name": "AK",
+      "id": "7b573e4e-eaa1-46bb-a7b5-d4081a37ecff",
+      "points": 0,
+      "sos": 0,
+      "esos": 0,
+      "corpfaction": "Jinteki",
+      "corpid": "Jinteki: Personal Evolution",
+      "runnerfaction": "Criminal",
+      "runnerid": "Andromeda: Dispossessed Ristie",
+      "opponents": [],
+      "bye": false,
+      "superbye": false,
+      "drop": false
+    },
+    {
+      "name": "Flow",
+      "id": "fe82f11d-29cb-470c-804c-2e334570151a",
+      "points": 0,
+      "sos": 0,
+      "esos": 0,
+      "corpfaction": "NBN",
+      "corpid": "NBN: Making News",
+      "runnerfaction": "Shaper",
+      "runnerid": "Kate 'Mac' McCaffrey: Digital Tinker",
+      "opponents": [],
+      "bye": false,
+      "superbye": false,
+      "drop": false
+    },
+    {
+      "name": "Black",
+      "id": "0b8eb244-df2d-4ec2-a9be-5de54c62f221",
+      "points": 0,
+      "sos": 0,
+      "esos": 0,
+      "corpfaction": "Haas-Bioroid",
+      "corpid": "The Foundry: Refining the Process",
+      "runnerfaction": "Criminal",
+      "runnerid": "Los: Data Hijacker",
+      "opponents": [],
+      "bye": false,
+      "superbye": false,
+      "drop": false
+    },
+    {
+      "name": "Paper",
+      "id": "8a714929-a116-44c5-bebe-2b3af8a18bce",
+      "points": 0,
+      "sos": 0,
+      "esos": 0,
+      "corpfaction": "Jinteki",
+      "corpid": "Nisei Division: The Next Generation",
+      "runnerfaction": "Shaper",
+      "runnerid": "Rielle 'Kit' Peddler: Transhuman",
+      "opponents": [],
+      "bye": false,
+      "superbye": false,
+      "drop": false
+    }
+  ],
+  "rounds": [
+    {
+      "matches": [
+        {
+          "player1": "580ecdc1-8665-431c-b8ab-0c41ce47b585",
+          "player2": "8a714929-a116-44c5-bebe-2b3af8a18bce",
+          "score1": 0,
+          "score2": 0,
+          "scored": false
+        },
+        {
+          "player1": "7b573e4e-eaa1-46bb-a7b5-d4081a37ecff",
+          "player2": "fe82f11d-29cb-470c-804c-2e334570151a",
+          "score1": 0,
+          "score2": 0,
+          "scored": false
+        },
+        {
+          "player1": "0b8eb244-df2d-4ec2-a9be-5de54c62f221",
+          "player2": "4fd81715-7f41-458f-a4ad-b3dc60db1e56",
+          "score1": 0,
+          "score2": 0,
+          "scored": false
+        }
+      ]
+    }
+  ]
+}
