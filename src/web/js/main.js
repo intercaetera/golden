@@ -353,6 +353,22 @@ $("#btn-load-tournament").addEventListener("click", () => {
   })
 })
 
+// Easter egg
+let accumulator = 0
+$("#welcome-logo").addEventListener("click", (e) => {
+  console.log(e.target);
+
+  if(accumulator>7) {
+    $("#welcome-logo").src = "assets/img/logo-rearranged.svg"
+    accumulator=0
+  }
+  else {
+    $("#welcome-logo").src = "assets/img/logo.svg"
+
+  }
+  accumulator++
+})
+
 /*
 meta: {}
 players: [
