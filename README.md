@@ -4,7 +4,7 @@
 
 ## Installation:
 
-Golden is currently in development stage and release versions are not yet prepared.
+See [Releases](https://github.com/MrHuds0n/golden/releases)
 
 ## Features:
 
