@@ -32,6 +32,7 @@ Golden is currently in development stage and release versions are not yet prepar
   - [Electron](https://electron.atom.io/) - Application framework
   - [Babel](https://babeljs.io/) - ES2016 compilation
   - [Mocha](https://mochajs.org/) - Development tests
+  - [Photon](http://photonkit.com) - User interface framework
   - [`electron-compile`](https://github.com/electron/electron-compile) - Jade and Stylus compilation
   - [`duel`](https://github.com/clux/duel) - Progression cut logic
   - [`uuid`](https://github.com/kelektiv/node-uuid) - UUID generation

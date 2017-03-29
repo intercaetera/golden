@@ -4,6 +4,7 @@
   "description": "An Android Netrunner tournament scorekeeping software.",
   "version": "1.0.0",
   "author": "MrHudson",
+  "license": "LGPL-3.0",
   "devDependencies": {
     "babel-cli": "^6.24.0",
     "babel-plugin-transform-async-to-generator": "^6.22.0",
