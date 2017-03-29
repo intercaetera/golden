@@ -215,11 +215,11 @@ export class Cut {
     return this.bracket.upcoming(player.seed)[0]
   }
 
-  roundWinner() {
+  roundUpper() {
     return this.bracket.currentRound(1)
   }
 
-  roundLoser() {
+  roundLower() {
     return this.bracket.currentRound(2)
   }
 
@@ -227,10 +227,12 @@ export class Cut {
   declareWinner(match, player) {
     let ids = match.p
 
-    if(ids[0] == player.seed) {
+    console.log(match);
+
+    if(ids[0] == player) {
       this.bracket.score(match.id, [1, 0])
     }
-    else if(ids[1] == player.seed) {
+    else if(ids[1] == player) {
       this.bracket.score(match.id, [0, 1])
     }
   }
