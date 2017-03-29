@@ -12,8 +12,7 @@ let structure = {
     "rank": ""
   },
   "players": [ ],
-  "rounds": [ ],
-  "cut": { }
+  "rounds": [ ]
 }
 
 let filePath
@@ -242,6 +241,7 @@ function redrawRounds() {
   }
 }
 
+const audio = new Audio('assets/wav/honk.wav')
 function startTimer() {
   let time = 65 * 60 * 1000 //65 minutes
 
@@ -259,7 +259,7 @@ function startTimer() {
     $("#timer").textContent = `${minutes}:${seconds}`
 
     if(time <= 0) {
-      alert("Terminacja")
+      audio.play()
       clearInterval(interval)
     }
   }, 1000)
@@ -297,11 +297,28 @@ $("#add-player form").addEventListener("submit", () => {
   //Construct a class and push it to the structure.
   structure.players.push(new Player(playerObject))
 
+  alert("Player created!")
+
   redrawPlayers()
 })
 
 // Generate a new round
 $("#btn-new-round").addEventListener("click", () => {
+
+  //Check if all the matches are scored.
+  if(structure.rounds.length > 0) {
+    let flag = false
+    for(let each of structure.rounds[structure.rounds.length-1].matches) {
+      if(!each.scored) {
+        flag = true
+      }
+    }
+
+    if(flag && !confirm("Some matches are not yet scored. Creating a new round now could result in errors. Are you sure you want to continue?")) {
+      return
+    }
+  }
+
   let round = new Round(structure.players)
   structure.rounds.push(round)
 

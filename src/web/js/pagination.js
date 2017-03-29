@@ -85,6 +85,10 @@ $("#nav-matches").addEventListener("click", () => {
   show($("#matches"))
 })
 
+$("#nav-cut").addEventListener("click", () => {
+  show($("#cut"))
+})
+
 function hideAllPages() {
   for(let each of $A(".page")) {
     each.classList.add("inactive")
