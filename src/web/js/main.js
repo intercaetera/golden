@@ -17,6 +17,7 @@ let structure = {
 }
 
 let filePath
+let interval
 const DEFAULT_PATH = path.join(__dirname, 'tournaments')
 
 function redrawPlayers() {
@@ -241,6 +242,29 @@ function redrawRounds() {
   }
 }
 
+function startTimer() {
+  let time = 65 * 60 * 1000 //65 minutes
+
+  if(interval) clearInterval(interval)
+
+  interval = setInterval(() => {
+    time -= 1000
+
+    let minutes = Math.floor(time / 60 / 1000)
+    let seconds = (time / 1000) % 60
+
+    if(minutes<10) minutes = "0"+minutes
+    if(seconds<10) seconds = "0"+seconds
+
+    $("#timer").textContent = `${minutes}:${seconds}`
+
+    if(time <= 0) {
+      alert("Terminacja")
+      clearInterval(interval)
+    }
+  }, 1000)
+}
+
 // Handle new player button.
 $("#add-player form").addEventListener("submit", () => {
 
@@ -282,6 +306,7 @@ $("#btn-new-round").addEventListener("click", () => {
   structure.rounds.push(round)
 
   redrawMatches()
+  startTimer()
 })
 
 // Generate the rounds view.

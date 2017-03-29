@@ -63,6 +63,7 @@ export class Player {
       this.addPoints(6)
       this.bye = true
       this.calculateSos()
+      this.superbye = false
     }
   }
 
@@ -136,9 +137,7 @@ export class Round {
         let each = sorted[sorted.length-i]
 
         if(each.superbye) {
-          console.log(each);
           each.awardBye()
-          each.superbye = false
           sorted.splice(sorted.length-i, 1)
         }
         else {
@@ -163,17 +162,18 @@ export class Round {
       }
 
       //Handle the matches.
-      let table = Math.floor(sorted.length/2)
+      let table = 1
       while(sorted.length > 0) {
+
         //Set the first player.
-        let player1 = sorted.shift()
+        let player1 = sorted.pop()
 
         //Set the second player, make sure he was not played before.
         let player2
-        i=0
+        i=sorted.length-1
         while(true) {
           if(player1.opponents.includes(sorted[i])) {
-            i++
+            i--
           }
           else {
             player2 = sorted.splice(i, 1)[0]
@@ -183,7 +183,7 @@ export class Round {
 
         //Create a match.
         this.matches.push(new Match({player1: player1, player2: player2, table: table}))
-        table--
+        table++
       }
     }
     else if(matchesArray) {
