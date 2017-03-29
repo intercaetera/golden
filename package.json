@@ -3,6 +3,7 @@
   "name": "Golden",
   "description": "An Android Netrunner tournament scorekeeping software.",
   "version": "1.0.0",
+  "license": "LGPL-3.0",
   "author": "MrHudson",
   "license": "LGPL-3.0",
   "devDependencies": {
@@ -24,8 +25,6 @@
   "scripts": {
     "start": "electron-forge start",
     "test": "mocha --require babel-register",
-    "pack": "build --dir",
-    "dist": "build",
     "package": "electron-forge package",
     "make": "electron-forge make"
   },

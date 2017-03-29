@@ -1,0 +1,172 @@
+{
+  "Neutral": [
+    {
+      "name": "The Masque",
+      "subtitle": "Cyber General"
+    }
+  ],
+  "Apex": [
+    {
+      "name": "Apex",
+      "subtitle": "Invasive Predator"
+    }
+  ],
+  "Adam": [
+    {
+      "name": "Adam",
+      "subtitle": "Compulsive Hacker"
+    }
+  ],
+  "Sunny": [
+    {
+      "name": "Sunny Lebeau",
+      "subtitle": "Security Specialist"
+    }
+  ],
+  "Anarch": [
+    {
+      "name": "Noise",
+      "subtitle": "Hacker Extraordinaire"
+    },
+    {
+      "name": "Reina Roja",
+      "subtitle": "Freedom Fighter"
+    },
+    {
+      "name": "Edward Kim",
+      "subtitle": "Humanity's Hammer"
+    },
+    {
+      "name": "Quetzal",
+      "subtitle": "Free Spirit"
+    },
+    {
+      "name": "Alice Merchant",
+      "subtitle": "Clan Agitator"
+    },
+    {
+      "name": "Whizzard",
+      "subtitle": "Master Gamer"
+    },
+    {
+      "name": "MaxX",
+      "subtitle": "Maximum Punk Rock"
+    },
+    {
+      "name": "Valencia Estevez",
+      "subtitle": "The Angel of Cayambe"
+    },
+    {
+      "name": "Null",
+      "subtitle": "Whistleblower"
+    },
+    {
+      "name": "Omar Keung",
+      "subtitle": "Conspiracy Theorist"
+    },
+    {
+      "name": "Wyvern",
+      "subtitle": "Chemically Enhanced"
+    }
+  ],
+  "Criminal": [
+    {
+      "name": "Gabriel Santiago",
+      "subtitle": "Consummate Professional"
+    },
+    {
+      "name": "Leela Patel",
+      "subtitle": "Trained Pragmatist"
+    },
+    {
+      "name": "Los",
+      "subtitle": "Data Hijacker"
+    },
+    {
+      "name": "Steve Cambridge",
+      "subtitle": "Master Grifter"
+    },
+    {
+      "name": "Nero Severn",
+      "subtitle": "Information Broker"
+    },
+    {
+      "name": "Silhouette",
+      "subtitle": "Stealth Operative"
+    },
+    {
+      "name": "Iain Stirling",
+      "subtitle": "Retired Spook"
+    },
+    {
+      "name": "Ken 'Express' Tenma",
+      "subtitle": "Disappeared Clone"
+    },
+    {
+      "name": "Andromeda",
+      "subtitle": "Dispossessed Ristie"
+    },
+    {
+      "name": "Laramy Fisk",
+      "subtitle": "Savvy Investor"
+    },
+    {
+      "name": "Khan",
+      "subtitle": "Savvy Skiptracer"
+    },
+    {
+      "name": "Armand 'Geist' Walker",
+      "subtitle": "Tech Lord"
+    },
+    {
+      "name": "Boris 'Syfr' Kovac",
+      "subtitle": "Crafty Veteran"
+    }
+  ],
+  "Shaper": [
+    {
+      "name": "Ele 'Smoke' Scovak",
+      "subtitle": "Cynosure of the Net"
+    },
+    {
+      "name": "Kate 'Mac' McCaffrey",
+      "subtitle": "Digital Tinker"
+    },
+    {
+      "name": "Jesminder Sareen",
+      "subtitle": "Girl Behind The Curtain"
+    },
+    {
+      "name": "Ayla 'Bios' Rahim",
+      "subtitle": "Simulant Specialist"
+    },
+    {
+      "name": "Nasir Meidan",
+      "subtitle": "Cyber Explorer"
+    },
+    {
+      "name": "Chaos Theory",
+      "subtitle": "Wünderkind"
+    },
+    {
+      "name": "Hayley Kaplan",
+      "subtitle": "Universal Scholar"
+    },
+    {
+      "name": "Rielle 'Kit' Peddler",
+      "subtitle": "Transhuman"
+    },
+    {
+      "name": "The Professor",
+      "subtitle": "Keeper of Knowledge"
+    },
+    {
+      "name": "Exile",
+      "subtitle": "Streethawk"
+    },
+    {
+      "name": "Jamie 'Bzzz' Micken",
+      "subtitle": "Techno Savant"
+    }
+  ]
+}

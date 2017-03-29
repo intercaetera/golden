@@ -1,0 +1,75 @@
+
+// Golden by MrHudson--asasd-///s0dfab-lasdbssabsssdabbaaaaabaaaax
+
+doctype html
+html
+
+  head
+    meta(charset="utf-8")
+
+    link(rel='stylesheet', href="css/style.styl")
+    link(rel='stylesheet', href="css/photon.css")
+    link(rel='stylesheet', href="css/netrunner.css")
+
+    script(src="js/utils.js")
+
+    title Golden
+
+  body
+    .window
+      header.toolbar
+        .toolbar-actions
+          .btn-group
+            button(title="Save").btn.btn-default#btn-save-tournament
+              i.icon.icon-download
+              span.padded-less Save
+            button(title="End tournament and showcase").btn.btn-default
+              i.icon.icon-publish
+            button(title="End tournament").btn.btn-default
+              i.icon.icon-cancel
+          .btn-group
+            button(title="Add player").btn.btn-default#btn-add-player
+              i.icon.icon-user-add
+              span.padded-less Add player
+            button(title="New round").btn.btn-default#btn-new-round
+              i.icon.icon-paper-plane
+              span.padded-less New Round
+
+      .window-content
+        include addplayer
+
+        include newtournament
+
+        .pane-group
+          .pane-sm.sidebar
+            h2.padded-horizontally-more#timer 00:00
+            nav.nav-group
+              h5.nav-group-title Swiss
+              a.nav-group-item#nav-welcome Welcome
+              a.nav-group-item#nav-players Players
+              a.nav-group-item#nav-rounds Rounds
+              a.nav-group-item#nav-matches Matches
+            nav.nav-group
+              h5.nav-group-title Progression Cut
+              a.nav-group-item#nav-cut Matches
+              a.nav-group-item#nav-leaderboards Leaderboards
+
+            nav.nav-group
+              h5.nav-group-title Utilities
+              a.nav-group-item Timer
+              a.nav-group-item Stats
+
+          .pane.page#welcome
+            include welcome
+          .pane.page.inactive#players
+            include players
+          .pane.page.inactive#rounds
+            include rounds
+          .pane.page.inactive#matches
+            include matches
+          .pane.page.inactive#cut
+            include cut
+
+    script(src="js/pagination.js")
+    script(src="js/main.js")
+    script(src="js/cut.js")
