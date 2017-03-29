@@ -15,8 +15,11 @@ function createWindow () {
   win = new BrowserWindow({
     width: 800,
     height: 600,
+    center: true,
     autoHideMenuBar: true
   })
+
+  win.maximize()
 
   global.config = {
     current: null
