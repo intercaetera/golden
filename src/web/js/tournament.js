@@ -176,7 +176,7 @@ export class Round {
             i++
           }
           else {
-            player2 = sorted.shift()
+            player2 = sorted.splice(i, 1)[0]
             break
           }
         }
