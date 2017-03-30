@@ -23,7 +23,7 @@
     "uuid": "^3.0.1"
   },
   "scripts": {
-    "start": "electron-forge start",
+    "start": "electron index.js",
     "test": "mocha --require babel-register",
     "package": "electron-forge package",
     "make": "electron-forge make"

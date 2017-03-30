@@ -115,5 +115,33 @@
     }
   ],
   "rounds": [
+    {
+      "matches": [
+        {
+          "player1": "cc0de12d-0336-4b21-a9be-24a9560090b1",
+          "player2": "fe82f11d-29cb-470c-804c-2e334570151a",
+          "table": 1,
+          "score1": 0,
+          "score2": 0,
+          "scored": false
+        },
+        {
+          "player1": "4fd81715-7f41-458f-a4ad-b3dc60db1e56",
+          "player2": "580ecdc1-8665-431c-b8ab-0c41ce47b585",
+          "table": 2,
+          "score1": 0,
+          "score2": 0,
+          "scored": false
+        },
+        {
+          "player1": "7b573e4e-eaa1-46bb-a7b5-d4081a37ecff",
+          "player2": "8a714929-a116-44c5-bebe-2b3af8a18bce",
+          "table": 3,
+          "score1": 0,
+          "score2": 0,
+          "scored": false
+        }
+      ]
+    }
   ]
 }

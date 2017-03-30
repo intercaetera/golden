@@ -20,7 +20,6 @@ let interval
 const DEFAULT_PATH = path.join(__dirname, 'tournaments')
 
 function redrawPlayers() {
-
   structure.players = structure.players.sort((a, b) => {
     if(a.points === b.points && a.sos === b.sos) {
       return (a.esos > b.esos) ? -1 : (a.esos > b.esos) ? 1 : 0
@@ -345,10 +344,13 @@ $("#new-tournament-confirm").addEventListener("click", () => {
     "rank": $("#new-tournament-rank").value
   }
 
+  $("#new-tournament").classList.add("inactive")
+
   remote.dialog.showSaveDialog(remote.getCurrentWindow(), {
     title: "Save tournament",
     filters: [
       { name: "Circular JSON (cjson)", extensions: [ 'cjson' ] },
+
       { name: "JSON (json)", extensions: ['json'] },
       { name: "All files (*)", extensions: ['*'] }
     ],
@@ -363,6 +365,7 @@ $("#new-tournament-confirm").addEventListener("click", () => {
       fs.writeFile(filePath, serialise(structure), (err) => {
         if(err) throw err
       })
+
     }
   })
 })
@@ -372,11 +375,13 @@ $("#btn-save-tournament").addEventListener("click", () => {
   if(filePath) {
     fs.writeFile(filePath, serialise(structure), (err) => {
       if(err) throw err
+      structure = deserialise(JSON.stringify(structure))
     })
   }
   else {
     fs.writeFile(path.join(DEFAULT_PATH, "Untitled.cjson"), serialise(structure), (err) => {
       if(err) throw err
+      structure = deserialise(JSON.stringify(structure))
     })
   }
 })
