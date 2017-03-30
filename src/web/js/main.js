@@ -3,6 +3,7 @@ import { remote } from 'electron'
 import fs from 'fs'
 import path from 'path'
 import uuid from 'uuid'
+import shortid from 'shortid'
 
 let structure = {
   "meta": {
@@ -341,6 +342,8 @@ $("#new-tournament-confirm").addEventListener("click", () => {
     "name": $("#new-tournament-name").value.trim(),
     "host": $("#new-tournament-host").value.trim(),
     "location": $("#new-tournament-location").value.trim(),
+    "id": uuid.v4(),
+    "shortid": shortid.generate(),
     "rank": $("#new-tournament-rank").value
   }
 
@@ -372,18 +375,30 @@ $("#new-tournament-confirm").addEventListener("click", () => {
 
 // Save a tournament.
 $("#btn-save-tournament").addEventListener("click", () => {
+  const serialised = serialise(structure)
   if(filePath) {
-    fs.writeFile(filePath, serialise(structure), (err) => {
+    fs.writeFile(filePath, serialised, (err) => {
       if(err) throw err
       structure = deserialise(JSON.stringify(structure))
     })
   }
   else {
-    fs.writeFile(path.join(DEFAULT_PATH, "Untitled.cjson"), serialise(structure), (err) => {
+    fs.writeFile(path.join(DEFAULT_PATH, "Untitled.cjson"), serialised, (err) => {
       if(err) throw err
       structure = deserialise(JSON.stringify(structure))
     })
   }
+
+  fetch("http://localhost:3000/api/"+structure.meta.id, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      data: serialised
+    })
+  })
+  .then(res => console.log(res))
 })
 
 // Load a tournament

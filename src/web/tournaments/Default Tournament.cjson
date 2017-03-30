@@ -112,6 +112,21 @@
       "bye": false,
       "superbye": false,
       "drop": false
+    },
+    {
+      "name": "Sizzlebird",
+      "id": "29e9b086-37db-4a95-8ab0-da18275d71a7",
+      "points": 0,
+      "sos": 0,
+      "esos": 0,
+      "corpfaction": "Jinteki",
+      "corpid": "Pālanā Foods: Sustainable Growth",
+      "runnerfaction": "Adam",
+      "runnerid": "Adam: Compulsive Hacker",
+      "opponents": [],
+      "bye": false,
+      "superbye": false,
+      "drop": false
     }
   ],
   "rounds": [
