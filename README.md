@@ -71,12 +71,6 @@ To report bugs, please visit the GitHub [Issues](https://github.com/MrHuds0n/gol
 - Implement cut serialisation
 - Implement other utilities
 
-## Caveats:
-
-One thing to note is that while Golden is fully prepared to be cross platform, the current release builds are **for Linux only**. The reason for this is that I don't have immediate access to a Windows or Mac machine (I only own two Linux PCs because I'm poor). If you want to run Golden on a non-Linux device, follow the instructions for "development installation" in the GitHub repository until some good soul comes around and compiles the binaries for your platform.
-
-Additionally, Golden is only available on the 64-bit architecture.
-
 ## Credits:
 - Coding and development:
   - [MrHudson](http://mrhudson.yt) - Author
