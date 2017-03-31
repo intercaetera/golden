@@ -9,8 +9,8 @@
     {
       "name": "Edward Kim",
       "id": "57607b34-6aeb-49e1-a373-h4mm3r",
-      "points": 5,
-      "sos": 0,
+      "points": 8,
+      "sos": 1.5,
       "esos": 0,
       "corpfaction": "Weyland Consortium",
       "corpid": "Weyland Consortium: Builder of Nations",
@@ -18,7 +18,8 @@
       "runnerid": "Edward Kim: Humanity's Hammer",
       "opponents": [
         "4a2d9e62-f179-43cf-9dcc-8255ac87bbd4",
-        "b9179598-cf1d-4de2-96f2-a5f3336702e8"
+        "b9179598-cf1d-4de2-96f2-a5f3336702e8",
+        "433d30ba-34a4-45b7-9b30-c44963d86d98"
       ],
       "bye": false,
       "superbye": false
@@ -27,14 +28,15 @@
       "name": "Whizzard",
       "id": "46aef89a-e3c3-4430-9b5d-953dd8340e5d",
       "points": 6,
-      "sos": 12,
+      "sos": 5.5,
       "esos": 0,
       "corpfaction": "Jinteki",
       "corpid": "Industrial Genomics: Growing Solutions",
       "runnerfaction": "Anarch",
       "runnerid": "Whizzard: Master Gamer",
       "opponents": [
-        "adca3fed-efc4-444d-9fe3-4f9cc52d91b0"
+        "adca3fed-efc4-444d-9fe3-4f9cc52d91b0",
+        "4a2d9e62-f179-43cf-9dcc-8255ac87bbd4"
       ],
       "bye": false,
       "superbye": false
@@ -43,7 +45,7 @@
       "name": "MaxX",
       "id": "f0dac086-e979-4698-baa0-42f1c31e85ed",
       "points": 0,
-      "sos": 1.25,
+      "sos": 2.1666666666666665,
       "esos": 0,
       "corpfaction": "Jinteki",
       "corpid": "Jinteki Biotech: Life Imagined",
@@ -51,7 +53,8 @@
       "runnerid": "MaxX: Maximum Punk Rock",
       "opponents": [
         "b9179598-cf1d-4de2-96f2-a5f3336702e8",
-        "4a2d9e62-f179-43cf-9dcc-8255ac87bbd4"
+        "4a2d9e62-f179-43cf-9dcc-8255ac87bbd4",
+        "b9179598-cf1d-4de2-96f2-a5f3336702e8"
       ],
       "bye": false,
       "superbye": false
@@ -60,7 +63,7 @@
       "name": "Noise",
       "id": "433d30ba-34a4-45b7-9b30-c44963d86d98",
       "points": 0,
-      "sos": 3,
+      "sos": 2.888888888888889,
       "esos": 0,
       "corpfaction": "Haas-Bioroid",
       "corpid": "Cerebral Imaging: Infinite Frontiers",
@@ -68,7 +71,8 @@
       "runnerid": "Noise: Hacker Extraordinaire",
       "opponents": [
         "79423057-dc0d-4dd7-bc8d-8a07b198566c",
-        "79423057-dc0d-4dd7-bc8d-8a07b198566c"
+        "79423057-dc0d-4dd7-bc8d-8a07b198566c",
+        "57607b34-6aeb-49e1-a373-h4mm3r"
       ],
       "bye": false,
       "superbye": false
@@ -77,7 +81,7 @@
       "name": "Gabriel Santiago",
       "id": "79423057-dc0d-4dd7-bc8d-8a07b198566c",
       "points": 6,
-      "sos": 0,
+      "sos": 2.6666666666666665,
       "esos": 0,
       "corpfaction": "NBN",
       "corpid": "New Angeles Sol: Your News",
@@ -85,7 +89,8 @@
       "runnerid": "Gabriel Santiago: Consummate Professional",
       "opponents": [
         "433d30ba-34a4-45b7-9b30-c44963d86d98",
-        "433d30ba-34a4-45b7-9b30-c44963d86d98"
+        "433d30ba-34a4-45b7-9b30-c44963d86d98",
+        "adca3fed-efc4-444d-9fe3-4f9cc52d91b0"
       ],
       "bye": false,
       "superbye": false
@@ -93,8 +98,8 @@
     {
       "name": "Isabel McGuire",
       "id": "4a2d9e62-f179-43cf-9dcc-8255ac87bbd4",
-      "points": 5,
-      "sos": 1.25,
+      "points": 9,
+      "sos": 1.8888888888888886,
       "esos": 0,
       "corpfaction": "Haas-Bioroid",
       "corpid": "Cybernetics Division: Humanity Upgraded",
@@ -102,7 +107,8 @@
       "runnerid": "Kate 'Mac' McCaffrey: Digital Tinker",
       "opponents": [
         "57607b34-6aeb-49e1-a373-h4mm3r",
-        "f0dac086-e979-4698-baa0-42f1c31e85ed"
+        "f0dac086-e979-4698-baa0-42f1c31e85ed",
+        "46aef89a-e3c3-4430-9b5d-953dd8340e5d"
       ],
       "bye": false,
       "superbye": false
@@ -110,15 +116,16 @@
     {
       "name": "Jackson Howard",
       "id": "adca3fed-efc4-444d-9fe3-4f9cc52d91b0",
-      "points": 12,
-      "sos": 6,
+      "points": 16,
+      "sos": 4,
       "esos": 0,
       "corpfaction": "NBN",
       "corpid": "NBN: Controlling the Message",
       "runnerfaction": "Shaper",
       "runnerid": "Ayla 'Bios' Rahim: Simulant Specialist",
       "opponents": [
-        "46aef89a-e3c3-4430-9b5d-953dd8340e5d"
+        "46aef89a-e3c3-4430-9b5d-953dd8340e5d",
+        "79423057-dc0d-4dd7-bc8d-8a07b198566c"
       ],
       "bye": false,
       "superbye": false
@@ -126,8 +133,8 @@
     {
       "name": "Andromeda",
       "id": "b9179598-cf1d-4de2-96f2-a5f3336702e8",
-      "points": 0,
-      "sos": 1.25,
+      "points": 6,
+      "sos": 0.8333333333333334,
       "esos": 0,
       "corpfaction": "Weyland Consortium",
       "corpid": "Weyland Consortium: Building a Better World",
@@ -135,7 +142,8 @@
       "runnerid": "Andromeda: Dispossessed Ristie",
       "opponents": [
         "f0dac086-e979-4698-baa0-42f1c31e85ed",
-        "57607b34-6aeb-49e1-a373-h4mm3r"
+        "57607b34-6aeb-49e1-a373-h4mm3r",
+        "f0dac086-e979-4698-baa0-42f1c31e85ed"
       ],
       "bye": false,
       "superbye": false
@@ -199,6 +207,42 @@
         {
           "player1": "433d30ba-34a4-45b7-9b30-c44963d86d98",
           "player2": "79423057-dc0d-4dd7-bc8d-8a07b198566c",
+          "table": 4,
+          "score1": 0,
+          "score2": 6,
+          "scored": true
+        }
+      ]
+    },
+    {
+      "matches": [
+        {
+          "player1": "adca3fed-efc4-444d-9fe3-4f9cc52d91b0",
+          "player2": "79423057-dc0d-4dd7-bc8d-8a07b198566c",
+          "table": 1,
+          "score1": 4,
+          "score2": 0,
+          "scored": true
+        },
+        {
+          "player1": "46aef89a-e3c3-4430-9b5d-953dd8340e5d",
+          "player2": "4a2d9e62-f179-43cf-9dcc-8255ac87bbd4",
+          "table": 2,
+          "score1": 0,
+          "score2": 4,
+          "scored": true
+        },
+        {
+          "player1": "57607b34-6aeb-49e1-a373-h4mm3r",
+          "player2": "433d30ba-34a4-45b7-9b30-c44963d86d98",
+          "table": 3,
+          "score1": 3,
+          "score2": 0,
+          "scored": true
+        },
+        {
+          "player1": "f0dac086-e979-4698-baa0-42f1c31e85ed",
+          "player2": "b9179598-cf1d-4de2-96f2-a5f3336702e8",
           "table": 4,
           "score1": 0,
           "score2": 6,

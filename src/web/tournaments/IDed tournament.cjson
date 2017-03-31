@@ -12,16 +12,17 @@
       "name": "Apollodor",
       "id": "e274e7e3-860f-4e16-9d6f-e0fe14e71189",
       "points": 0,
-      "sos": 0,
+      "sos": 3,
       "esos": 0,
       "corpfaction": "Neutral",
       "corpid": "The Shadow: Pulling the Strings",
       "runnerfaction": "Neutral",
       "runnerid": "The Masque: Cyber General",
-      "opponents": [],
+      "opponents": [
+        "77a4f0a8-e21b-48fe-b871-6315a9d16037"
+      ],
       "bye": false,
-      "superbye": false,
-      "drop": false
+      "superbye": false
     },
     {
       "name": "Sedtre",
@@ -33,11 +34,65 @@
       "corpid": "The Shadow: Pulling the Strings",
       "runnerfaction": "Neutral",
       "runnerid": "The Masque: Cyber General",
-      "opponents": [],
+      "opponents": [
+        "5a2ac21b-54d1-4f55-a8c5-3198f582a046"
+      ],
       "bye": false,
-      "superbye": false,
-      "drop": false
+      "superbye": false
+    },
+    {
+      "name": "Flow",
+      "id": "77a4f0a8-e21b-48fe-b871-6315a9d16037",
+      "points": 3,
+      "sos": 0,
+      "esos": 0,
+      "corpfaction": "Neutral",
+      "corpid": "The Shadow: Pulling the Strings",
+      "runnerfaction": "Neutral",
+      "runnerid": "The Masque: Cyber General",
+      "opponents": [
+        "e274e7e3-860f-4e16-9d6f-e0fe14e71189"
+      ],
+      "bye": false,
+      "superbye": false
+    },
+    {
+      "name": "AK",
+      "id": "5a2ac21b-54d1-4f55-a8c5-3198f582a046",
+      "points": 0,
+      "sos": 0,
+      "esos": 0,
+      "corpfaction": "Neutral",
+      "corpid": "The Shadow: Pulling the Strings",
+      "runnerfaction": "Neutral",
+      "runnerid": "The Masque: Cyber General",
+      "opponents": [
+        "4af20031-24d1-4cad-af5e-7e83b6928b71"
+      ],
+      "bye": false,
+      "superbye": false
     }
   ],
-  "rounds": []
+  "rounds": [
+    {
+      "matches": [
+        {
+          "player1": "e274e7e3-860f-4e16-9d6f-e0fe14e71189",
+          "player2": "77a4f0a8-e21b-48fe-b871-6315a9d16037",
+          "table": 1,
+          "score1": 0,
+          "score2": 3,
+          "scored": true
+        },
+        {
+          "player1": "4af20031-24d1-4cad-af5e-7e83b6928b71",
+          "player2": "5a2ac21b-54d1-4f55-a8c5-3198f582a046",
+          "table": 2,
+          "score1": 0,
+          "score2": 0,
+          "scored": true
+        }
+      ]
+    }
+  ]
 }
