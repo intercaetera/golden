@@ -5,6 +5,8 @@ import path from 'path'
 import uuid from 'uuid'
 import shortid from 'shortid'
 
+import deepcopy from 'deepcopy'
+
 let structure = {
   "meta": {
     "name": "",
@@ -557,3 +559,11 @@ function deserialise(input) {
 
   return output
 }
+
+// //Deep copy test
+// let copied
+// function copy() {
+//   copied = deepcopy(structure)
+//   structure = null
+//   console.log(copied);
+// }
