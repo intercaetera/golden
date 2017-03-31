@@ -68,8 +68,10 @@ To report bugs, please visit the GitHub [Issues](https://github.com/MrHuds0n/gol
 - `yarn make` - Make the package for your current system
 
 ## TODO:
-- Implement cut serialisation
+- Get the [web services](https://github.com/MrHuds0n/monolith) to work.
+- Implement quick scoring
 - Implement other utilities
+- Implement cut serialisation
 
 ## Credits:
 - Coding and development:
