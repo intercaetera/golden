@@ -5,7 +5,7 @@ import path from 'path'
 import uuid from 'uuid'
 import shortid from 'shortid'
 
-import deepcopy from 'deepcopy'
+import clone from 'clone'
 
 let structure = {
   "meta": {
@@ -381,13 +381,13 @@ $("#btn-save-tournament").addEventListener("click", () => {
   if(filePath) {
     fs.writeFile(filePath, serialised, (err) => {
       if(err) throw err
-      structure = deserialise(JSON.stringify(structure))
+      // structure = deserialise(JSON.stringify(structure))
     })
   }
   else {
     fs.writeFile(path.join(DEFAULT_PATH, "Untitled.cjson"), serialised, (err) => {
       if(err) throw err
-      structure = deserialise(JSON.stringify(structure))
+      // structure = deserialise(JSON.stringify(structure))
     })
   }
 
@@ -470,7 +470,8 @@ rounds: [
 ]
 */
 
-function serialise(input) {
+function serialise(inputArray) {
+  const input = clone(inputArray)
   let output = {}
 
   output.meta = input.meta
