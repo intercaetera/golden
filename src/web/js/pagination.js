@@ -89,6 +89,14 @@ $("#nav-cut").addEventListener("click", () => {
   show($("#cut"))
 })
 
+$("#nav-timer").addEventListener("click", () => {
+  show($("#timer"))
+})
+
+$("#nav-web").addEventListener("click", () => {
+  show($("#web"))
+})
+
 function hideAllPages() {
   for(let each of $A(".page")) {
     each.classList.add("inactive")

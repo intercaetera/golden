@@ -4,6 +4,7 @@ import fs from 'fs'
 import path from 'path'
 import uuid from 'uuid'
 import shortid from 'shortid'
+import {generateQr} from './js/qr'
 
 import clone from 'clone'
 
@@ -18,9 +19,11 @@ let structure = {
   "rounds": [ ]
 }
 
-let filePath
+
 let interval
 const DEFAULT_PATH = path.join(__dirname, 'tournaments')
+let filePath = DEFAULT_PATH
+const API = "http://85.255.12.57/"
 
 function redrawPlayers() {
   structure.players = structure.players.sort((a, b) => {
@@ -258,7 +261,8 @@ function startTimer() {
     if(minutes<10) minutes = "0"+minutes
     if(seconds<10) seconds = "0"+seconds
 
-    $("#timer").textContent = `${minutes}:${seconds}`
+    $("#menu-timer").textContent = `${minutes}:${seconds}`
+    $("#timer-large").textContent = `${minutes}:${seconds}`
 
     if(time <= 0) {
       audio.play()
@@ -337,6 +341,11 @@ $("#nav-players").addEventListener("click", redrawPlayers)
 // Redraw the matches on entering the page.
 $("#nav-matches").addEventListener("click", redrawMatches)
 
+//Web services
+$("#nav-web").addEventListener("click", () => {
+  generateQr(structure)
+})
+
 
 //Create a new tournament
 $("#new-tournament-confirm").addEventListener("click", () => {
@@ -355,7 +364,6 @@ $("#new-tournament-confirm").addEventListener("click", () => {
     title: "Save tournament",
     filters: [
       { name: "Circular JSON (cjson)", extensions: [ 'cjson' ] },
-
       { name: "JSON (json)", extensions: ['json'] },
       { name: "All files (*)", extensions: ['*'] }
     ],
@@ -391,7 +399,7 @@ $("#btn-save-tournament").addEventListener("click", () => {
     })
   }
 
-  fetch("http://localhost:3000/api/"+structure.meta.id, {
+  fetch(API+"api/"+structure.meta.id, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -400,7 +408,9 @@ $("#btn-save-tournament").addEventListener("click", () => {
       data: serialised
     })
   })
-  .then(res => console.log(res))
+  .then(() => {
+    console.log("Sent tournament data to Monolith");
+  })
 })
 
 // Load a tournament
@@ -560,11 +570,3 @@ function deserialise(input) {
 
   return output
 }
-
-// //Deep copy test
-// let copied
-// function copy() {
-//   copied = deepcopy(structure)
-//   structure = null
-//   console.log(copied);
-// }
