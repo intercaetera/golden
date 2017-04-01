@@ -1,6 +1,5 @@
 var assert = require("assert");
-var t = require("../src/web/scripts/tournament.js")
-var circular = require('circular-json')
+var t = require("../src/web/js/tournament.js")
 
 describe('tournament', function(){
   describe('Player', function(){
@@ -9,6 +8,24 @@ describe('tournament', function(){
       let player = new t.Player("zbyszek")
       assert.equal(0, player.points);
       assert.equal(0, player.sos)
+    })
+
+    it("Dropped players are not taken into account when generating rounds.", () => {
+
+      const PLAYERS = 5
+
+      let players = []
+
+      for(let i=0; i<PLAYERS; i++) {
+        players[i] = new t.Player(i.toString())
+      }
+
+      players[4].drop = true
+
+      let round = new t.Round(players)
+
+      assert.equal(2, round.matches.length)
+
     })
   })
 
@@ -71,6 +88,8 @@ describe('tournament', function(){
       assert.equal(false, flag)
 
     })
+
+
   })
 
   describe('Tournament', () => {
@@ -117,8 +136,31 @@ describe('tournament', function(){
         }
       })
     }
+
+
   })
-});
+
+  describe("Cut", () => {
+
+    const PLAYERS = 8
+
+    let players = []
+
+    for(let i=0; i<PLAYERS; i++) {
+      players[i] = new t.Player(i.toString())
+    }
+
+    const cut = new t.Cut(players)
+
+    //Score an entire tournament.
+    cut.declareWinner(cut.match(players[0]), players[0])
+    cut.declareWinner(cut.match(players[1]), players[1])
+    cut.declareWinner(cut.match(players[2]), players[2])
+    cut.declareWinner(cut.match(players[3]), players[3])
+
+  })
+})
+
 
 function randomOutcome(match) {
   let rand = Math.floor(Math.random() * 5)

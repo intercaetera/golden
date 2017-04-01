@@ -1,0 +1,43 @@
+{
+  "meta": {
+    "name": "IDed tournament",
+    "host": "",
+    "location": "",
+    "id": "d96e0f06-6546-4f68-8d3f-c6a92bea35ef",
+    "shortid": "Hk5dwA53e",
+    "rank": "casual"
+  },
+  "players": [
+    {
+      "name": "Apollodor",
+      "id": "e274e7e3-860f-4e16-9d6f-e0fe14e71189",
+      "points": 0,
+      "sos": 0,
+      "esos": 0,
+      "corpfaction": "Neutral",
+      "corpid": "The Shadow: Pulling the Strings",
+      "runnerfaction": "Neutral",
+      "runnerid": "The Masque: Cyber General",
+      "opponents": [],
+      "bye": false,
+      "superbye": false,
+      "drop": false
+    },
+    {
+      "name": "Sedtre",
+      "id": "4af20031-24d1-4cad-af5e-7e83b6928b71",
+      "points": 0,
+      "sos": 0,
+      "esos": 0,
+      "corpfaction": "Neutral",
+      "corpid": "The Shadow: Pulling the Strings",
+      "runnerfaction": "Neutral",
+      "runnerid": "The Masque: Cyber General",
+      "opponents": [],
+      "bye": false,
+      "superbye": false,
+      "drop": false
+    }
+  ],
+  "rounds": []
+}
