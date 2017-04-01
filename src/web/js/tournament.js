@@ -78,15 +78,23 @@ export class Match {
     this.player2 = obj.player2
 
     this.table = obj.table
+    this.score1runner = obj.score1runner ||0
+    this.score1corp = obj.score1corp ||0
 
-    this.score1 = obj.score1 || 0
-    this.score2 = obj.score2 || 0
+    this.score2runner = obj.score2runner ||0
+    this.score2corp = obj.score2corp ||0
+
+    this.score1 = this.score1runner + this.score1corp
+    this.score2 = this.score2runner + this.score2corp
+
 
     this.scored = obj.scored || false
   }
 
-  outcome(pointsForFirst, pointsForSecond) {
+  outcome(pointsForFirstRunner,pointsForFirstCorp, pointsForSecondRunner,pointsForSecondCorp) {
     if(!this.scored) {
+      let pointsForFirst = pointsForFirstRunner+pointsForFirstCorp
+      let pointsForSecond = pointsForSecondRunner+pointsForSecondCorp
       this.player1.addPoints(pointsForFirst)
       this.player2.addPoints(pointsForSecond)
 
@@ -95,6 +103,12 @@ export class Match {
 
       this.player1.calculateSos()
       this.player2.calculateSos()
+
+      this.score1runner = pointsForFirstRunner
+      this.score1corp = pointsForFirstCorp
+
+      this.score2runner = pointsForSecondRunner
+      this.score2corp = pointsForSecondCorp
 
       this.score1 = pointsForFirst
       this.score2 = pointsForSecond

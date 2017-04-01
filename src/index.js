@@ -1,8 +1,6 @@
 import {app, BrowserWindow} from 'electron'
 import path from 'path'
 import url from 'url'
-import {enableLiveReload} from 'electron-compile';
-enableLiveReload();
 
 var appRoot = path.join(__dirname, '..');
 
