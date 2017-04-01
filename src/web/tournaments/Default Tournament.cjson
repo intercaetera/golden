@@ -1,183 +1,184 @@
 {
   "meta": {
     "name": "Default Tournament",
-    "host": "Nobody",
+    "host": "MrHudson",
     "location": "Null Island",
-    "id": "34ba7ed6-1a84-47d4-a737-5778dc8176b4",
-    "shortid": "asdasd",
-    "rank": "store"
+    "id": "d8521f4f-22dd-4efa-a81a-7d0ffc2cf7a0",
+    "shortid": "HJ3fjWT3x",
+    "rank": "casual"
   },
   "players": [
     {
-      "name": "AK",
-      "id": "7b573e4e-eaa1-46bb-a7b5-d4081a37ecff",
+      "name": "Marisa",
+      "id": "a9a2f160-cdea-4c56-b66f-5a054cb62cb8",
       "points": 6,
-      "sos": 0,
-      "esos": 0,
-      "corpfaction": "Jinteki",
-      "corpid": "Jinteki: Personal Evolution",
-      "runnerfaction": "Criminal",
-      "runnerid": "Andromeda: Dispossessed Ristie",
-      "opponents": [
-        "8a714929-a116-44c5-bebe-2b3af8a18bce"
-      ],
-      "bye": false,
-      "superbye": false,
-      "drop": false
-    },
-    {
-      "name": "Apollodor",
-      "id": "580ecdc1-8665-431c-b8ab-0c41ce47b585",
-      "points": 4,
-      "sos": 1,
-      "esos": 0,
-      "corpfaction": "Neutral",
-      "corpid": "The Shadow: Pulling the Strings",
-      "runnerfaction": "Neutral",
-      "runnerid": "The Masque: Cyber General",
-      "opponents": [
-        "4fd81715-7f41-458f-a4ad-b3dc60db1e56"
-      ],
-      "bye": false,
-      "superbye": false,
-      "drop": false
-    },
-    {
-      "name": "Sedtre",
-      "id": "4fd81715-7f41-458f-a4ad-b3dc60db1e56",
-      "points": 1,
-      "sos": 4,
+      "sos": 6,
       "esos": 0,
       "corpfaction": "Haas-Bioroid",
       "corpid": "Haas Bioroid: Engineering the Future",
       "runnerfaction": "Anarch",
-      "runnerid": "Whizzard: Master Gamer",
+      "runnerid": "Alice Merchant: Clan Agitator",
       "opponents": [
-        "580ecdc1-8665-431c-b8ab-0c41ce47b585"
+        "50bb2bd5-1748-4021-a337-3f29d2fff58d"
       ],
-      "bye": false,
-      "superbye": false,
-      "drop": false
+      "bye": true,
+      "superbye": false
     },
     {
-      "name": "Flow",
-      "id": "fe82f11d-29cb-470c-804c-2e334570151a",
-      "points": 3,
-      "sos": 3,
-      "esos": 0,
-      "corpfaction": "NBN",
-      "corpid": "NBN: Making News",
-      "runnerfaction": "Shaper",
-      "runnerid": "Kate 'Mac' McCaffrey: Digital Tinker",
-      "opponents": [
-        "cc0de12d-0336-4b21-a9be-24a9560090b1"
-      ],
-      "bye": false,
-      "superbye": false,
-      "drop": false
-    },
-    {
-      "name": "Black",
-      "id": "0b8eb244-df2d-4ec2-a9be-5de54c62f221",
-      "points": 0,
-      "sos": 0,
-      "esos": 0,
-      "corpfaction": "Haas-Bioroid",
-      "corpid": "The Foundry: Refining the Process",
-      "runnerfaction": "Criminal",
-      "runnerid": "Los: Data Hijacker",
-      "opponents": [],
-      "bye": false,
-      "superbye": false,
-      "drop": true
-    },
-    {
-      "name": "Paper",
-      "id": "8a714929-a116-44c5-bebe-2b3af8a18bce",
-      "points": 0,
-      "sos": 6,
+      "name": "Reimu",
+      "id": "50bb2bd5-1748-4021-a337-3f29d2fff58d",
+      "points": 12,
+      "sos": 4.25,
       "esos": 0,
       "corpfaction": "Jinteki",
-      "corpid": "Nisei Division: The Next Generation",
-      "runnerfaction": "Shaper",
-      "runnerid": "Rielle 'Kit' Peddler: Transhuman",
+      "corpid": "Harmony Medtech: Biomedical Pioneer",
+      "runnerfaction": "Anarch",
+      "runnerid": "Null: Whistleblower",
       "opponents": [
-        "7b573e4e-eaa1-46bb-a7b5-d4081a37ecff"
+        "734d7ed3-c5a5-44a6-b5ae-9b903ee42adf",
+        "a9a2f160-cdea-4c56-b66f-5a054cb62cb8"
       ],
       "bye": false,
-      "superbye": false,
-      "drop": false
+      "superbye": false
     },
     {
-      "name": "Hydrecta",
-      "id": "cc0de12d-0336-4b21-a9be-24a9560090b1",
-      "points": 3,
+      "name": "Yukari",
+      "id": "37ddda17-9a41-4fb0-a84f-8219850363a8",
+      "points": 6,
       "sos": 3,
       "esos": 0,
       "corpfaction": "Weyland Consortium",
-      "corpid": "Weyland Consortium: Building a Better World",
-      "runnerfaction": "Shaper",
-      "runnerid": "Exile: Streethawk",
+      "corpid": "Blue Sun: Powering the Future",
+      "runnerfaction": "Criminal",
+      "runnerid": "Andromeda: Dispossessed Ristie",
       "opponents": [
-        "fe82f11d-29cb-470c-804c-2e334570151a"
+        "0620be2d-8d9c-4513-9503-632d8db6947e",
+        "a9da5c9e-3e9f-4bd6-89f2-4d7a32640c4b"
       ],
       "bye": false,
-      "superbye": false,
-      "drop": false
+      "superbye": false
     },
     {
-      "name": "Sizzlebird",
-      "id": "29e9b086-37db-4a95-8ab0-da18275d71a7",
-      "points": 0,
-      "sos": 0,
+      "name": "Remilia",
+      "id": "734d7ed3-c5a5-44a6-b5ae-9b903ee42adf",
+      "points": 5,
+      "sos": 3.75,
+      "esos": 0,
+      "corpfaction": "Haas-Bioroid",
+      "corpid": "Cerebral Imaging: Infinite Frontiers",
+      "runnerfaction": "Shaper",
+      "runnerid": "Hayley Kaplan: Universal Scholar",
+      "opponents": [
+        "50bb2bd5-1748-4021-a337-3f29d2fff58d",
+        "0620be2d-8d9c-4513-9503-632d8db6947e"
+      ],
+      "bye": false,
+      "superbye": false
+    },
+    {
+      "name": "Sakuya",
+      "id": "a9da5c9e-3e9f-4bd6-89f2-4d7a32640c4b",
+      "points": 9,
+      "sos": 4.5,
       "esos": 0,
       "corpfaction": "Jinteki",
-      "corpid": "Pālanā Foods: Sustainable Growth",
-      "runnerfaction": "Adam",
-      "runnerid": "Adam: Compulsive Hacker",
-      "opponents": [],
+      "corpid": "Jinteki: Potential Unleashed",
+      "runnerfaction": "Criminal",
+      "runnerid": "Steve Cambridge: Master Grifter",
+      "opponents": [
+        "700e974d-dd26-404d-8dd3-664edbed73bc",
+        "37ddda17-9a41-4fb0-a84f-8219850363a8"
+      ],
       "bye": false,
-      "superbye": false,
-      "drop": false
+      "superbye": false
+    },
+    {
+      "name": "Patchouli",
+      "id": "0620be2d-8d9c-4513-9503-632d8db6947e",
+      "points": 3,
+      "sos": 2.75,
+      "esos": 0,
+      "corpfaction": "NBN",
+      "corpid": "Harishchandra Entertainment: Where You're the Star",
+      "runnerfaction": "Anarch",
+      "runnerid": "Edward Kim: Humanity's Hammer",
+      "opponents": [
+        "37ddda17-9a41-4fb0-a84f-8219850363a8",
+        "734d7ed3-c5a5-44a6-b5ae-9b903ee42adf"
+      ],
+      "bye": false,
+      "superbye": false
+    },
+    {
+      "name": "Flandre",
+      "id": "700e974d-dd26-404d-8dd3-664edbed73bc",
+      "points": 6,
+      "sos": 6,
+      "esos": 0,
+      "corpfaction": "Weyland Consortium",
+      "corpid": "Weyland Consortium: Building a Better World",
+      "runnerfaction": "Apex",
+      "runnerid": "Apex: Invasive Predator",
+      "opponents": [
+        "a9da5c9e-3e9f-4bd6-89f2-4d7a32640c4b"
+      ],
+      "bye": true,
+      "superbye": false
     }
   ],
   "rounds": [
     {
       "matches": [
         {
-          "player1": "cc0de12d-0336-4b21-a9be-24a9560090b1",
-          "player2": "fe82f11d-29cb-470c-804c-2e334570151a",
+          "player1": "a9da5c9e-3e9f-4bd6-89f2-4d7a32640c4b",
+          "player2": "700e974d-dd26-404d-8dd3-664edbed73bc",
           "table": 1,
-          "score1runner": 3,
-          "score1corp": 0,
-          "score2runner": 0,
-          "score2corp": 3,
+          "score1": 6,
+          "score2": 0,
+          "scored": true
+        },
+        {
+          "player1": "50bb2bd5-1748-4021-a337-3f29d2fff58d",
+          "player2": "734d7ed3-c5a5-44a6-b5ae-9b903ee42adf",
+          "table": 2,
+          "score1": 6,
+          "score2": 0,
+          "scored": true
+        },
+        {
+          "player1": "0620be2d-8d9c-4513-9503-632d8db6947e",
+          "player2": "37ddda17-9a41-4fb0-a84f-8219850363a8",
+          "table": 3,
+          "score1": 3,
+          "score2": 3,
+          "scored": true
+        }
+      ]
+    },
+    {
+      "matches": [
+        {
+          "player1": "50bb2bd5-1748-4021-a337-3f29d2fff58d",
+          "player2": "a9a2f160-cdea-4c56-b66f-5a054cb62cb8",
+          "table": 1,
+          "score1": 6,
+          "score2": 0,
+          "scored": true
+        },
+        {
+          "player1": "a9da5c9e-3e9f-4bd6-89f2-4d7a32640c4b",
+          "player2": "37ddda17-9a41-4fb0-a84f-8219850363a8",
+          "table": 2,
           "score1": 3,
           "score2": 3,
           "scored": true
         },
         {
-          "player1": "4fd81715-7f41-458f-a4ad-b3dc60db1e56",
-          "player2": "580ecdc1-8665-431c-b8ab-0c41ce47b585",
-          "table": 2,
-          "score1runner": 0,
-          "score1corp": 1,
-          "score2runner": 3,
-          "score2corp": 1,
-          "score1": 1,
-          "score2": 4,
-          "scored": true
-        },
-        {
-          "player1": "7b573e4e-eaa1-46bb-a7b5-d4081a37ecff",
-          "player2": "8a714929-a116-44c5-bebe-2b3af8a18bce",
+          "player1": "0620be2d-8d9c-4513-9503-632d8db6947e",
+          "player2": "734d7ed3-c5a5-44a6-b5ae-9b903ee42adf",
           "table": 3,
-          "score1runner": 3,
-          "score1corp": 3,
-          "score2runner": 0,
-          "score2corp": 0,
-          "score1": 6,
-          "score2": 0,
+          "score1": 0,
+          "score2": 5,
           "scored": true
         }
       ]

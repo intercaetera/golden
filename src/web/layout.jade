@@ -1,5 +1,5 @@
 
-// Golden by MrHudson--asasd-///s0dfab-lasdbssabsssdabbaaaaabaaaax
+// Golden by MrHudson--asasd-///s0dfab-lasdbssabssbssadabbaaaaabaaaax
 
 doctype html
 html
@@ -42,7 +42,7 @@ html
 
         .pane-group
           .pane-sm.sidebar
-            h2.padded-horizontally-more#timer 00:00
+            h2.padded-horizontally-more#menu-timer 00:00
             nav.nav-group
               h5.nav-group-title Swiss
               a.nav-group-item#nav-welcome Welcome
@@ -56,8 +56,9 @@ html
 
             nav.nav-group
               h5.nav-group-title Utilities
-              a.nav-group-item Timer
+              a.nav-group-item#nav-timer Timer
               a.nav-group-item Stats
+              a.nav-group-item#nav-web Web Services
 
           .pane.page#welcome
             include welcome
@@ -69,6 +70,11 @@ html
             include matches
           .pane.page.inactive#cut
             include cut
+          .pane.page.inactive#timer
+            include timer
+          .pane.page.inactive#web
+            include web
+
 
     script(src="js/pagination.js")
     script(src="js/main.js")
