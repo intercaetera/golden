@@ -189,14 +189,19 @@ export class Round {
 export class Cut {
   constructor(players) {
     let sorted = players.sort((a, b) => {
-      if(a.points === b.points && a.sos === b.sos) {
-        return (a.esos < b.esos) ? -1 : (a.sos > b.sos) ? 1 : 0
+      if(a.points == b.points && a.sos == b.sos) {
+        if(a.esos > b.esos) return -1
+        else if(a.esos == b.esos) return 0
+        else return 1
       }
-      if(a.points === b.points) {
-        return (a.sos < b.sos) ? -1 : (a.sos > b.sos) ? 1 : 0
+      else if(a.points == b.points) {
+        if(a.sos > b.sos) return -1
+        else if(a.sos == b.sos) return 0
+        else return 1
       }
       else {
-        return (a.points < b.points) ? -1 : 1
+        if(a.points > b.points) return -1
+        else return 1
       }
     })
 
