@@ -2,6 +2,15 @@
 ----
 **Golden** is a cross-platform Android Netrunner tournament software built on Electron. Thanks to the usage of Electron, Golden can utilise the full power of web technologies to create the most usable and convenient platform for hosting Netrunner tournaments.
 
+[![GitHub issues](https://img.shields.io/github/issues/MrHuds0n/golden.svg)](https://github.com/MrHuds0n/golden/issues)
+[![GitHub forks](https://img.shields.io/github/forks/MrHuds0n/golden.svg)](https://github.com/MrHuds0n/golden/network)
+[![GitHub stars](https://img.shields.io/github/stars/MrHuds0n/golden.svg)](https://github.com/MrHuds0n/golden/stargazers)
+[![GitHub license](https://img.shields.io/badge/license-GPL-blue.svg)](https://raw.githubusercontent.com/MrHuds0n/golden/photon/LICENSE)
+[![Donate](https://img.shields.io/badge/donate-paypal-blue.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=mail%40mrhudson%2eyt&lc=PL&item_name=Golden&no_note=0&cn=Donation%20message&no_shipping=2&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
+
+
+[![Twitter](https://img.shields.io/twitter/url/https/github.com/MrHuds0n/golden.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=%5Bobject%20Object%5D)
+
 ## Installation:
 
 See [Releases](https://github.com/MrHuds0n/golden/releases)
