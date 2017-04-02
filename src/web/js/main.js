@@ -329,6 +329,7 @@ $("#btn-new-round").addEventListener("click", () => {
   structure.rounds.push(round)
 
   redrawMatches()
+  redrawRounds()
   startTimer()
 })
 
@@ -344,6 +345,8 @@ $("#nav-matches").addEventListener("click", redrawMatches)
 //Web services
 $("#nav-web").addEventListener("click", () => {
   generateQr(structure)
+
+  $("#monolith-link").value = "http://monolith.ga/"+structure.meta.shortid
 })
 
 
@@ -408,8 +411,9 @@ $("#btn-save-tournament").addEventListener("click", () => {
       data: serialised
     })
   })
-  .then(() => {
+  .then((res) => {
     console.log("Sent tournament data to Monolith");
+    console.log("Request returned with status: " + res.status);
   })
 })
 

@@ -9,22 +9,6 @@
   },
   "players": [
     {
-      "name": "Marisa",
-      "id": "a9a2f160-cdea-4c56-b66f-5a054cb62cb8",
-      "points": 6,
-      "sos": 6,
-      "esos": 0,
-      "corpfaction": "Haas-Bioroid",
-      "corpid": "Haas Bioroid: Engineering the Future",
-      "runnerfaction": "Anarch",
-      "runnerid": "Alice Merchant: Clan Agitator",
-      "opponents": [
-        "50bb2bd5-1748-4021-a337-3f29d2fff58d"
-      ],
-      "bye": true,
-      "superbye": false
-    },
-    {
       "name": "Reimu",
       "id": "50bb2bd5-1748-4021-a337-3f29d2fff58d",
       "points": 12,
@@ -37,40 +21,6 @@
       "opponents": [
         "734d7ed3-c5a5-44a6-b5ae-9b903ee42adf",
         "a9a2f160-cdea-4c56-b66f-5a054cb62cb8"
-      ],
-      "bye": false,
-      "superbye": false
-    },
-    {
-      "name": "Yukari",
-      "id": "37ddda17-9a41-4fb0-a84f-8219850363a8",
-      "points": 6,
-      "sos": 3,
-      "esos": 0,
-      "corpfaction": "Weyland Consortium",
-      "corpid": "Blue Sun: Powering the Future",
-      "runnerfaction": "Criminal",
-      "runnerid": "Andromeda: Dispossessed Ristie",
-      "opponents": [
-        "0620be2d-8d9c-4513-9503-632d8db6947e",
-        "a9da5c9e-3e9f-4bd6-89f2-4d7a32640c4b"
-      ],
-      "bye": false,
-      "superbye": false
-    },
-    {
-      "name": "Remilia",
-      "id": "734d7ed3-c5a5-44a6-b5ae-9b903ee42adf",
-      "points": 5,
-      "sos": 3.75,
-      "esos": 0,
-      "corpfaction": "Haas-Bioroid",
-      "corpid": "Cerebral Imaging: Infinite Frontiers",
-      "runnerfaction": "Shaper",
-      "runnerid": "Hayley Kaplan: Universal Scholar",
-      "opponents": [
-        "50bb2bd5-1748-4021-a337-3f29d2fff58d",
-        "0620be2d-8d9c-4513-9503-632d8db6947e"
       ],
       "bye": false,
       "superbye": false
@@ -95,7 +45,7 @@
     {
       "name": "Patchouli",
       "id": "0620be2d-8d9c-4513-9503-632d8db6947e",
-      "points": 3,
+      "points": 9,
       "sos": 2.75,
       "esos": 0,
       "corpfaction": "NBN",
@@ -105,6 +55,39 @@
       "opponents": [
         "37ddda17-9a41-4fb0-a84f-8219850363a8",
         "734d7ed3-c5a5-44a6-b5ae-9b903ee42adf"
+      ],
+      "bye": false,
+      "superbye": false
+    },
+    {
+      "name": "Marisa",
+      "id": "a9a2f160-cdea-4c56-b66f-5a054cb62cb8",
+      "points": 6,
+      "sos": 6,
+      "esos": 0,
+      "corpfaction": "Haas-Bioroid",
+      "corpid": "Haas Bioroid: Engineering the Future",
+      "runnerfaction": "Anarch",
+      "runnerid": "Alice Merchant: Clan Agitator",
+      "opponents": [
+        "50bb2bd5-1748-4021-a337-3f29d2fff58d"
+      ],
+      "bye": false,
+      "superbye": false
+    },
+    {
+      "name": "Yukari",
+      "id": "37ddda17-9a41-4fb0-a84f-8219850363a8",
+      "points": 6,
+      "sos": 3,
+      "esos": 0,
+      "corpfaction": "Weyland Consortium",
+      "corpid": "Blue Sun: Powering the Future",
+      "runnerfaction": "Criminal",
+      "runnerid": "Andromeda: Dispossessed Ristie",
+      "opponents": [
+        "0620be2d-8d9c-4513-9503-632d8db6947e",
+        "a9da5c9e-3e9f-4bd6-89f2-4d7a32640c4b"
       ],
       "bye": false,
       "superbye": false
@@ -122,7 +105,24 @@
       "opponents": [
         "a9da5c9e-3e9f-4bd6-89f2-4d7a32640c4b"
       ],
-      "bye": true,
+      "bye": false,
+      "superbye": false
+    },
+    {
+      "name": "Remilia",
+      "id": "734d7ed3-c5a5-44a6-b5ae-9b903ee42adf",
+      "points": 5,
+      "sos": 3.75,
+      "esos": 0,
+      "corpfaction": "Haas-Bioroid",
+      "corpid": "Cerebral Imaging: Infinite Frontiers",
+      "runnerfaction": "Shaper",
+      "runnerid": "Hayley Kaplan: Universal Scholar",
+      "opponents": [
+        "50bb2bd5-1748-4021-a337-3f29d2fff58d",
+        "0620be2d-8d9c-4513-9503-632d8db6947e"
+      ],
+      "bye": false,
       "superbye": false
     }
   ],
@@ -180,6 +180,34 @@
           "score1": 0,
           "score2": 5,
           "scored": true
+        }
+      ]
+    },
+    {
+      "matches": [
+        {
+          "player1": "50bb2bd5-1748-4021-a337-3f29d2fff58d",
+          "player2": "a9da5c9e-3e9f-4bd6-89f2-4d7a32640c4b",
+          "table": 1,
+          "score1": 0,
+          "score2": 0,
+          "scored": false
+        },
+        {
+          "player1": "700e974d-dd26-404d-8dd3-664edbed73bc",
+          "player2": "a9a2f160-cdea-4c56-b66f-5a054cb62cb8",
+          "table": 2,
+          "score1": 0,
+          "score2": 0,
+          "scored": false
+        },
+        {
+          "player1": "37ddda17-9a41-4fb0-a84f-8219850363a8",
+          "player2": "734d7ed3-c5a5-44a6-b5ae-9b903ee42adf",
+          "table": 3,
+          "score1": 0,
+          "score2": 0,
+          "scored": false
         }
       ]
     }

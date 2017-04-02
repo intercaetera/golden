@@ -100,6 +100,8 @@ $("#cut-start").addEventListener("click", () => {
   structure.cut = new Cut(cutPlayers)
   structure.cut.players = cutPlayers
 
+  redrawCut()
+
 })
 
 function findBySeed(seed) {
