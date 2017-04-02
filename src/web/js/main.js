@@ -71,6 +71,7 @@ function redrawPlayers() {
 
     createTableCell(player.points)
     createTableCell(player.sos)
+    createTableCell(player.esos)
 
     let average
     if(player.opponents.length === 0) {
