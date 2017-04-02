@@ -351,7 +351,7 @@ $("#nav-matches").addEventListener("click", redrawMatches)
 $("#nav-web").addEventListener("click", () => {
   generateQr(structure)
 
-  $("#monolith-link").value = "http://monolith.ga/"+structure.meta.shortid
+  $("#monolith-link").value = "http://monolith.ga/t/"+structure.meta.shortid
 })
 
 
