@@ -8,10 +8,11 @@ See [Releases](https://github.com/MrHuds0n/golden/releases)
 
 ## Features:
 
-- Implemented Swiss system for the elimination rounds.
-- Implemented JSON serialisation for saving and loading tournaments.
-- Implemented a round timer for Swiss rounds.
-- Implemented a progression cut system (which is not serialised because holy crap the person who wrote the module is smart but really bad at writing documentations).
+- Swiss system for the elimination rounds.
+- JSON serialisation for saving and loading tournaments.
+- A round timer for Swiss rounds.
+- A progression cut system (which is not serialised because holy crap the person who wrote the module is smart but really bad at writing documentations).
+- Integration with the [Monolith](http://monolith.ga) web services platform.
 
 ## Usage instructions:
 
@@ -21,7 +22,7 @@ See [Releases](https://github.com/MrHuds0n/golden/releases)
 
 - To load a tournament, click the `Load tournament` button and find a previously saved `*.cjson` file.
 
-- To save your tournament at any moment later, click the Save button in the top left. **Remember that all saves to the cut are read-only for the time being, you will not be able to modify anything in the top cut after loading a tournament file with it saved.**
+- To save your tournament at any moment later, click the Save button in the top left. **Remember that progression cut is not saved.**
 
 - To add a player to the tournament, click the `Add player` button at the top and fill out the form. `Name` is mandatory. `Superbye` is a common name for the first-round bye awarded for winning a lower-tier tournament.
 
@@ -68,9 +69,7 @@ To report bugs, please visit the GitHub [Issues](https://github.com/MrHuds0n/gol
 - `yarn make` - Make the package for your current system
 
 ## TODO:
-- Get the [web services](https://github.com/MrHuds0n/monolith) to work.
 - Implement quick scoring
-- Implement other utilities
 - Implement cut serialisation
 
 ## Credits:
@@ -84,6 +83,8 @@ To report bugs, please visit the GitHub [Issues](https://github.com/MrHuds0n/gol
   - [`electron-compile`](https://github.com/electron/electron-compile) - Jade and Stylus compilation
   - [`duel`](https://github.com/clux/duel) - Progression cut logic
   - [`uuid`](https://github.com/kelektiv/node-uuid) - UUID generation
+  - [`clone`](https://www.npmjs.com/package/clone) - JavaScript object deep cloning.
+  - [`qr-image`](https://www.npmjs.com/package/qr-image) - QR code generation.
+
 - Art:
   - [MrHudson](http://mrhudson.yt) - Golden logo and background
-  - [unsplash](https://unsplash.com/photos/NwBZ94Leirc) - DMG background
