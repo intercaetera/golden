@@ -93,9 +93,6 @@ export class Match {
       this.player1.opponents.push(this.player2)
       this.player2.opponents.push(this.player1)
 
-      this.player1.calculateSos()
-      this.player2.calculateSos()
-
       this.score1 = pointsForFirst
       this.score2 = pointsForSecond
 
@@ -109,6 +106,11 @@ export class Round {
     if(playerArray) {
       //Copy the array cause we will mutate it later.
       let players = playerArray.slice()
+
+      for(let each of players) {
+        each.calculateSos()
+        each.calculateExtendedSos()
+      }
 
       this.matches = []
 
@@ -221,8 +223,6 @@ export class Cut {
   //Determine the score of a match and then score it.
   declareWinner(match, player) {
     let ids = match.p
-
-    console.log(match);
 
     if(ids[0] == player) {
       this.bracket.score(match.id, [1, 0])

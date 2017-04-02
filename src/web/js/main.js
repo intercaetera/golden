@@ -26,6 +26,12 @@ let filePath = DEFAULT_PATH
 const API = "http://85.255.12.57/"
 
 function redrawPlayers() {
+
+  for(let each of structure.players) {
+    each.calculateSos()
+    each.calculateExtendedSos()
+  }
+
   structure.players = structure.players.sort((a, b) => {
     if(a.points === b.points && a.sos === b.sos) {
       return (a.esos > b.esos) ? -1 : (a.esos > b.esos) ? 1 : 0
@@ -154,8 +160,6 @@ function redrawMatches() {
     button.classList.add("btn", "btn-default", "btn-mini")
     button.addEventListener("click", () => {
       let score = tr.querySelectorAll(".scoring")
-      console.log(match);
-      console.log(parseInt(score[0].value), parseInt(score[1].value));
       match.outcome(parseInt(score[0].value), parseInt(score[1].value))
       button.classList.add('inactive')
     })
@@ -539,7 +543,6 @@ function deserialise(input) {
 
   for(let i=0; i<input.players.length; i++) {
     for(let j=0; j<input.players[i].opponents.length; j++) {
-      console.log(input.players[i].opponents);
       output.players[i].opponents[j] = findPlayer(output.players, input.players[i].opponents[j])
     }
   }
