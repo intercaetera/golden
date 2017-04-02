@@ -140,13 +140,21 @@ function redrawMatches() {
     $("#matches").querySelector('tbody').appendChild(tr)
 
     createTableCell(match.table)
-
     createTableCell(match.player1.name)
+    let p1CorpResult = document.createElement('select')
+    let p1RunnerResult = document.createElement('select')
+    let p2CorpResult = document.createElement('select')
+    let p2RunnerResult = document.createElement('select')
+
+    createScoringCell(match.score1runner,p1RunnerResult,p2RunnerResult)
+   createScoringCell(match.score1corp,p1CorpResult, p2CorpResult)
+
+
     createTableCell(match.player2.name)
 
-    //WRITE EVERYTHING TWICE!!!!1
-    createScoringCell(match.score1)
-    createScoringCell(match.score2)
+    createScoringCell(match.score2runner,p2RunnerResult,p1RunnerResult)
+    createScoringCell(match.score2corp,p2CorpResult, p1CorpResult)
+    
 
     let button = document.createElement('button')
     createTableCell().appendChild(button)
@@ -155,29 +163,37 @@ function redrawMatches() {
     button.addEventListener("click", () => {
       let score = tr.querySelectorAll(".scoring")
       console.log(match);
-      console.log(parseInt(score[0].value), parseInt(score[1].value));
-      match.outcome(parseInt(score[0].value), parseInt(score[1].value))
+      console.log(parseInt(score[0].value), parseInt(score[1].value),parseInt(score[2].value), parseInt(score[3].value));
+      match.outcome(parseInt(score[0].value), parseInt(score[1].value),parseInt(score[2].value), parseInt(score[3].value))
       button.classList.add('inactive')
     })
 
     if(match.scored) button.classList.add('inactive')
 
-    function createScoringCell(src) {
+    function createScoringCell(src, scoreElement, oppScoreElement) {
       let td = document.createElement('td')
-      tr.appendChild(td)
+      tr.appendChild(td)      
+      td.appendChild(scoreElement)
+      scoreElement.addEventListener("change", function() {
+          //if select win or timed win, set loss for opp
+          if (this.value == 3 || this.value == 2) {
+            oppScoreElement.value = 0
+          }
+          //if tie, set tie for opp
+          if (this.value == 1) {
+            oppScoreElement.value = 1
+          }
+      })
+      scoreElement.classList.add("scoring")
+      let points = {'Win':3, 'Modified win':2, 'Draw':1, 'Loss':0}
+        Object.keys(points).forEach(function(key,index) {
+            let option = document.createElement('option')
+            scoreElement.appendChild(option)
+            option.value = points[key]
+            option.textContent = key
+        });
 
-      let select = document.createElement('select')
-      td.appendChild(select)
-      select.classList.add("scoring")
-
-      for(let i=0; i<=6; i++) {
-        let option = document.createElement('option')
-        select.appendChild(option)
-        option.value = i
-        option.textContent = i
-      }
-
-      select.selectedIndex = src
+      scoreElement.value = src
     }
 
     function createTableCell(content) {
