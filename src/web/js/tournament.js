@@ -118,15 +118,7 @@ export class Round {
 
       //Sort the array by points and then by sos.
       let sorted = players.sort((a, b) => {
-        if(a.points === b.points && a.sos === b.sos) {
-          return (a.esos < b.esos) ? -1 : (a.esos > b.esos) ? 1 : 0
-        }
-        else if(a.points === b.points) {
-          return (a.sos < b.sos) ? -1 : (a.sos > b.sos) ? 1 : 0
-        }
-        else {
           return (a.points < b.points) ? -1 : 1
-        }
       })
 
       this.players = sorted
@@ -195,6 +187,9 @@ export class Round {
 export class Cut {
   constructor(players) {
     let sorted = players.sort((a, b) => {
+      if(a.points === b.points && a.sos === b.sos) {
+        return (a.esos < b.esos) ? -1 : (a.sos > b.sos) ? 1 : 0
+      }
       if(a.points === b.points) {
         return (a.sos < b.sos) ? -1 : (a.sos > b.sos) ? 1 : 0
       }

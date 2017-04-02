@@ -1,0 +1,322 @@
+{
+  "meta": {
+    "name": "Test Pairings",
+    "host": "test",
+    "location": "test",
+    "id": "0ba21105-70f4-47da-8a45-5bb169d45854",
+    "shortid": "rycDWuC2x",
+    "rank": "casual"
+  },
+  "players": [
+    {
+      "name": "G",
+      "id": "6ad2df6f-ad40-42a9-b51c-12f01ec42d90",
+      "points": 9,
+      "sos": 2.25,
+      "esos": 0,
+      "corpfaction": "Neutral",
+      "corpid": "The Shadow: Pulling the Strings",
+      "runnerfaction": "Neutral",
+      "runnerid": "The Masque: Cyber General",
+      "opponents": [
+        "46dd0871-8d3e-4963-ab1a-fd3451bf3f96",
+        "d8699188-4d21-4987-8537-52fceba8af28"
+      ],
+      "bye": false,
+      "superbye": false
+    },
+    {
+      "name": "F",
+      "id": "4ca05195-547e-4877-8fd4-ac1dc0b277ea",
+      "points": 9,
+      "sos": 2,
+      "esos": 0,
+      "corpfaction": "Neutral",
+      "corpid": "The Shadow: Pulling the Strings",
+      "runnerfaction": "Neutral",
+      "runnerid": "The Masque: Cyber General",
+      "opponents": [
+        "6098ce72-36cd-4dfe-b8d0-1f50ad4492eb",
+        "827f634a-16e5-4a10-9c3a-5af320c03fc7"
+      ],
+      "bye": false,
+      "superbye": false
+    },
+    {
+      "name": "f",
+      "id": "827f634a-16e5-4a10-9c3a-5af320c03fc7",
+      "points": 8,
+      "sos": 2.25,
+      "esos": 0,
+      "corpfaction": "Neutral",
+      "corpid": "The Shadow: Pulling the Strings",
+      "runnerfaction": "Neutral",
+      "runnerid": "The Masque: Cyber General",
+      "opponents": [
+        "6d3482bf-3c82-4307-9dd4-4850adc28e76",
+        "4ca05195-547e-4877-8fd4-ac1dc0b277ea"
+      ],
+      "bye": false,
+      "superbye": false
+    },
+    {
+      "name": "M",
+      "id": "c1a0ce15-909e-4e8a-a3d1-18c52da246c5",
+      "points": 8,
+      "sos": 1.5,
+      "esos": 0,
+      "corpfaction": "Neutral",
+      "corpid": "The Shadow: Pulling the Strings",
+      "runnerfaction": "Neutral",
+      "runnerid": "The Masque: Cyber General",
+      "opponents": [
+        "d36d1ef8-cb39-430b-a165-f8c8d869ac77",
+        "46dd0871-8d3e-4963-ab1a-fd3451bf3f96"
+      ],
+      "bye": false,
+      "superbye": false
+    },
+    {
+      "name": "A",
+      "id": "97127c7a-3a19-4aa3-93dd-54157e5ac45e",
+      "points": 7,
+      "sos": 1.25,
+      "esos": 0,
+      "corpfaction": "Neutral",
+      "corpid": "The Shadow: Pulling the Strings",
+      "runnerfaction": "Neutral",
+      "runnerid": "The Masque: Cyber General",
+      "opponents": [
+        "ad66d75e-1270-416d-a76c-918cbaf4155b",
+        "6d3482bf-3c82-4307-9dd4-4850adc28e76"
+      ],
+      "bye": false,
+      "superbye": false
+    },
+    {
+      "name": "P",
+      "id": "a0899b9e-0e68-426c-b48c-821193f478a0",
+      "points": 6,
+      "sos": 2,
+      "esos": 0,
+      "corpfaction": "Neutral",
+      "corpid": "The Shadow: Pulling the Strings",
+      "runnerfaction": "Neutral",
+      "runnerid": "The Masque: Cyber General",
+      "opponents": [
+        "d8699188-4d21-4987-8537-52fceba8af28",
+        "ad66d75e-1270-416d-a76c-918cbaf4155b"
+      ],
+      "bye": false,
+      "superbye": false
+    },
+    {
+      "name": "J",
+      "id": "46dd0871-8d3e-4963-ab1a-fd3451bf3f96",
+      "points": 6,
+      "sos": 3.5,
+      "esos": 0,
+      "corpfaction": "Neutral",
+      "corpid": "The Shadow: Pulling the Strings",
+      "runnerfaction": "Neutral",
+      "runnerid": "The Masque: Cyber General",
+      "opponents": [
+        "6ad2df6f-ad40-42a9-b51c-12f01ec42d90",
+        "c1a0ce15-909e-4e8a-a3d1-18c52da246c5"
+      ],
+      "bye": false,
+      "superbye": false
+    },
+    {
+      "name": "R",
+      "id": "ad66d75e-1270-416d-a76c-918cbaf4155b",
+      "points": 5,
+      "sos": 2.5,
+      "esos": 0,
+      "corpfaction": "Neutral",
+      "corpid": "The Shadow: Pulling the Strings",
+      "runnerfaction": "Neutral",
+      "runnerid": "The Masque: Cyber General",
+      "opponents": [
+        "97127c7a-3a19-4aa3-93dd-54157e5ac45e",
+        "a0899b9e-0e68-426c-b48c-821193f478a0"
+      ],
+      "bye": false,
+      "superbye": false
+    },
+    {
+      "name": "N",
+      "id": "d8699188-4d21-4987-8537-52fceba8af28",
+      "points": 3,
+      "sos": 3.75,
+      "esos": 0,
+      "corpfaction": "Neutral",
+      "corpid": "The Shadow: Pulling the Strings",
+      "runnerfaction": "Neutral",
+      "runnerid": "The Masque: Cyber General",
+      "opponents": [
+        "a0899b9e-0e68-426c-b48c-821193f478a0",
+        "6ad2df6f-ad40-42a9-b51c-12f01ec42d90"
+      ],
+      "bye": false,
+      "superbye": false
+    },
+    {
+      "name": "T",
+      "id": "d36d1ef8-cb39-430b-a165-f8c8d869ac77",
+      "points": 3,
+      "sos": 2.75,
+      "esos": 0,
+      "corpfaction": "Neutral",
+      "corpid": "The Shadow: Pulling the Strings",
+      "runnerfaction": "Neutral",
+      "runnerid": "The Masque: Cyber General",
+      "opponents": [
+        "c1a0ce15-909e-4e8a-a3d1-18c52da246c5",
+        "6098ce72-36cd-4dfe-b8d0-1f50ad4492eb"
+      ],
+      "bye": false,
+      "superbye": false
+    },
+    {
+      "name": "K",
+      "id": "6098ce72-36cd-4dfe-b8d0-1f50ad4492eb",
+      "points": 3,
+      "sos": 3,
+      "esos": 0,
+      "corpfaction": "Neutral",
+      "corpid": "The Shadow: Pulling the Strings",
+      "runnerfaction": "Neutral",
+      "runnerid": "The Masque: Cyber General",
+      "opponents": [
+        "4ca05195-547e-4877-8fd4-ac1dc0b277ea",
+        "d36d1ef8-cb39-430b-a165-f8c8d869ac77"
+      ],
+      "bye": false,
+      "superbye": false
+    },
+    {
+      "name": "S",
+      "id": "6d3482bf-3c82-4307-9dd4-4850adc28e76",
+      "points": 0,
+      "sos": 3.75,
+      "esos": 0,
+      "corpfaction": "Neutral",
+      "corpid": "The Shadow: Pulling the Strings",
+      "runnerfaction": "Neutral",
+      "runnerid": "The Masque: Cyber General",
+      "opponents": [
+        "827f634a-16e5-4a10-9c3a-5af320c03fc7",
+        "97127c7a-3a19-4aa3-93dd-54157e5ac45e"
+      ],
+      "bye": false,
+      "superbye": false
+    }
+  ],
+  "rounds": [
+    {
+      "matches": [
+        {
+          "player1": "a0899b9e-0e68-426c-b48c-821193f478a0",
+          "player2": "d8699188-4d21-4987-8537-52fceba8af28",
+          "table": 1,
+          "score1": 3,
+          "score2": 3,
+          "scored": true
+        },
+        {
+          "player1": "6d3482bf-3c82-4307-9dd4-4850adc28e76",
+          "player2": "827f634a-16e5-4a10-9c3a-5af320c03fc7",
+          "table": 2,
+          "score1": 0,
+          "score2": 6,
+          "scored": true
+        },
+        {
+          "player1": "4ca05195-547e-4877-8fd4-ac1dc0b277ea",
+          "player2": "6098ce72-36cd-4dfe-b8d0-1f50ad4492eb",
+          "table": 3,
+          "score1": 6,
+          "score2": 0,
+          "scored": true
+        },
+        {
+          "player1": "46dd0871-8d3e-4963-ab1a-fd3451bf3f96",
+          "player2": "6ad2df6f-ad40-42a9-b51c-12f01ec42d90",
+          "table": 4,
+          "score1": 3,
+          "score2": 3,
+          "scored": true
+        },
+        {
+          "player1": "ad66d75e-1270-416d-a76c-918cbaf4155b",
+          "player2": "97127c7a-3a19-4aa3-93dd-54157e5ac45e",
+          "table": 5,
+          "score1": 3,
+          "score2": 2,
+          "scored": true
+        },
+        {
+          "player1": "c1a0ce15-909e-4e8a-a3d1-18c52da246c5",
+          "player2": "d36d1ef8-cb39-430b-a165-f8c8d869ac77",
+          "table": 6,
+          "score1": 5,
+          "score2": 0,
+          "scored": true
+        }
+      ]
+    },
+    {
+      "matches": [
+        {
+          "player1": "4ca05195-547e-4877-8fd4-ac1dc0b277ea",
+          "player2": "827f634a-16e5-4a10-9c3a-5af320c03fc7",
+          "table": 1,
+          "score1": 3,
+          "score2": 2,
+          "scored": true
+        },
+        {
+          "player1": "c1a0ce15-909e-4e8a-a3d1-18c52da246c5",
+          "player2": "46dd0871-8d3e-4963-ab1a-fd3451bf3f96",
+          "table": 2,
+          "score1": 3,
+          "score2": 3,
+          "scored": true
+        },
+        {
+          "player1": "6ad2df6f-ad40-42a9-b51c-12f01ec42d90",
+          "player2": "d8699188-4d21-4987-8537-52fceba8af28",
+          "table": 3,
+          "score1": 6,
+          "score2": 0,
+          "scored": true
+        },
+        {
+          "player1": "a0899b9e-0e68-426c-b48c-821193f478a0",
+          "player2": "ad66d75e-1270-416d-a76c-918cbaf4155b",
+          "table": 4,
+          "score1": 3,
+          "score2": 2,
+          "scored": true
+        },
+        {
+          "player1": "97127c7a-3a19-4aa3-93dd-54157e5ac45e",
+          "player2": "6d3482bf-3c82-4307-9dd4-4850adc28e76",
+          "table": 5,
+          "score1": 5,
+          "score2": 0,
+          "scored": true
+        },
+        {
+          "player1": "6098ce72-36cd-4dfe-b8d0-1f50ad4492eb",
+          "player2": "d36d1ef8-cb39-430b-a165-f8c8d869ac77",
+          "table": 6,
+          "score1": 3,
+          "score2": 3,
+          "scored": true
+        }
+      ]
+    }
+  ]
+}
