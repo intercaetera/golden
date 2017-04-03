@@ -10,7 +10,7 @@ export function generateQr(s) {
       $("#qr").classList.remove("inactive")
     }
     else {
-      let svg = qr.image(`http://monolith.ga/${s.meta.shortid}`, {type: 'svg'})
+      let svg = qr.image(`http://monolith.ga/t/${s.meta.shortid}`, {type: 'svg'})
       svg.pipe(fs.createWriteStream(svgpath))
       $("#qr").src = svgpath
       $("#qr").classList.remove("inactive")
