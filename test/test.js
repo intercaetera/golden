@@ -159,26 +159,79 @@ describe('tournament', function(){
     cut.declareWinner(cut.match(players[3]), players[3])
 
   })
-})
 
+  describe("Pairings", () => {
+    const TOURNAMENTS = 10
+    for(let i=0; i<TOURNAMENTS; i++) {
+      let PLAYERS = Math.floor(Math.random() * 100) + 8
+      let players = []
+      for(let j=0; j<PLAYERS; j++) {
+        players[j] = new t.Player(j.toString())
+      }
+
+      let ROUNDS = Math.floor(Math.log2(PLAYERS)) + 1
+      console.log(PLAYERS + " players, " + ROUNDS + " rounds")
+      let rounds = []
+      for(let j=0; j<ROUNDS; j++) {
+        let current = rounds[j]
+        current = new t.Round(players)
+
+        for(let each of current.matches) {
+          randomOutcome(each)
+        }
+      }
+      
+      it("No player should have played another player twice", () => {
+        var noDuplicates = true
+        for(let each of players) {
+          let opponents = each.opponents.map(function(item) { return item.id } )
+          let uniqueOpp = Array.from(new Set(opponents))
+          if (uniqueOpp.length != opponents.length) {
+            noDuplicates = false
+          }
+        }
+        assert.equal(true, noDuplicates)
+      })
+    }
+  })
+}) 
 
 function randomOutcome(match) {
-  let rand = Math.floor(Math.random() * 5)
-
-  if(rand === 0) { //Win
+  let rand = Math.floor(Math.random() * 43)
+  if(rand < 10) { //Win p1
     return match.outcome(6, 0)
   }
-  else if(rand === 1) { //Timed win
-    return match.outcome(5, 0)
+  else if(rand < 20) { //Win p2
+    return match.outcome(0, 6)
   }
-  else if(rand === 2) { //Split
+  else if(rand < 30) { //Split
     return match.outcome(3, 3)
   }
-  else if(rand === 3) { //Timed split
+  else if(rand < 32) { //Win + timed win p1
+    return match.outcome(5, 0)
+  }
+  else if(rand < 34) { //Win + timed win p2
+    return match.outcome(0, 5)
+  }
+  else if(rand < 36) { //Win p1 + timed win p2
     return match.outcome(3, 2)
   }
-  else if(rand === 4) { //Timed one round
+  else if(rand < 38) { //Win p2 + timed win p1
+    return match.outcome(2, 3)
+  }
+  else if(rand === 38) { //Timed win one game, p1
     return match.outcome(2, 0)
   }
-
+  else if(rand === 39) { //Timed win one game, p2
+    return match.outcome(0, 2)
+  }
+  else if(rand === 40) { //Win p1, timed tie
+    return match.outcome(4, 1)
+  }
+  else if(rand === 41) { //Win p2, timed tie
+    return match.outcome(1, 4)
+  }  
+  else if(rand === 42) { //Timed one game tie
+    return match.outcome(1, 1)
+  }
 }
