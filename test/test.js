@@ -99,7 +99,7 @@ describe('tournament', function(){
     let players = [], rounds = []
 
     for(let i=0; i<PLAYERS; i++) {
-      players[i] = new t.Player(i.toString())
+      players[i] = new t.Player({name: i.toString()})
     }
 
     //* Give selected players superbyes
@@ -147,7 +147,7 @@ describe('tournament', function(){
     let players = []
 
     for(let i=0; i<PLAYERS; i++) {
-      players[i] = new t.Player(i.toString())
+      players[i] = new t.Player({name: i.toString()})
     }
 
     const cut = new t.Cut(players)
@@ -161,9 +161,9 @@ describe('tournament', function(){
   })
 
   describe("Pairings", () => {
-    const TOURNAMENTS = 10
+    const TOURNAMENTS = 1
     for(let i=0; i<TOURNAMENTS; i++) {
-      let PLAYERS = Math.floor(Math.random() * 100) + 8
+      let PLAYERS = 8
       let players = []
       for(let j=0; j<PLAYERS; j++) {
         players[j] = new t.Player(j.toString())
@@ -180,11 +180,11 @@ describe('tournament', function(){
           randomOutcome(each)
         }
       }
-      
+
       it("No player should have played another player twice", () => {
         var noDuplicates = true
         for(let each of players) {
-          let opponents = each.opponents.map(function(item) { return item.id } )
+          let opponents = each.opponents.map(item => item.id)
           let uniqueOpp = Array.from(new Set(opponents))
           if (uniqueOpp.length != opponents.length) {
             noDuplicates = false
@@ -194,7 +194,7 @@ describe('tournament', function(){
       })
     }
   })
-}) 
+})
 
 function randomOutcome(match) {
   let rand = Math.floor(Math.random() * 43)
@@ -230,7 +230,7 @@ function randomOutcome(match) {
   }
   else if(rand === 41) { //Win p2, timed tie
     return match.outcome(1, 4)
-  }  
+  }
   else if(rand === 42) { //Timed one game tie
     return match.outcome(1, 1)
   }
