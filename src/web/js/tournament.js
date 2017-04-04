@@ -120,7 +120,7 @@ export class Round {
 
       //Sort the array by points and then by sos.
       let sorted = players.sort((a, b) => {
-          return (a.points < b.points) ? -1 : 1
+          return (a.points < b.points) ? -1 : (a.points > b.points) ? -1 : 0
       })
 
       this.players = sorted
@@ -166,9 +166,17 @@ export class Round {
         let player2
         i=sorted.length-1
         while(true) {
-          if(player1.opponents.includes(sorted[i])) {
-            i--
-          }
+
+          // let unique = true
+          // for(let each of player1.opponents) {
+          //   if(each.id == sorted[i].id) unique = false
+          //   break
+          // }
+          //
+          // if(!unique) {
+          //   i--
+          // }
+          if(false)
           else {
             player2 = sorted.splice(i, 1)[0]
             break
