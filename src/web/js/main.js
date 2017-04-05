@@ -24,6 +24,7 @@ let interval
 const DEFAULT_PATH = path.join(__dirname, 'tournaments')
 let filePath = DEFAULT_PATH
 const API = "http://85.255.12.57/"
+let time = 0
 
 function redrawPlayers() {
 
@@ -257,29 +258,6 @@ function redrawRounds() {
 }
 
 const audio = new Audio('assets/wav/honk.wav')
-function startTimer() {
-  let time = 65 * 60 * 1000 //65 minutes
-
-  if(interval) clearInterval(interval)
-
-  interval = setInterval(() => {
-    time -= 1000
-
-    let minutes = Math.floor(time / 60 / 1000)
-    let seconds = (time / 1000) % 60
-
-    if(minutes<10) minutes = "0"+minutes
-    if(seconds<10) seconds = "0"+seconds
-
-    $("#menu-timer").textContent = `${minutes}:${seconds}`
-    $("#timer-large").textContent = `${minutes}:${seconds}`
-
-    if(time <= 0) {
-      audio.play()
-      clearInterval(interval)
-    }
-  }, 1000)
-}
 
 // Handle new player button.
 $("#add-player form").addEventListener("submit", () => {
@@ -340,7 +318,7 @@ $("#btn-new-round").addEventListener("click", () => {
 
   redrawMatches()
   redrawRounds()
-  startTimer()
+  time = 65 * 60 * 1000
 })
 
 // Generate the rounds view.

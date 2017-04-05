@@ -1,1 +1,15 @@
 h1#timer-large 00:00
+
+.btn-group
+  button.btn.btn-large.btn-default.btn-primary#timer-start
+    span.icon.icon-play
+  button.btn.btn-large.btn-default#timer-pause
+    span.icon.icon-pause
+  button.btn.btn-large.btn-default#timer-stop
+    span.icon.icon-stop
+
+form
+  input(type="number", placeholder="MM").form-control.timer-form#timer-minutes
+  input(type="number", placeholder="SS").form-control.timer-form#timer-seconds
+  button.btn.btn-default.btn-large#timer-set
+    span.icon.icon-arrows-ccw
