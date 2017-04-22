@@ -16,7 +16,8 @@ let structure = {
     "rank": ""
   },
   "players": [ ],
-  "rounds": [ ]
+  "rounds": [ ],
+  "allMatches" : []
 }
 
 
@@ -25,13 +26,161 @@ const DEFAULT_PATH = path.join(__dirname, 'tournaments')
 let filePath = DEFAULT_PATH
 const API = "http://85.255.12.57/"
 
+let arrayHelper = new Object()
+let ByePlayer = new Player({name: "BYE"})
+arrayHelper.firstAccurate = function (array, filterFunc) {
+        for (var i = 0; i < array.length; i++) {
+            if (filterFunc(array[i])) {
+                return {match:array[i], index: i}
+            }
+        }
+
+        return {match: null, index: -1}
+    }
+arrayHelper.removeAt = function (array, index) {
+        if (index === -1 || index > array.length - 1) {
+            throw new Error('Item cannot be removed, because index is out of the range')
+        }
+        array.splice(index, 1)
+    }
+arrayHelper.remove = function (array, obj) {
+        var index
+        index = array.indexOf(obj)
+        if (index === -1) {
+            throw new Error('Item cannot be removed, because it does not exist')
+        }
+
+        arrayHelper.removeAt(array, index)
+    }
+
+arrayHelper.singleOrNull = function (array, filterFunc) {
+        var foundItems;
+        foundItems = array.filter(filterFunc);
+        if (foundItems.length > 1) {
+            throw new Error("single: found more than one item");
+        } else {
+            return foundItems.length === 1
+                ? foundItems[0]
+                : null;
+        }
+    };
+
+function generateAllMatches(){
+
+  structure.allMatches.length = 0
+  for(let player1Index = 0; player1Index < structure.players.length; player1Index++){
+    for(let player2Index = player1Index+1; player2Index < structure.players.length; player2Index++){
+      structure.allMatches.push(new Match({player1: structure.players[player1Index], 
+                                         player2: structure.players[player2Index]}))
+    }
+    structure.allMatches.push(new Match({player1: structure.players[player1Index], player2: ByePlayer,
+                                         isBye: true}))
+  }
+}
+
+function getGame(playersToPair, roundObject) {
+  if(playersToPair == null || playersToPair.length == 0){
+    return true
+  }
+
+  if(playersToPair.length == 1){
+    let player1 = playersToPair[0]
+    let availableByeMatch = arrayHelper.singleOrNull(structure.allMatches,function(match){
+          return (match.player1.id == player1.id && match.isBye)
+      })
+    
+    if(availableByeMatch && !player1.bye && !player1.superbye){
+      if(player1.gamesCount == 0 && structure.rounds.length > 0) {
+        return false
+      }
+      roundObject.round.matches.push(availableByeMatch)
+      arrayHelper.remove(structure.allMatches, availableByeMatch)
+      player1.bye = true
+      return true
+    } else {
+      return false
+    }
+  }
+
+    for(let player1Index = 0; player1Index < playersToPair.length; player1Index++) {
+    if(roundObject.round.IsPlayerInMatch(playersToPair[player1Index])){continue;}
+    for(let player2Index = player1Index + 1; player2Index < playersToPair.length; player2Index++){
+      if(roundObject.round.IsPlayerInMatch(playersToPair[player2Index])){continue;}
+      let player1 = playersToPair[player1Index]
+      let player2 = playersToPair[player2Index]
+      let availableMatch = arrayHelper.singleOrNull(structure.allMatches,function(match){
+          return ((match.player1.id == player1.id && match.player2.id == player2.id || 
+          (match.player2.id == player1.id && match.player1.id == player2.id)))
+      })
+
+      if(availableMatch){
+        roundObject.round.matches.push(availableMatch)
+        arrayHelper.remove(playersToPair, player1)
+        arrayHelper.remove(playersToPair, player2)
+        arrayHelper.remove(structure.allMatches, availableMatch)
+        if(!getGame(playersToPair,roundObject)) {
+          arrayHelper.remove(roundObject.round.matches,availableMatch)
+          playersToPair.push(player1)
+          playersToPair.push(player2)
+          structure.allMatches.push(availableMatch)
+          continue
+        } else {
+          return true
+        }
+      } } 
+    }
+    return false
+}
+
+function createNextRound() {
+
+  //Check if all the matches are scored.
+  if(structure.rounds.length > 0) {
+    let flag = false
+    for(let each of structure.rounds[structure.rounds.length-1].matches) {
+      if(!each.scored) {
+        flag = true
+      }
+    }
+
+    if(flag && !confirm("Some matches are not yet scored. Creating a new round now could result in errors. Are you sure you want to continue?")) {
+      return
+    }
+  }
+  
+  if(structure.rounds.length == 0){
+    generateAllMatches()
+  }
+
+let playersString
+  for(let each of structure.players){
+    playersString += each.name
+  }
+
+  let round = new Round(structure.players)
+  let roundObject = new Object()
+  roundObject.round = round
+ 
+  if(!getGame(round.players,roundObject)){
+     alert("No valid round available")
+  } else {
+    structure.rounds.push(roundObject.round)
+    
+    redrawMatches()
+    redrawRounds()
+    startTimer()
+  }
+}
+
 function redrawPlayers() {
 
   for(let each of structure.players) {
     each.calculateSos()
+  }
+  for(let each of structure.players) {
     each.calculateExtendedSos()
   }
-
+  
   structure.players = structure.players.sort((a, b) => {
     if(a.points == b.points && a.sos == b.sos) {
       if(a.esos > b.esos) return -1
@@ -319,29 +468,7 @@ $("#add-player form").addEventListener("submit", () => {
 })
 
 // Generate a new round
-$("#btn-new-round").addEventListener("click", () => {
-
-  //Check if all the matches are scored.
-  if(structure.rounds.length > 0) {
-    let flag = false
-    for(let each of structure.rounds[structure.rounds.length-1].matches) {
-      if(!each.scored) {
-        flag = true
-      }
-    }
-
-    if(flag && !confirm("Some matches are not yet scored. Creating a new round now could result in errors. Are you sure you want to continue?")) {
-      return
-    }
-  }
-
-  let round = new Round(structure.players)
-  structure.rounds.push(round)
-
-  redrawMatches()
-  redrawRounds()
-  startTimer()
-})
+$("#btn-new-round").addEventListener("click",createNextRound)
 
 // Generate the rounds view.
 $("#nav-rounds").addEventListener("click", redrawRounds)

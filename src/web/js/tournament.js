@@ -16,6 +16,7 @@ export class Player {
     this.bye = false
     this.superbye = obj.superbye || false
     this.drop = obj.drop || false
+    this.gamesCount = 0
   }
 
   addPoints(points) {
@@ -32,9 +33,10 @@ export class Player {
     //Get strength of schedule according to the FFG algorithm.
     let sos = 0
     for(let each of this.opponents) {
-      let acc = each.points / each.opponents.length
+      let acc = each.points / each.gamesCount
       sos += acc
     }
+
     sos = sos / this.opponents.length
     this.sos = sos
   }
@@ -75,24 +77,31 @@ export class Player {
 export class Match {
   constructor(obj) {
     this.player1 = obj.player1
-    this.player2 = obj.player2
+    this.player2 = obj.player2 || null
 
-    this.table = obj.table
+    this.table = obj.table || null
 
     this.score1 = obj.score1 || 0
     this.score2 = obj.score2 || 0
 
     this.scored = obj.scored || false
+
+    this.isBye = obj.isBye || false
   }
 
   outcome(pointsForFirst, pointsForSecond) {
     if(!this.scored) {
       this.player1.addPoints(pointsForFirst)
       this.player2.addPoints(pointsForSecond)
-
+      
+      if(!this.isBye){
       this.player1.opponents.push(this.player2)
       this.player2.opponents.push(this.player1)
+      }
 
+      this.player1.gamesCount = this.player1.gamesCount + 1
+      this.player2.gamesCount = this.player2.gamesCount + 1
+      
       this.score1 = pointsForFirst
       this.score2 = pointsForSecond
 
@@ -107,26 +116,24 @@ export class Round {
       //Copy the array cause we will mutate it later.
       let players = playerArray.slice()
 
-      for(let each of players) {
-        each.calculateSos()
-        each.calculateExtendedSos()
-      }
 
       this.matches = []
 
       //Shuffle the array. Only really relevant in the first round.
+      //Also before every round provides random pairing order for players with the same number of points
       players = removeDropped(players)
       shuffle(players)
 
       //Sort the array by points and then by sos.
       let sorted = players.sort((a, b) => {
-          return (a.points < b.points) ? -1 : 1
+          return (a.points < b.points) ? 1 : -1
       })
 
       this.players = sorted
 
       //Award superbyes
       let i = 1
+      let j = 3
       while(i<sorted.length) {
         let each = sorted[sorted.length-i]
 
@@ -139,50 +146,20 @@ export class Round {
         }
       }
 
-      //If there's an odd number of players, give the lowest ranked one a bye.
-      if(sorted.length % 2 !== 0) {
-        i = 0
-        do {
-          let each = sorted[i]
-          if(each.bye) {
-            i++
-          }
-          else {
-            each.awardBye()
-            sorted.splice(i, 1)
-            break
-          }
-        }while(i>0)
-      }
 
-      //Handle the matches.
-      let table = 1
-      while(sorted.length > 0) {
-
-        //Set the first player.
-        let player1 = sorted.pop()
-
-        //Set the second player, make sure he was not played before.
-        let player2
-        i=sorted.length-1
-        while(true) {
-          if(player1.opponents.includes(sorted[i])) {
-            i--
-          }
-          else {
-            player2 = sorted.splice(i, 1)[0]
-            break
-          }
-        }
-
-        //Create a match.
-        this.matches.push(new Match({player1: player1, player2: player2, table: table}))
-        table++
-      }
     }
     else if(matchesArray) {
       this.matches = matchesArray
     }
+  }
+
+  IsPlayerInMatch(player) {
+      for(let each of this.matches){
+        if(each.player1.id == player.id || each.player2.id == player.id ){
+          return true
+        }
+      }
+     return false
   }
 }
 
