@@ -69,12 +69,34 @@ function generateAllMatches(){
 
   structure.allMatches.length = 0
   for(let player1Index = 0; player1Index < structure.players.length; player1Index++){
+    if(structure.players[player1Index].drop){continue}
     for(let player2Index = player1Index+1; player2Index < structure.players.length; player2Index++){
+      if(structure.players[player2Index].drop){continue}
       structure.allMatches.push(new Match({player1: structure.players[player1Index], 
                                          player2: structure.players[player2Index]}))
     }
     structure.allMatches.push(new Match({player1: structure.players[player1Index], player2: ByePlayer,
                                          isBye: true}))
+  }
+}
+
+function generateMatchesForAddedPlayer(addedPlayer){
+  for(let player1Index = 0; player1Index < structure.players.length; player1Index++){
+    if(structure.players[player1Index].drop){continue}
+    structure.allMatches.push(new Match({player1: structure.players[player1Index], 
+                                         player2: addedPlayer}))
+  }
+  structure.allMatches.push(new Match({player1: addedPlayer, player2: ByePlayer,
+                                         isBye: true}))
+}
+
+function removeMatchesWithDroppedPlayer(droppedPlayer){
+  let matchesWithDroppedPlayer = structure.allMatches.filter(function(match){
+    return match.player1.id == droppedPlayer.id || match.player2.id == droppedPlayer.id
+  })
+
+  for(let each of matchesWithDroppedPlayer){
+    arrayHelper.remove(structure.allMatches,each)
   }
 }
 
@@ -180,7 +202,7 @@ function redrawPlayers() {
   for(let each of structure.players) {
     each.calculateExtendedSos()
   }
-  
+
   structure.players = structure.players.sort((a, b) => {
     if(a.points == b.points && a.sos == b.sos) {
       if(a.esos > b.esos) return -1
@@ -250,6 +272,7 @@ function redrawPlayers() {
     drop.addEventListener("click", () => {
       let i = structure.players.indexOf(player)
       structure.players[i].drop = true
+      removeMatchesWithDroppedPlayer(player)
       redrawPlayers()
     })
 
@@ -459,8 +482,12 @@ $("#add-player form").addEventListener("submit", () => {
     runnerid: runnerid
   }
 
+let newPlayer = new Player(playerObject)
+if(structure.rounds.length){
+  generateMatchesForAddedPlayer(newPlayer)
+}
   //Construct a class and push it to the structure.
-  structure.players.push(new Player(playerObject))
+  structure.players.push(newPlayer)
 
   alert("Player created!")
 
