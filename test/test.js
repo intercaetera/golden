@@ -161,9 +161,9 @@ describe('tournament', function(){
   })
 
   describe("Pairings", () => {
-    const TOURNAMENTS = 1
+    const TOURNAMENTS = 10
     for(let i=0; i<TOURNAMENTS; i++) {
-      let PLAYERS = 8
+      let PLAYERS = Math.floor(Math.log2(TOURNAMENTS)) + 8
       let players = []
       for(let j=0; j<PLAYERS; j++) {
         players[j] = new t.Player(j.toString())

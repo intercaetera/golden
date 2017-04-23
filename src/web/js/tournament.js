@@ -126,7 +126,7 @@ export class Round {
 
       //Sort the array by points and then by sos.
       let sorted = players.sort((a, b) => {
-          return (a.points < b.points) ? 1 : -1
+          return (a.points < b.points) ? -1 : (a.points > b.points) ? -1 : 0
       })
 
       this.players = sorted
@@ -145,11 +145,6 @@ export class Round {
           i++
         }
       }
-
-
-    }
-    else if(matchesArray) {
-      this.matches = matchesArray
     }
   }
 
