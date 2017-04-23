@@ -5,7 +5,7 @@ describe('tournament', function(){
   describe('Player', function(){
     it('Should set points and sos to 0 when unspecified.', function(){
 
-      let player = new t.Player("zbyszek")
+      let player = new t.Player({name: "zbyszek"})
       assert.equal(0, player.points);
       assert.equal(0, player.sos)
     })
@@ -17,7 +17,7 @@ describe('tournament', function(){
       let players = []
 
       for(let i=0; i<PLAYERS; i++) {
-        players[i] = new t.Player(i.toString())
+        players[i] = new t.Player({name: i.toString()})
       }
 
       players[4].drop = true
@@ -36,7 +36,7 @@ describe('tournament', function(){
     let players = []
 
     for(let i=0; i<PLAYERS; i++) {
-      players[i] = new t.Player(i.toString())
+      players[i] = new t.Player({name: i.toString()})
     }
 
     let round = new t.Round(players)
@@ -93,7 +93,7 @@ describe('tournament', function(){
   })
 
   describe('Tournament', () => {
-    const PLAYERS = 9
+    const PLAYERS = 8
     const ROUNDS = 4
 
     let players = [], rounds = []
@@ -102,7 +102,7 @@ describe('tournament', function(){
       players[i] = new t.Player({name: i.toString()})
     }
 
-    //* Give selected players superbyes
+    /* Give selected players superbyes
     players[0].superbye = true
     players[2].superbye = true
     players[players.length-1].superbye = true
@@ -120,7 +120,7 @@ describe('tournament', function(){
     if(players.length % 2 === 0) {
       it("If there is an even number of players, each should have opponents equal to the number of rounds", () => {
         for(let each of players) {
-          assert.equal(ROUNDS, each.opponents.length, each)
+          assert.equal(ROUNDS, each.opponents.length, each.name)
         }
       })
     }
@@ -128,10 +128,10 @@ describe('tournament', function(){
       it("If there's an odd number of players, each should have proper number of opponents (ROUNDS)", () => {
         for(let each of players) {
           if(each.bye) {
-            assert.equal(ROUNDS-1, each.opponents.length)
+            assert.equal(ROUNDS-1, each.opponents.length, "byed")
           }
           else {
-            assert.equal(ROUNDS, each.opponents.length)
+            assert.equal(ROUNDS, each.opponents.length, "not byed")
           }
         }
       })
@@ -161,8 +161,9 @@ describe('tournament', function(){
   })
 
   describe("Pairings", () => {
-    const TOURNAMENTS = 10
+    const TOURNAMENTS = 100000
     for(let i=0; i<TOURNAMENTS; i++) {
+      console.log(i);
       let PLAYERS = Math.floor(Math.log2(TOURNAMENTS)) + 8
       let players = []
       for(let j=0; j<PLAYERS; j++) {

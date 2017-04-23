@@ -70,6 +70,14 @@ export class Player {
   drop() {
     this.drop = true
   }
+
+  hasPlayed(player) {
+    for(let each of this.opponents) {
+      if(each == player) return true
+    }
+
+    return false
+  }
 }
 
 export class Match {
@@ -120,7 +128,7 @@ export class Round {
 
       //Sort the array by points and then by sos.
       let sorted = players.sort((a, b) => {
-          return (a.points < b.points) ? -1 : (a.points > b.points) ? -1 : 0
+          return (a.points < b.points) ? -1 : 1
       })
 
       this.players = sorted
@@ -156,36 +164,95 @@ export class Round {
       }
 
       //Handle the matches.
-      let table = 1
-      while(sorted.length > 0) {
+      let table = sorted.length / 2
 
-        //Set the first player.
-        let player1 = sorted.pop()
+      //Assign priorities. These are the players a particular player will want to play.
+      for(let player1 of sorted) {
+        player1.priorities = []
 
-        //Set the second player, make sure he was not played before.
-        let player2
-        i=sorted.length-1
-        while(true) {
+        for(let player2 of sorted) {
 
-          // let unique = true
-          // for(let each of player1.opponents) {
-          //   if(each.id == sorted[i].id) unique = false
-          //   break
-          // }
-          //
-          // if(!unique) {
-          //   i--
-          // }
-          if(false) {}
-          else {
-            player2 = sorted.splice(i, 1)[0]
+          if(player1 === player2) continue
+          if(player1.hasPlayed(player2)) continue
+
+          player1.priorities.push(player2)
+        }
+      }
+
+      let goodPairing = false // This flag determines if the current pairing is correct.
+      let iterations = 0 // Count how many times the loop iterated.
+
+      // Initial sorting, sort by length of prorities to maximise the probability of
+      // good pairing.
+      let sortedByPriorities = sorted.slice()
+      sortedByPriorities = sortedByPriorities.sort((a, b) => (a.priorities.length > b.priorities.length) ? -1 : 1)
+
+      // "Round loop"
+      while(!goodPairing) {
+
+        // This is the failsafe check, the loop cannot iterate more than
+        // the length of the player array. If it does, reshuffle the
+        // initial player array, reset iterations and attempt pairing again.
+        // This will fire whenever a good pairing cannot be accomplished for the current set.
+        if(iterations > Math.pow(sortedByPriorities.length, 2)) {
+          console.log("Dead loop, reshuffling.")
+          iterations = 0
+          shuffle(sorted)
+          sorted = sorted.sort((a, b) => {
+            return (a.points < b.points) ? -1 : 1
+          })
+        }
+
+        //Create a table of players sorted by how many priorities they have (ascending)
+        if(!goodPairing) {
+          sortedByPriorities = sorted.slice()
+          sortedByPriorities = sortedByPriorities.sort((a, b) => (a.priorities.length > b.priorities.length) ? -1 : 1)
+
+          // This loop will remove priorities from the front of the array
+          // each time a bad pairing is generated.
+          for(let i=0; i<iterations; i++) {
+            sortedByPriorities[i % sortedByPriorities.length].priorities.shift()
+          }
+        }
+
+        // Generate pairings. ("Pairing loop")
+        while (sortedByPriorities.length > 0) {
+
+          let player1 = sortedByPriorities.pop() // Set the first player.
+          let playerFound = false //This flag determines if a player has been found, i.e. the loop didn't complete.
+
+          //Loop through player1 priorities. ("Priorities loop")
+          for(let player2 of player1.priorities) {
+
+            //Check if the player2 is not paired with someone else.
+            if(sortedByPriorities.includes(player2)) {
+              i = sortedByPriorities.indexOf(player2)
+              sortedByPriorities.splice(i, 1)
+
+              this.matches.unshift(new Match({player1: player1, player2: player2, table: table}))
+              table--
+              playerFound = true
+              goodPairing = true
+              break
+            }
+          }
+
+          // If there is a single instance when an applicable player hasn't been found (that is
+          // the loop iterated through all players and didn't find anyone applicable), reset
+          // all matches and break out of the current pairing.
+          if(!playerFound) {
+            goodPairing = false
+            this.matches = []
+            iterations++
             break
           }
         }
 
-        //Create a match.
-        this.matches.push(new Match({player1: player1, player2: player2, table: table}))
-        table++
+      }
+
+      //Clean up the priorities array so that it doesn't clutter the structure later on.
+      for(let each of players) {
+        delete each.priorities
       }
     }
     else if(matchesArray) {

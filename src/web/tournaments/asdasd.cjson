@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "name": "asdasd",
+    "host": "",
+    "location": "",
+    "id": "ebab6a87-ab83-4b0e-9459-39548fb8de40",
+    "shortid": "SkKjsbcRl",
+    "rank": "casual"
+  },
+  "players": [
+    {
+      "name": "Antek",
+      "id": "85337991-f0b8-4ca5-8229-4c8be94ac8b1",
+      "points": 0,
+      "sos": 0,
+      "esos": 0,
+      "corpfaction": "Neutral",
+      "corpid": "The Shadow: Pulling the Strings",
+      "runnerfaction": "Neutral",
+      "runnerid": "The Masque: Cyber General",
+      "opponents": [],
+      "bye": false,
+      "superbye": false
+    },
+    {
+      "name": "Edek",
+      "id": "3f07b11e-5b40-41ef-ac85-f237f3cd728c",
+      "points": 0,
+      "sos": 0,
+      "esos": 0,
+      "corpfaction": "Neutral",
+      "corpid": "The Shadow: Pulling the Strings",
+      "runnerfaction": "Neutral",
+      "runnerid": "The Masque: Cyber General",
+      "opponents": [],
+      "bye": false,
+      "superbye": false
+    },
+    {
+      "name": "Kubuś",
+      "id": "7d8916e3-a31e-47e8-bbae-c8cca62ee3b6",
+      "points": 0,
+      "sos": 0,
+      "esos": 0,
+      "corpfaction": "Neutral",
+      "corpid": "The Shadow: Pulling the Strings",
+      "runnerfaction": "Neutral",
+      "runnerid": "The Masque: Cyber General",
+      "opponents": [],
+      "bye": false,
+      "superbye": false
+    },
+    {
+      "name": "Wojtek",
+      "id": "58718d6d-e5b9-4fc8-ad44-1bc6167a0cc1",
+      "points": 0,
+      "sos": 0,
+      "esos": 0,
+      "corpfaction": "Neutral",
+      "corpid": "The Shadow: Pulling the Strings",
+      "runnerfaction": "Neutral",
+      "runnerid": "The Masque: Cyber General",
+      "opponents": [],
+      "bye": false,
+      "superbye": false
+    }
+  ],
+  "rounds": []
+}

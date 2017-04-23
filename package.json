@@ -27,6 +27,7 @@
   "scripts": {
     "start": "electron index.js",
     "test": "mocha --require babel-register",
+    "debug-test": "mocha --inspect --debug-brk --require babel-register",
     "package": "electron-forge package",
     "make": "electron-forge make"
   },

@@ -313,6 +313,13 @@ $("#btn-new-round").addEventListener("click", () => {
     }
   }
 
+  //Check if the round count doesn't exceed the maximum possible.
+  if(structure.rounds.length >= structure.players.length-1) {
+    if(!confirm("It's likely no good pairings can be found. Clicking OK now might result in crashing the program, so tread carefully.\n\nAre you sure you want to continue?")) {
+      return
+    }
+  }
+
   let round = new Round(structure.players)
   structure.rounds.push(round)
 
