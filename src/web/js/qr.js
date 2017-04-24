@@ -11,9 +11,10 @@ export function generateQr(s) {
     }
     else {
       let svg = qr.image(`http://monolith.ga/t/${s.meta.shortid}`, {type: 'svg'})
-      svg.pipe(fs.createWriteStream(svgpath))
-      $("#qr").src = svgpath
-      $("#qr").classList.remove("inactive")
+      svg.pipe(fs.createWriteStream(svgpath)).on('finish', () => {
+        $("#qr").src = svgpath
+        $("#qr").classList.remove("inactive")
+      })
     }
   })
 }
