@@ -180,7 +180,7 @@ export class Round {
 
       let goodPairing = false // This flag determines if the current pairing is correct.
       let iterations = 0 // Count how many times the loop iterated.
-      let table = 0 //The match table (as in the piece of furniture).
+      let table = 1 //The match table (as in the piece of furniture).
 
       // Initial sorting, sort by length of prorities to maximise the probability of
       // good pairing.
