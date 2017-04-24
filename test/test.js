@@ -161,7 +161,7 @@ describe('tournament', function(){
   })
 
   describe("Pairings", () => {
-    const TOURNAMENTS = 100000
+    const TOURNAMENTS = 10
     for(let i=0; i<TOURNAMENTS; i++) {
       console.log(i);
       let PLAYERS = Math.floor(Math.log2(TOURNAMENTS)) + 8

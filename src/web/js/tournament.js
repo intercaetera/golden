@@ -128,7 +128,7 @@ export class Round {
 
       //Sort the array by points and then by sos.
       let sorted = players.sort((a, b) => {
-          return (a.points < b.points) ? -1 : 1
+          return (a.points > b.points) ? -1 : 1
       })
 
       this.players = sorted
@@ -164,7 +164,6 @@ export class Round {
       }
 
       //Handle the matches.
-      let table = sorted.length / 2
 
       //Assign priorities. These are the players a particular player will want to play.
       for(let player1 of sorted) {
@@ -181,6 +180,7 @@ export class Round {
 
       let goodPairing = false // This flag determines if the current pairing is correct.
       let iterations = 0 // Count how many times the loop iterated.
+      let table = 0 //The match table (as in the piece of furniture).
 
       // Initial sorting, sort by length of prorities to maximise the probability of
       // good pairing.
@@ -199,7 +199,7 @@ export class Round {
           iterations = 0
           shuffle(sorted)
           sorted = sorted.sort((a, b) => {
-            return (a.points < b.points) ? -1 : 1
+            return (a.points > b.points) ? -1 : 1
           })
         }
 
@@ -230,7 +230,7 @@ export class Round {
               sortedByPriorities.splice(i, 1)
 
               this.matches.unshift(new Match({player1: player1, player2: player2, table: table}))
-              table--
+              table++
               playerFound = true
               goodPairing = true
               break
