@@ -12,7 +12,7 @@
       "name": "Alpha",
       "id": "a6de7c55-bd3d-465d-abcf-d7d2fee6e4a8",
       "points": 0,
-      "sos": 0,
+      "sos": 5,
       "esos": 0,
       "corpfaction": "Neutral",
       "corpid": "The Shadow: Pulling the Strings",
@@ -28,7 +28,7 @@
       "name": "Bravo",
       "id": "039b4194-3622-496f-9302-9e4cb4c3bfd3",
       "points": 0,
-      "sos": 0,
+      "sos": 6,
       "esos": 0,
       "corpfaction": "Neutral",
       "corpid": "The Shadow: Pulling the Strings",
@@ -45,7 +45,7 @@
       "id": "c066c74e-10ec-4f02-bcf2-32bbc6d3bfca",
       "points": 6,
       "sos": 0,
-      "esos": 0,
+      "esos": 6,
       "corpfaction": "Neutral",
       "corpid": "The Shadow: Pulling the Strings",
       "runnerfaction": "Neutral",
@@ -61,7 +61,7 @@
       "id": "0d0d6b0e-c255-43e8-b848-39f7822cac36",
       "points": 5,
       "sos": 0,
-      "esos": 0,
+      "esos": 5,
       "corpfaction": "Neutral",
       "corpid": "The Shadow: Pulling the Strings",
       "runnerfaction": "Neutral",
@@ -76,7 +76,7 @@
       "name": "Echo",
       "id": "8a806673-60f8-4aa1-9f2a-545013fad789",
       "points": 3,
-      "sos": 0,
+      "sos": 3,
       "esos": 0,
       "corpfaction": "Neutral",
       "corpid": "The Shadow: Pulling the Strings",
@@ -92,8 +92,8 @@
       "name": "Foxtrot",
       "id": "c07ab6c9-15e5-41d7-94fa-51c32ea12c74",
       "points": 3,
-      "sos": 0,
-      "esos": 0,
+      "sos": 3,
+      "esos": 3,
       "corpfaction": "Neutral",
       "corpid": "The Shadow: Pulling the Strings",
       "runnerfaction": "Neutral",
@@ -131,6 +131,34 @@
           "score1": 3,
           "score2": 3,
           "scored": true
+        }
+      ]
+    },
+    {
+      "matches": [
+        {
+          "player1": "c066c74e-10ec-4f02-bcf2-32bbc6d3bfca",
+          "player2": "0d0d6b0e-c255-43e8-b848-39f7822cac36",
+          "table": 0,
+          "score1": 0,
+          "score2": 0,
+          "scored": false
+        },
+        {
+          "player1": "8a806673-60f8-4aa1-9f2a-545013fad789",
+          "player2": "039b4194-3622-496f-9302-9e4cb4c3bfd3",
+          "table": 1,
+          "score1": 0,
+          "score2": 0,
+          "scored": false
+        },
+        {
+          "player1": "c07ab6c9-15e5-41d7-94fa-51c32ea12c74",
+          "player2": "a6de7c55-bd3d-465d-abcf-d7d2fee6e4a8",
+          "table": 2,
+          "score1": 0,
+          "score2": 0,
+          "scored": false
         }
       ]
     }
