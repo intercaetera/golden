@@ -3,18 +3,20 @@ import qr from 'qr-image'
 import path from 'path'
 
 export function generateQr(s) {
-  const svgpath = path.join(__dirname, '..', 'qr', s.meta.name+".svg")
-  fs.access(svgpath, (err) => {
-    if(!err) {
-      $("#qr").src = svgpath
-      $("#qr").classList.remove("inactive")
+  const matrix = qr.matrix(`http://monolith.ga/t/${s.meta.shortid}`, {type: 'svg'})
+
+  let text = ""
+
+  for(let each of matrix) {
+    for(let more of each) {
+      text += more ? "▄" : " "
     }
-    else {
-      let svg = qr.image(`http://monolith.ga/t/${s.meta.shortid}`, {type: 'svg'})
-      svg.pipe(fs.createWriteStream(svgpath)).on('finish', () => {
-        $("#qr").src = svgpath
-        $("#qr").classList.remove("inactive")
-      })
-    }
-  })
+    text += "\n"
+  }
+
+  console.log(text);
+
+  $("#qr").textContent = text
+
+  $("#qr").classList.remove("inactive")
 }
