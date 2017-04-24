@@ -20,40 +20,8 @@ See [Releases](https://github.com/MrHuds0n/golden/releases)
 - Swiss system for the elimination rounds.
 - JSON serialisation for saving and loading tournaments.
 - A round timer for Swiss rounds.
-- A progression cut system (which is not serialised because holy crap the person who wrote the module is smart but really bad at writing documentations).
+- A progression cut system.
 - Integration with the [Monolith](http://monolith.ga) web services platform.
-
-## Usage instructions:
-
-### General:
-
-- To create a new tournament click `New Tournament` in the welcome screen. All fields are optional. When you click the second New tournament button, you will be asked to save the tournament file.
-
-- To load a tournament, click the `Load tournament` button and find a previously saved `*.cjson` file.
-
-- To save your tournament at any moment later, click the Save button in the top left. **Remember that progression cut is not saved.**
-
-- To add a player to the tournament, click the `Add player` button at the top and fill out the form. `Name` is mandatory. `Superbye` is a common name for the first-round bye awarded for winning a lower-tier tournament.
-
-### Swiss:
-
-- The Players view is intended to be a short and quick leaderboard for the Swiss rounds, there you can also drop players from the tournament. **Dropping players from the tournament is permanent**. (It actually isn't but you can only change it via console, this will be changed later).
-
-- The Rounds view is a summary of all completed Swiss rounds as well as the pending one.
-
-- The Matches view is the utility for displaying the ongoing round and its matches, scoring them and seating the players.
-
-- To start a new round, click the `New round` button. This will also start the clock.
-
-### Cut:
-
-- To start the cut, at any point you can go to the Matches view in the Progression Cut section and begin the cut. It's recommended to start the cut after all the matches in the current round have been scored and a new round has not yet been generated (it should work regardless, but spontaneous explosions might happen).
-
-- During the cut the players will be paired up in both brackets.
-
-- Once the cut reaches the final, please remember that the last round should be scored when it is sure that there will be no second match. The player coming from the upper bracket should be declared the winner on the scores `1:0` and `1:1`. The player from the lower bracket should be declared winner only on the score `0:2`.
-
-- Yeah I know the finals are in the lower bracket, this is [intended and logical](https://github.com/clux/duel#caveats).
 
 ## Bugs:
 
