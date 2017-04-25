@@ -65,7 +65,7 @@
 
     .timer-form
       display inline
-      width 100px
+      width 10%
       margin 1em
 
   #timer-large
