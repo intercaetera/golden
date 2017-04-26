@@ -9,6 +9,40 @@
   },
   "players": [
     {
+      "name": "Illusory Scapes",
+      "id": "0bd11358-4da5-4902-adba-5e2dba0ed5f5",
+      "points": 6,
+      "sos": 0,
+      "esos": 6,
+      "corpfaction": "Neutral",
+      "corpid": "The Shadow: Pulling the Strings",
+      "runnerfaction": "Neutral",
+      "runnerid": "The Masque: Cyber General",
+      "opponents": [
+        "9f911504-8755-4f68-9beb-ba4ee6ea7a0e"
+      ],
+      "bye": false,
+      "superbye": false,
+      "dropped": false
+    },
+    {
+      "name": "Nomyn",
+      "id": "5bae1972-d087-4869-ae58-a9d812bc7019",
+      "points": 6,
+      "sos": 0,
+      "esos": 6,
+      "corpfaction": "Neutral",
+      "corpid": "The Shadow: Pulling the Strings",
+      "runnerfaction": "Neutral",
+      "runnerid": "The Masque: Cyber General",
+      "opponents": [
+        "b38277bc-1d1e-40a4-b8c7-79359bc1aac7"
+      ],
+      "bye": false,
+      "superbye": false,
+      "dropped": false
+    },
+    {
       "name": "Sibewest",
       "id": "b7731753-c987-4f24-973a-8717fa53094a",
       "points": 6,
@@ -24,64 +58,38 @@
       "dropped": false
     },
     {
-      "name": "Wijan",
-      "id": "401fedcf-bc47-49d0-9742-0ab5360dc285",
-      "points": 0,
-      "sos": 0,
-      "esos": 0,
-      "corpfaction": "Neutral",
-      "corpid": "The Shadow: Pulling the Strings",
-      "runnerfaction": "Neutral",
-      "runnerid": "The Masque: Cyber General",
-      "opponents": [],
-      "bye": false,
-      "superbye": false,
-      "dropped": false
-    },
-    {
-      "name": "Sedtre",
-      "id": "0c8e54d1-39cf-4013-ae4a-80adb5a236ac",
-      "points": 0,
-      "sos": 0,
-      "esos": 0,
-      "corpfaction": "Neutral",
-      "corpid": "The Shadow: Pulling the Strings",
-      "runnerfaction": "Neutral",
-      "runnerid": "The Masque: Cyber General",
-      "opponents": [],
-      "bye": false,
-      "superbye": false,
-      "dropped": false
-    },
-    {
       "name": "Flow",
       "id": "b38277bc-1d1e-40a4-b8c7-79359bc1aac7",
       "points": 0,
-      "sos": 0,
+      "sos": 6,
       "esos": 0,
       "corpfaction": "Neutral",
       "corpid": "The Shadow: Pulling the Strings",
       "runnerfaction": "Neutral",
       "runnerid": "The Masque: Cyber General",
-      "opponents": [],
+      "opponents": [
+        "5bae1972-d087-4869-ae58-a9d812bc7019"
+      ],
       "bye": false,
       "superbye": false,
       "dropped": true
     },
     {
-      "name": "Menual",
-      "id": "59e9cb36-8634-4058-af1f-7560a4aa60ea",
+      "name": "Brimstone",
+      "id": "9f911504-8755-4f68-9beb-ba4ee6ea7a0e",
       "points": 0,
-      "sos": 0,
+      "sos": 6,
       "esos": 0,
       "corpfaction": "Neutral",
       "corpid": "The Shadow: Pulling the Strings",
       "runnerfaction": "Neutral",
       "runnerid": "The Masque: Cyber General",
-      "opponents": [],
+      "opponents": [
+        "0bd11358-4da5-4902-adba-5e2dba0ed5f5"
+      ],
       "bye": false,
       "superbye": false,
-      "dropped": false
+      "dropped": true
     },
     {
       "name": "AK",
@@ -99,8 +107,8 @@
       "dropped": false
     },
     {
-      "name": "Brimstone",
-      "id": "9f911504-8755-4f68-9beb-ba4ee6ea7a0e",
+      "name": "Secchi",
+      "id": "e024982b-2748-4e13-94b5-91b7a0a89b08",
       "points": 0,
       "sos": 0,
       "esos": 0,
@@ -249,8 +257,8 @@
       "dropped": false
     },
     {
-      "name": "Illusory Scapes",
-      "id": "0bd11358-4da5-4902-adba-5e2dba0ed5f5",
+      "name": "Azaleh",
+      "id": "6549a662-3499-4002-9548-e14c33e710ee",
       "points": 0,
       "sos": 0,
       "esos": 0,
@@ -279,8 +287,8 @@
       "dropped": false
     },
     {
-      "name": "Azaleh",
-      "id": "6549a662-3499-4002-9548-e14c33e710ee",
+      "name": "Menual",
+      "id": "59e9cb36-8634-4058-af1f-7560a4aa60ea",
       "points": 0,
       "sos": 0,
       "esos": 0,
@@ -369,8 +377,8 @@
       "dropped": false
     },
     {
-      "name": "Nomyn",
-      "id": "5bae1972-d087-4869-ae58-a9d812bc7019",
+      "name": "Sedtre",
+      "id": "0c8e54d1-39cf-4013-ae4a-80adb5a236ac",
       "points": 0,
       "sos": 0,
       "esos": 0,
@@ -489,8 +497,8 @@
       "dropped": false
     },
     {
-      "name": "Secchi",
-      "id": "e024982b-2748-4e13-94b5-91b7a0a89b08",
+      "name": "Wijan",
+      "id": "401fedcf-bc47-49d0-9742-0ab5360dc285",
       "points": 0,
       "sos": 0,
       "esos": 0,
@@ -528,8 +536,8 @@
           "player2": "5bae1972-d087-4869-ae58-a9d812bc7019",
           "table": 3,
           "score1": 0,
-          "score2": 0,
-          "scored": false
+          "score2": 6,
+          "scored": true
         },
         {
           "player1": "481da13c-6af4-42c3-bb7c-e9cf73f91775",
@@ -591,9 +599,9 @@
           "player1": "0bd11358-4da5-4902-adba-5e2dba0ed5f5",
           "player2": "9f911504-8755-4f68-9beb-ba4ee6ea7a0e",
           "table": 11,
-          "score1": 0,
+          "score1": 6,
           "score2": 0,
-          "scored": false
+          "scored": true
         },
         {
           "player1": "98473ac5-8a8e-44e0-b7a0-9cca9234126a",

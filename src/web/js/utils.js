@@ -20,3 +20,7 @@ function convertFactionToIcon(faction) {
   if(faction == 'Adam') return 'icon-adam'
   if(faction == 'Sunny') return 'icon-sunny'
 }
+
+function notCreated() {
+  alert("You first need to either create or load a tournament.")
+}

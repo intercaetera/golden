@@ -101,7 +101,12 @@ function redrawPlayers() {
 
     drop.addEventListener("click", () => {
       let i = structure.players.indexOf(player)
-      structure.players[i].dropped = true
+      if(!structure.players[i].dropped) {
+        structure.players[i].dropped = true
+      }
+      else {
+        structure.players[i].dropped = false
+      }
       redrawPlayers()
     })
 
@@ -298,6 +303,11 @@ $("#add-player form").addEventListener("submit", () => {
 
 // Generate a new round
 $("#btn-new-round").addEventListener("click", () => {
+  //Block if the tournament is not loaded.
+  if(!structure.meta.id) {
+    notCreated()
+    return
+  }
 
   //Check if all the matches are scored.
   if(structure.rounds.length > 0) {
@@ -384,15 +394,14 @@ $("#new-tournament-confirm").addEventListener("click", () => {
 
 // Save a tournament.
 $("#btn-save-tournament").addEventListener("click", () => {
+  if(!structure.meta.id) {
+    notCreated()
+    return
+  }
+
   const serialised = serialise(structure)
   if(filePath) {
     fs.writeFile(filePath, serialised, (err) => {
-      if(err) throw err
-      // structure = deserialise(JSON.stringify(structure))
-    })
-  }
-  else {
-    fs.writeFile(path.join(DEFAULT_PATH, "Untitled.cjson"), serialised, (err) => {
       if(err) throw err
       // structure = deserialise(JSON.stringify(structure))
     })
@@ -453,9 +462,6 @@ $("#welcome-logo").addEventListener("click", () => {
 
 function serialise(inputArray) {
   const input = clone(inputArray)
-
-  console.log(structure);
-  console.log(input);
 
   let output = {}
 

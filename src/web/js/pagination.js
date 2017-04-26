@@ -48,6 +48,12 @@ for(let each of forms) {
  ********************* BUTTONS ******************
  ************************************************/
 $("#btn-add-player").addEventListener("click", () => {
+  //Block if the tournament is not loaded.
+  if(!structure.meta.id) {
+    notCreated()
+    return
+  }
+
   $("#add-player").classList.toggle("inactive")
   $("#new-tournament").classList.add("inactive")
 })
