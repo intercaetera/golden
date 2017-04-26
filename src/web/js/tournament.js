@@ -15,7 +15,7 @@ export class Player {
     this.opponents = obj.opponents || []
     this.bye = false
     this.superbye = obj.superbye || false
-    this.drop = obj.drop || false
+    this.dropped = obj.dropped || false
   }
 
   addPoints(points) {
@@ -68,7 +68,7 @@ export class Player {
   }
 
   drop() {
-    this.drop = true
+    this.dropped = true
   }
 
   hasPlayed(player) {
@@ -322,7 +322,7 @@ function shuffle(a) {
 
 function removeDropped(a) {
   a = a.filter((each) => {
-    if(!each.drop) return each
+    if(!each.dropped) return each
   })
 
   return a

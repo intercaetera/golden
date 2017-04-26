@@ -9,9 +9,9 @@
   },
   "players": [
     {
-      "name": "Everbeat",
-      "id": "cdb60ee1-7bee-4168-9b37-42748da81e2f",
-      "points": 0,
+      "name": "Sibewest",
+      "id": "b7731753-c987-4f24-973a-8717fa53094a",
+      "points": 6,
       "sos": 0,
       "esos": 0,
       "corpfaction": "Neutral",
@@ -20,7 +20,8 @@
       "runnerid": "The Masque: Cyber General",
       "opponents": [],
       "bye": false,
-      "superbye": false
+      "superbye": false,
+      "dropped": false
     },
     {
       "name": "Wijan",
@@ -34,7 +35,8 @@
       "runnerid": "The Masque: Cyber General",
       "opponents": [],
       "bye": false,
-      "superbye": false
+      "superbye": false,
+      "dropped": false
     },
     {
       "name": "Sedtre",
@@ -48,7 +50,8 @@
       "runnerid": "The Masque: Cyber General",
       "opponents": [],
       "bye": false,
-      "superbye": false
+      "superbye": false,
+      "dropped": false
     },
     {
       "name": "Flow",
@@ -62,7 +65,8 @@
       "runnerid": "The Masque: Cyber General",
       "opponents": [],
       "bye": false,
-      "superbye": false
+      "superbye": false,
+      "dropped": true
     },
     {
       "name": "Menual",
@@ -76,7 +80,8 @@
       "runnerid": "The Masque: Cyber General",
       "opponents": [],
       "bye": false,
-      "superbye": false
+      "superbye": false,
+      "dropped": false
     },
     {
       "name": "AK",
@@ -90,7 +95,8 @@
       "runnerid": "The Masque: Cyber General",
       "opponents": [],
       "bye": false,
-      "superbye": false
+      "superbye": false,
+      "dropped": false
     },
     {
       "name": "Brimstone",
@@ -104,7 +110,8 @@
       "runnerid": "The Masque: Cyber General",
       "opponents": [],
       "bye": false,
-      "superbye": false
+      "superbye": false,
+      "dropped": false
     },
     {
       "name": "Apollodor",
@@ -118,7 +125,8 @@
       "runnerid": "The Masque: Cyber General",
       "opponents": [],
       "bye": false,
-      "superbye": false
+      "superbye": false,
+      "dropped": false
     },
     {
       "name": "Idle Mind",
@@ -132,7 +140,8 @@
       "runnerid": "The Masque: Cyber General",
       "opponents": [],
       "bye": false,
-      "superbye": false
+      "superbye": false,
+      "dropped": false
     },
     {
       "name": "Fugue",
@@ -146,7 +155,8 @@
       "runnerid": "The Masque: Cyber General",
       "opponents": [],
       "bye": false,
-      "superbye": false
+      "superbye": false,
+      "dropped": false
     },
     {
       "name": "Lion Forest",
@@ -160,7 +170,8 @@
       "runnerid": "The Masque: Cyber General",
       "opponents": [],
       "bye": false,
-      "superbye": false
+      "superbye": false,
+      "dropped": false
     },
     {
       "name": "Anfield",
@@ -174,7 +185,8 @@
       "runnerid": "The Masque: Cyber General",
       "opponents": [],
       "bye": false,
-      "superbye": false
+      "superbye": false,
+      "dropped": false
     },
     {
       "name": "Kisnou",
@@ -188,7 +200,8 @@
       "runnerid": "The Masque: Cyber General",
       "opponents": [],
       "bye": false,
-      "superbye": false
+      "superbye": false,
+      "dropped": false
     },
     {
       "name": "Elyon",
@@ -202,12 +215,13 @@
       "runnerid": "The Masque: Cyber General",
       "opponents": [],
       "bye": false,
-      "superbye": false
+      "superbye": false,
+      "dropped": false
     },
     {
-      "name": "Sibewest",
-      "id": "b7731753-c987-4f24-973a-8717fa53094a",
-      "points": 6,
+      "name": "Everbeat",
+      "id": "cdb60ee1-7bee-4168-9b37-42748da81e2f",
+      "points": 0,
       "sos": 0,
       "esos": 0,
       "corpfaction": "Neutral",
@@ -215,8 +229,9 @@
       "runnerfaction": "Neutral",
       "runnerid": "The Masque: Cyber General",
       "opponents": [],
-      "bye": true,
-      "superbye": false
+      "bye": false,
+      "superbye": false,
+      "dropped": false
     },
     {
       "name": "Schaufert",
@@ -230,231 +245,8 @@
       "runnerid": "The Masque: Cyber General",
       "opponents": [],
       "bye": false,
-      "superbye": false
-    },
-    {
-      "name": "Secchi",
-      "id": "e024982b-2748-4e13-94b5-91b7a0a89b08",
-      "points": 0,
-      "sos": 0,
-      "esos": 0,
-      "corpfaction": "Neutral",
-      "corpid": "The Shadow: Pulling the Strings",
-      "runnerfaction": "Neutral",
-      "runnerid": "The Masque: Cyber General",
-      "opponents": [],
-      "bye": false,
-      "superbye": false
-    },
-    {
-      "name": "Dawncall",
-      "id": "defa59bf-1a61-447c-9621-a5c452f0e6af",
-      "points": 0,
-      "sos": 0,
-      "esos": 0,
-      "corpfaction": "Neutral",
-      "corpid": "The Shadow: Pulling the Strings",
-      "runnerfaction": "Neutral",
-      "runnerid": "The Masque: Cyber General",
-      "opponents": [],
-      "bye": false,
-      "superbye": false
-    },
-    {
-      "name": "Azaleh",
-      "id": "6549a662-3499-4002-9548-e14c33e710ee",
-      "points": 0,
-      "sos": 0,
-      "esos": 0,
-      "corpfaction": "Neutral",
-      "corpid": "The Shadow: Pulling the Strings",
-      "runnerfaction": "Neutral",
-      "runnerid": "The Masque: Cyber General",
-      "opponents": [],
-      "bye": false,
-      "superbye": false
-    },
-    {
-      "name": "Blackbird",
-      "id": "97e4f9f9-02aa-4a1a-854f-ffaa6aee982f",
-      "points": 0,
-      "sos": 0,
-      "esos": 0,
-      "corpfaction": "Neutral",
-      "corpid": "The Shadow: Pulling the Strings",
-      "runnerfaction": "Neutral",
-      "runnerid": "The Masque: Cyber General",
-      "opponents": [],
-      "bye": false,
-      "superbye": false
-    },
-    {
-      "name": "Phelian",
-      "id": "1e85337d-0ca0-4187-9274-f19ecde117e5",
-      "points": 0,
-      "sos": 0,
-      "esos": 0,
-      "corpfaction": "Neutral",
-      "corpid": "The Shadow: Pulling the Strings",
-      "runnerfaction": "Neutral",
-      "runnerid": "The Masque: Cyber General",
-      "opponents": [],
-      "bye": false,
-      "superbye": false
-    },
-    {
-      "name": "Bloom",
-      "id": "04531173-42c0-4882-b84f-21da36048bf2",
-      "points": 0,
-      "sos": 0,
-      "esos": 0,
-      "corpfaction": "Neutral",
-      "corpid": "The Shadow: Pulling the Strings",
-      "runnerfaction": "Neutral",
-      "runnerid": "The Masque: Cyber General",
-      "opponents": [],
-      "bye": false,
-      "superbye": false
-    },
-    {
-      "name": "Craset",
-      "id": "481da13c-6af4-42c3-bb7c-e9cf73f91775",
-      "points": 0,
-      "sos": 0,
-      "esos": 0,
-      "corpfaction": "Neutral",
-      "corpid": "The Shadow: Pulling the Strings",
-      "runnerfaction": "Neutral",
-      "runnerid": "The Masque: Cyber General",
-      "opponents": [],
-      "bye": false,
-      "superbye": false
-    },
-    {
-      "name": "The Last Fox",
-      "id": "3cead8a1-061d-46e2-8320-8af27ee74e43",
-      "points": 0,
-      "sos": 0,
-      "esos": 0,
-      "corpfaction": "Neutral",
-      "corpid": "The Shadow: Pulling the Strings",
-      "runnerfaction": "Neutral",
-      "runnerid": "The Masque: Cyber General",
-      "opponents": [],
-      "bye": false,
-      "superbye": false
-    },
-    {
-      "name": "Nomyn",
-      "id": "5bae1972-d087-4869-ae58-a9d812bc7019",
-      "points": 0,
-      "sos": 0,
-      "esos": 0,
-      "corpfaction": "Neutral",
-      "corpid": "The Shadow: Pulling the Strings",
-      "runnerfaction": "Neutral",
-      "runnerid": "The Masque: Cyber General",
-      "opponents": [],
-      "bye": false,
-      "superbye": false
-    },
-    {
-      "name": "Future Skyline",
-      "id": "69046d52-b084-44cb-9dbe-d89c4fdd4c91",
-      "points": 0,
-      "sos": 0,
-      "esos": 0,
-      "corpfaction": "Neutral",
-      "corpid": "The Shadow: Pulling the Strings",
-      "runnerfaction": "Neutral",
-      "runnerid": "The Masque: Cyber General",
-      "opponents": [],
-      "bye": false,
-      "superbye": false
-    },
-    {
-      "name": "Flame Shapes",
-      "id": "c0e942d6-8459-4d0f-8e82-bd82f094dc0e",
-      "points": 0,
-      "sos": 0,
-      "esos": 0,
-      "corpfaction": "Neutral",
-      "corpid": "The Shadow: Pulling the Strings",
-      "runnerfaction": "Neutral",
-      "runnerid": "The Masque: Cyber General",
-      "opponents": [],
-      "bye": false,
-      "superbye": false
-    },
-    {
-      "name": "Dead Gravity",
-      "id": "7dc8239b-d283-450d-ab3e-e1619c3f231d",
-      "points": 0,
-      "sos": 0,
-      "esos": 0,
-      "corpfaction": "Neutral",
-      "corpid": "The Shadow: Pulling the Strings",
-      "runnerfaction": "Neutral",
-      "runnerid": "The Masque: Cyber General",
-      "opponents": [],
-      "bye": false,
-      "superbye": false
-    },
-    {
-      "name": "Clams Casino",
-      "id": "36fd40bc-d85e-45cd-93ba-453d61615219",
-      "points": 0,
-      "sos": 0,
-      "esos": 0,
-      "corpfaction": "Neutral",
-      "corpid": "The Shadow: Pulling the Strings",
-      "runnerfaction": "Neutral",
-      "runnerid": "The Masque: Cyber General",
-      "opponents": [],
-      "bye": false,
-      "superbye": false
-    },
-    {
-      "name": "Eikona",
-      "id": "1e635c07-80df-4850-ae05-c2ef1552d417",
-      "points": 0,
-      "sos": 0,
-      "esos": 0,
-      "corpfaction": "Neutral",
-      "corpid": "The Shadow: Pulling the Strings",
-      "runnerfaction": "Neutral",
-      "runnerid": "The Masque: Cyber General",
-      "opponents": [],
-      "bye": false,
-      "superbye": false
-    },
-    {
-      "name": "Elka",
-      "id": "2b882b93-bff3-46f5-8fd7-488c1b35c568",
-      "points": 0,
-      "sos": 0,
-      "esos": 0,
-      "corpfaction": "Neutral",
-      "corpid": "The Shadow: Pulling the Strings",
-      "runnerfaction": "Neutral",
-      "runnerid": "The Masque: Cyber General",
-      "opponents": [],
-      "bye": false,
-      "superbye": false
-    },
-    {
-      "name": "Direct",
-      "id": "98473ac5-8a8e-44e0-b7a0-9cca9234126a",
-      "points": 0,
-      "sos": 0,
-      "esos": 0,
-      "corpfaction": "Neutral",
-      "corpid": "The Shadow: Pulling the Strings",
-      "runnerfaction": "Neutral",
-      "runnerid": "The Masque: Cyber General",
-      "opponents": [],
-      "bye": false,
-      "superbye": false
+      "superbye": false,
+      "dropped": false
     },
     {
       "name": "Illusory Scapes",
@@ -468,7 +260,248 @@
       "runnerid": "The Masque: Cyber General",
       "opponents": [],
       "bye": false,
-      "superbye": false
+      "superbye": false,
+      "dropped": false
+    },
+    {
+      "name": "Dawncall",
+      "id": "defa59bf-1a61-447c-9621-a5c452f0e6af",
+      "points": 0,
+      "sos": 0,
+      "esos": 0,
+      "corpfaction": "Neutral",
+      "corpid": "The Shadow: Pulling the Strings",
+      "runnerfaction": "Neutral",
+      "runnerid": "The Masque: Cyber General",
+      "opponents": [],
+      "bye": false,
+      "superbye": false,
+      "dropped": false
+    },
+    {
+      "name": "Azaleh",
+      "id": "6549a662-3499-4002-9548-e14c33e710ee",
+      "points": 0,
+      "sos": 0,
+      "esos": 0,
+      "corpfaction": "Neutral",
+      "corpid": "The Shadow: Pulling the Strings",
+      "runnerfaction": "Neutral",
+      "runnerid": "The Masque: Cyber General",
+      "opponents": [],
+      "bye": false,
+      "superbye": false,
+      "dropped": false
+    },
+    {
+      "name": "Blackbird",
+      "id": "97e4f9f9-02aa-4a1a-854f-ffaa6aee982f",
+      "points": 0,
+      "sos": 0,
+      "esos": 0,
+      "corpfaction": "Neutral",
+      "corpid": "The Shadow: Pulling the Strings",
+      "runnerfaction": "Neutral",
+      "runnerid": "The Masque: Cyber General",
+      "opponents": [],
+      "bye": false,
+      "superbye": false,
+      "dropped": false
+    },
+    {
+      "name": "Phelian",
+      "id": "1e85337d-0ca0-4187-9274-f19ecde117e5",
+      "points": 0,
+      "sos": 0,
+      "esos": 0,
+      "corpfaction": "Neutral",
+      "corpid": "The Shadow: Pulling the Strings",
+      "runnerfaction": "Neutral",
+      "runnerid": "The Masque: Cyber General",
+      "opponents": [],
+      "bye": false,
+      "superbye": false,
+      "dropped": false
+    },
+    {
+      "name": "Bloom",
+      "id": "04531173-42c0-4882-b84f-21da36048bf2",
+      "points": 0,
+      "sos": 0,
+      "esos": 0,
+      "corpfaction": "Neutral",
+      "corpid": "The Shadow: Pulling the Strings",
+      "runnerfaction": "Neutral",
+      "runnerid": "The Masque: Cyber General",
+      "opponents": [],
+      "bye": false,
+      "superbye": false,
+      "dropped": false
+    },
+    {
+      "name": "Craset",
+      "id": "481da13c-6af4-42c3-bb7c-e9cf73f91775",
+      "points": 0,
+      "sos": 0,
+      "esos": 0,
+      "corpfaction": "Neutral",
+      "corpid": "The Shadow: Pulling the Strings",
+      "runnerfaction": "Neutral",
+      "runnerid": "The Masque: Cyber General",
+      "opponents": [],
+      "bye": false,
+      "superbye": false,
+      "dropped": false
+    },
+    {
+      "name": "The Last Fox",
+      "id": "3cead8a1-061d-46e2-8320-8af27ee74e43",
+      "points": 0,
+      "sos": 0,
+      "esos": 0,
+      "corpfaction": "Neutral",
+      "corpid": "The Shadow: Pulling the Strings",
+      "runnerfaction": "Neutral",
+      "runnerid": "The Masque: Cyber General",
+      "opponents": [],
+      "bye": false,
+      "superbye": false,
+      "dropped": false
+    },
+    {
+      "name": "Nomyn",
+      "id": "5bae1972-d087-4869-ae58-a9d812bc7019",
+      "points": 0,
+      "sos": 0,
+      "esos": 0,
+      "corpfaction": "Neutral",
+      "corpid": "The Shadow: Pulling the Strings",
+      "runnerfaction": "Neutral",
+      "runnerid": "The Masque: Cyber General",
+      "opponents": [],
+      "bye": false,
+      "superbye": false,
+      "dropped": false
+    },
+    {
+      "name": "Future Skyline",
+      "id": "69046d52-b084-44cb-9dbe-d89c4fdd4c91",
+      "points": 0,
+      "sos": 0,
+      "esos": 0,
+      "corpfaction": "Neutral",
+      "corpid": "The Shadow: Pulling the Strings",
+      "runnerfaction": "Neutral",
+      "runnerid": "The Masque: Cyber General",
+      "opponents": [],
+      "bye": false,
+      "superbye": false,
+      "dropped": false
+    },
+    {
+      "name": "Flame Shapes",
+      "id": "c0e942d6-8459-4d0f-8e82-bd82f094dc0e",
+      "points": 0,
+      "sos": 0,
+      "esos": 0,
+      "corpfaction": "Neutral",
+      "corpid": "The Shadow: Pulling the Strings",
+      "runnerfaction": "Neutral",
+      "runnerid": "The Masque: Cyber General",
+      "opponents": [],
+      "bye": false,
+      "superbye": false,
+      "dropped": false
+    },
+    {
+      "name": "Dead Gravity",
+      "id": "7dc8239b-d283-450d-ab3e-e1619c3f231d",
+      "points": 0,
+      "sos": 0,
+      "esos": 0,
+      "corpfaction": "Neutral",
+      "corpid": "The Shadow: Pulling the Strings",
+      "runnerfaction": "Neutral",
+      "runnerid": "The Masque: Cyber General",
+      "opponents": [],
+      "bye": false,
+      "superbye": false,
+      "dropped": false
+    },
+    {
+      "name": "Clams Casino",
+      "id": "36fd40bc-d85e-45cd-93ba-453d61615219",
+      "points": 0,
+      "sos": 0,
+      "esos": 0,
+      "corpfaction": "Neutral",
+      "corpid": "The Shadow: Pulling the Strings",
+      "runnerfaction": "Neutral",
+      "runnerid": "The Masque: Cyber General",
+      "opponents": [],
+      "bye": false,
+      "superbye": false,
+      "dropped": false
+    },
+    {
+      "name": "Eikona",
+      "id": "1e635c07-80df-4850-ae05-c2ef1552d417",
+      "points": 0,
+      "sos": 0,
+      "esos": 0,
+      "corpfaction": "Neutral",
+      "corpid": "The Shadow: Pulling the Strings",
+      "runnerfaction": "Neutral",
+      "runnerid": "The Masque: Cyber General",
+      "opponents": [],
+      "bye": false,
+      "superbye": false,
+      "dropped": false
+    },
+    {
+      "name": "Elka",
+      "id": "2b882b93-bff3-46f5-8fd7-488c1b35c568",
+      "points": 0,
+      "sos": 0,
+      "esos": 0,
+      "corpfaction": "Neutral",
+      "corpid": "The Shadow: Pulling the Strings",
+      "runnerfaction": "Neutral",
+      "runnerid": "The Masque: Cyber General",
+      "opponents": [],
+      "bye": false,
+      "superbye": false,
+      "dropped": false
+    },
+    {
+      "name": "Direct",
+      "id": "98473ac5-8a8e-44e0-b7a0-9cca9234126a",
+      "points": 0,
+      "sos": 0,
+      "esos": 0,
+      "corpfaction": "Neutral",
+      "corpid": "The Shadow: Pulling the Strings",
+      "runnerfaction": "Neutral",
+      "runnerid": "The Masque: Cyber General",
+      "opponents": [],
+      "bye": false,
+      "superbye": false,
+      "dropped": false
+    },
+    {
+      "name": "Secchi",
+      "id": "e024982b-2748-4e13-94b5-91b7a0a89b08",
+      "points": 0,
+      "sos": 0,
+      "esos": 0,
+      "corpfaction": "Neutral",
+      "corpid": "The Shadow: Pulling the Strings",
+      "runnerfaction": "Neutral",
+      "runnerid": "The Masque: Cyber General",
+      "opponents": [],
+      "bye": false,
+      "superbye": false,
+      "dropped": false
     }
   ],
   "rounds": [

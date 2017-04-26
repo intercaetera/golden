@@ -64,7 +64,7 @@ function redrawPlayers() {
 
     let tr = document.createElement("tr")
     tbody.appendChild(tr)
-    if(player.drop) tr.classList.add("dropped")
+    if(player.dropped) tr.classList.add("dropped")
 
     createTableCell(player.name)
 
@@ -101,7 +101,7 @@ function redrawPlayers() {
 
     drop.addEventListener("click", () => {
       let i = structure.players.indexOf(player)
-      structure.players[i].drop = true
+      structure.players[i].dropped = true
       redrawPlayers()
     })
 
@@ -314,7 +314,7 @@ $("#btn-new-round").addEventListener("click", () => {
   }
 
   //Check if the round count doesn't exceed the maximum possible.
-  let noDrops = structure.players.filter(el => el.drop ? false : true)
+  let noDrops = structure.players.filter(el => el.dropped ? false : true)
   if(structure.rounds.length >= noDrops.length-1) {
     if(!confirm("It's likely no good pairings can be found. Clicking OK now might result in crashing the program, so tread carefully.\n\nAre you sure you want to continue?")) {
       return
@@ -451,37 +451,12 @@ $("#welcome-logo").addEventListener("click", () => {
   accumulator++
 })
 
-/*
-meta: {}
-players: [
-  {
-    uuid: uuid
-    ...
-    opponents: [
-      uuid,
-      uuid,
-      ...
-    ]
-  }
-]
-
-rounds: [
-  {
-    matches: [
-      {
-        player1: uuid,
-        player2: uuid,
-        score1: Number,
-        score2: Number,
-        scored: Boolean
-      }
-    ]
-  },
-]
-*/
-
 function serialise(inputArray) {
   const input = clone(inputArray)
+
+  console.log(structure);
+  console.log(input);
+
   let output = {}
 
   output.meta = input.meta
