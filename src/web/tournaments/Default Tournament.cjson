@@ -154,14 +154,16 @@
     {
       "name": "Fugue",
       "id": "e8c93b40-071b-4c82-a8e7-283fafc22879",
-      "points": 0,
+      "points": 3,
       "sos": 0,
       "esos": 0,
       "corpfaction": "Neutral",
       "corpid": "The Shadow: Pulling the Strings",
       "runnerfaction": "Neutral",
       "runnerid": "The Masque: Cyber General",
-      "opponents": [],
+      "opponents": [
+        "defa59bf-1a61-447c-9621-a5c452f0e6af"
+      ],
       "bye": false,
       "superbye": false,
       "dropped": false
@@ -257,8 +259,8 @@
       "dropped": false
     },
     {
-      "name": "Azaleh",
-      "id": "6549a662-3499-4002-9548-e14c33e710ee",
+      "name": "Wijan",
+      "id": "401fedcf-bc47-49d0-9742-0ab5360dc285",
       "points": 0,
       "sos": 0,
       "esos": 0,
@@ -274,14 +276,16 @@
     {
       "name": "Dawncall",
       "id": "defa59bf-1a61-447c-9621-a5c452f0e6af",
-      "points": 0,
+      "points": 3,
       "sos": 0,
       "esos": 0,
       "corpfaction": "Neutral",
       "corpid": "The Shadow: Pulling the Strings",
       "runnerfaction": "Neutral",
       "runnerid": "The Masque: Cyber General",
-      "opponents": [],
+      "opponents": [
+        "e8c93b40-071b-4c82-a8e7-283fafc22879"
+      ],
       "bye": false,
       "superbye": false,
       "dropped": false
@@ -497,8 +501,8 @@
       "dropped": false
     },
     {
-      "name": "Wijan",
-      "id": "401fedcf-bc47-49d0-9742-0ab5360dc285",
+      "name": "Azaleh",
+      "id": "6549a662-3499-4002-9548-e14c33e710ee",
       "points": 0,
       "sos": 0,
       "esos": 0,
@@ -519,9 +523,9 @@
           "player1": "e8c93b40-071b-4c82-a8e7-283fafc22879",
           "player2": "defa59bf-1a61-447c-9621-a5c452f0e6af",
           "table": 1,
-          "score1": 0,
-          "score2": 0,
-          "scored": false
+          "score1": 3,
+          "score2": 3,
+          "scored": true
         },
         {
           "player1": "6549a662-3499-4002-9548-e14c33e710ee",

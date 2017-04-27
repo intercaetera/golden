@@ -100,6 +100,10 @@ $("#nav-timer").addEventListener("click", () => {
 })
 
 $("#nav-web").addEventListener("click", () => {
+  if(!structure.meta.id) {
+    return
+  }
+
   show($("#web"))
 })
 

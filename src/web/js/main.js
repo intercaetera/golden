@@ -349,12 +349,43 @@ $("#nav-players").addEventListener("click", redrawPlayers)
 $("#nav-matches").addEventListener("click", redrawMatches)
 
 //Web services
-$("#nav-web").addEventListener("click", () => {
-  generateQr(structure)
+$("#nav-web").addEventListener("click", redrawWebServices)
 
-  $("#monolith-link").value = "http://monolith.ga/t/"+structure.meta.shortid
+$("#toggle-web-services").addEventListener("click", () => {
+  if(structure.meta.monolith === true) structure.meta.monolith = false
+  else structure.meta.monolith = true
+
+  redrawWebServices()
 })
 
+function redrawWebServices() {
+  if(!structure.meta.id) {
+    notCreated()
+    return
+  }
+  
+  if(structure.meta.monolith === undefined) {
+    structure.meta.monolith = confirm("Using web services means your tournament data will be uploaded to an external database. \n\nDo you want to proceed?")
+  }
+
+  if(!structure.meta.monolith) {
+    $("#qr").classList.add("inactive")
+    $("#monolith-link").classList.add("inactive")
+
+    $("#web-services-disabled").classList.remove("inactive")
+
+    $("#toggle-web-services").textContent = "Enable web services."
+  }
+  else {
+    generateQr(structure)
+    $("#monolith-link").value = "http://monolith.ga/t/"+structure.meta.shortid
+    $("#monolith-link").classList.remove("inactive")
+
+    $("#web-services-disabled").classList.add("inactive")
+
+    $("#toggle-web-services").textContent = "Disable web services."
+  }
+}
 
 //Create a new tournament
 $("#new-tournament-confirm").addEventListener("click", () => {
@@ -407,19 +438,25 @@ $("#btn-save-tournament").addEventListener("click", () => {
     })
   }
 
-  fetch(API+"api/"+structure.meta.id, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      data: serialised
+  if(structure.meta.monolith === undefined) {
+    structure.meta.monolith = confirm("Using web services will upload your tournament data to an external website.\n\nEnable web services?\n\n(You can change this later from the Web Services tab.)")
+  }
+
+  if(structure.meta.monolith === true) {
+    fetch(API+"api/"+structure.meta.id, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        data: serialised
+      })
     })
-  })
-  .then((res) => {
-    console.log("Sent tournament data to Monolith");
-    console.log("Request returned with status: " + res.status);
-  })
+    .then((res) => {
+      console.log("Sent tournament data to Monolith");
+      console.log("Request returned with status: " + res.status);
+    })
+  }
 })
 
 // Load a tournament
