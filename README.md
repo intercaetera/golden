@@ -31,7 +31,7 @@ To report bugs, please visit the GitHub [Issues](https://github.com/MrHuds0n/gol
 
 ## Development installation:
 
-- Install [NodeJS](https://nodejs.org/en/)
+- Install [NodeJS](https://nodejs.org/en/) and [Git](https://git-scm.com/)
 
 - Global dependencies: `electron`, `yarn`, `mocha` (testing).  
 `sudo npm install -g electron yarn mocha`
