@@ -16,7 +16,8 @@ let structure = {
     "rank": ""
   },
   "players": [ ],
-  "rounds": [ ]
+  "rounds": [ ],
+  "gameHistory": [ ]
 }
 
 
@@ -363,7 +364,7 @@ function redrawWebServices() {
     notCreated()
     return
   }
-  
+
   if(structure.meta.monolith === undefined) {
     structure.meta.monolith = confirm("Using web services means your tournament data will be uploaded to an external database. \n\nDo you want to proceed?")
   }
@@ -431,6 +432,27 @@ $("#btn-save-tournament").addEventListener("click", () => {
   }
 
   const serialised = serialise(structure)
+
+  //Add an element to the save history.
+  let infoString = new Date().toString()
+  infoString = `${infoString} (${structure.players.length} players, ${structure.rounds.length} rounds)`
+
+  const gameHistoryElement = {
+    "date": infoString,
+    "structure": serialised
+  }
+
+  if(!structure.gameHistory) {
+    structure.gameHistory = []
+  }
+
+  structure.gameHistory.push(gameHistoryElement)    //Add the tournament to the undo history.
+  if(structure.gameHistory.length > 30) {   //Truncate the gameHistory so it's not too long.
+    structure.gameHistory.length = 30
+  }
+
+  redrawHistory()
+
   if(filePath) {
     fs.writeFile(filePath, serialised, (err) => {
       if(err) throw err
@@ -479,8 +501,42 @@ $("#btn-load-tournament").addEventListener("click", () => {
     fs.readFile(filePath, "utf-8", (err, data) => {
       if(err) throw err
       structure = deserialise(data)
+
+      if(!structure.gameHistory) {
+        structure.gameHistory = []
+      }
     })
   })
+})
+
+//History
+$("#nav-history").addEventListener("click", redrawHistory)
+
+function redrawHistory() {
+  let select = $("#history-select")
+
+  while(select.firstChild) {
+    select.removeChild(select.firstChild)
+  }
+
+  for(let each of structure.gameHistory) {
+    let option = document.createElement("option")
+    select.appendChild(option)
+    option.textContent = each.date
+    option.value = each.structure
+  }
+}
+
+$("#history-form").addEventListener("submit", () => {
+  let historyCache = structure.gameHistory
+
+  let select = $("#history-select")
+  let selected = select.options[select.selectedIndex]
+  if(selected.value) {
+    structure = deserialise(selected.value)
+
+    structure.gameHistory = historyCache
+  }
 })
 
 // Easter egg

@@ -5,7 +5,8 @@
     "location": "Null Island",
     "id": "29ac5172-a235-4e26-b426-d0728a5ce6b4",
     "shortid": "HkVsVSsCx",
-    "rank": "casual"
+    "rank": "casual",
+    "monolith": true
   },
   "players": [
     {
@@ -58,6 +59,40 @@
       "dropped": false
     },
     {
+      "name": "Dawncall",
+      "id": "defa59bf-1a61-447c-9621-a5c452f0e6af",
+      "points": 3,
+      "sos": 3,
+      "esos": 3,
+      "corpfaction": "Neutral",
+      "corpid": "The Shadow: Pulling the Strings",
+      "runnerfaction": "Neutral",
+      "runnerid": "The Masque: Cyber General",
+      "opponents": [
+        "e8c93b40-071b-4c82-a8e7-283fafc22879"
+      ],
+      "bye": false,
+      "superbye": false,
+      "dropped": false
+    },
+    {
+      "name": "Fugue",
+      "id": "e8c93b40-071b-4c82-a8e7-283fafc22879",
+      "points": 3,
+      "sos": 3,
+      "esos": 3,
+      "corpfaction": "Neutral",
+      "corpid": "The Shadow: Pulling the Strings",
+      "runnerfaction": "Neutral",
+      "runnerid": "The Masque: Cyber General",
+      "opponents": [
+        "defa59bf-1a61-447c-9621-a5c452f0e6af"
+      ],
+      "bye": false,
+      "superbye": false,
+      "dropped": false
+    },
+    {
       "name": "Flow",
       "id": "b38277bc-1d1e-40a4-b8c7-79359bc1aac7",
       "points": 0,
@@ -92,36 +127,6 @@
       "dropped": true
     },
     {
-      "name": "AK",
-      "id": "9e69b6b9-a7d2-44a2-8c9c-8b0ae9556316",
-      "points": 0,
-      "sos": 0,
-      "esos": 0,
-      "corpfaction": "Neutral",
-      "corpid": "The Shadow: Pulling the Strings",
-      "runnerfaction": "Neutral",
-      "runnerid": "The Masque: Cyber General",
-      "opponents": [],
-      "bye": false,
-      "superbye": false,
-      "dropped": false
-    },
-    {
-      "name": "Secchi",
-      "id": "e024982b-2748-4e13-94b5-91b7a0a89b08",
-      "points": 0,
-      "sos": 0,
-      "esos": 0,
-      "corpfaction": "Neutral",
-      "corpid": "The Shadow: Pulling the Strings",
-      "runnerfaction": "Neutral",
-      "runnerid": "The Masque: Cyber General",
-      "opponents": [],
-      "bye": false,
-      "superbye": false,
-      "dropped": false
-    },
-    {
       "name": "Apollodor",
       "id": "37776602-29ef-429f-9302-5238dd6a52ac",
       "points": 0,
@@ -152,18 +157,16 @@
       "dropped": false
     },
     {
-      "name": "Fugue",
-      "id": "e8c93b40-071b-4c82-a8e7-283fafc22879",
-      "points": 3,
+      "name": "Azaleh",
+      "id": "6549a662-3499-4002-9548-e14c33e710ee",
+      "points": 0,
       "sos": 0,
       "esos": 0,
       "corpfaction": "Neutral",
       "corpid": "The Shadow: Pulling the Strings",
       "runnerfaction": "Neutral",
       "runnerid": "The Masque: Cyber General",
-      "opponents": [
-        "defa59bf-1a61-447c-9621-a5c452f0e6af"
-      ],
+      "opponents": [],
       "bye": false,
       "superbye": false,
       "dropped": false
@@ -254,38 +257,6 @@
       "runnerfaction": "Neutral",
       "runnerid": "The Masque: Cyber General",
       "opponents": [],
-      "bye": false,
-      "superbye": false,
-      "dropped": false
-    },
-    {
-      "name": "Wijan",
-      "id": "401fedcf-bc47-49d0-9742-0ab5360dc285",
-      "points": 0,
-      "sos": 0,
-      "esos": 0,
-      "corpfaction": "Neutral",
-      "corpid": "The Shadow: Pulling the Strings",
-      "runnerfaction": "Neutral",
-      "runnerid": "The Masque: Cyber General",
-      "opponents": [],
-      "bye": false,
-      "superbye": false,
-      "dropped": false
-    },
-    {
-      "name": "Dawncall",
-      "id": "defa59bf-1a61-447c-9621-a5c452f0e6af",
-      "points": 3,
-      "sos": 0,
-      "esos": 0,
-      "corpfaction": "Neutral",
-      "corpid": "The Shadow: Pulling the Strings",
-      "runnerfaction": "Neutral",
-      "runnerid": "The Masque: Cyber General",
-      "opponents": [
-        "e8c93b40-071b-4c82-a8e7-283fafc22879"
-      ],
       "bye": false,
       "superbye": false,
       "dropped": false
@@ -501,8 +472,53 @@
       "dropped": false
     },
     {
-      "name": "Azaleh",
-      "id": "6549a662-3499-4002-9548-e14c33e710ee",
+      "name": "AK",
+      "id": "9e69b6b9-a7d2-44a2-8c9c-8b0ae9556316",
+      "points": 0,
+      "sos": 0,
+      "esos": 0,
+      "corpfaction": "Neutral",
+      "corpid": "The Shadow: Pulling the Strings",
+      "runnerfaction": "Neutral",
+      "runnerid": "The Masque: Cyber General",
+      "opponents": [],
+      "bye": false,
+      "superbye": false,
+      "dropped": false
+    },
+    {
+      "name": "Secchi",
+      "id": "e024982b-2748-4e13-94b5-91b7a0a89b08",
+      "points": 0,
+      "sos": 0,
+      "esos": 0,
+      "corpfaction": "Neutral",
+      "corpid": "The Shadow: Pulling the Strings",
+      "runnerfaction": "Neutral",
+      "runnerid": "The Masque: Cyber General",
+      "opponents": [],
+      "bye": false,
+      "superbye": false,
+      "dropped": false
+    },
+    {
+      "name": "Wijan",
+      "id": "401fedcf-bc47-49d0-9742-0ab5360dc285",
+      "points": 0,
+      "sos": 0,
+      "esos": 0,
+      "corpfaction": "Neutral",
+      "corpid": "The Shadow: Pulling the Strings",
+      "runnerfaction": "Neutral",
+      "runnerid": "The Masque: Cyber General",
+      "opponents": [],
+      "bye": false,
+      "superbye": false,
+      "dropped": false
+    },
+    {
+      "name": "Nevve",
+      "id": "4bbcbf94-5d68-4ce4-ab18-61e446473de1",
       "points": 0,
       "sos": 0,
       "esos": 0,
