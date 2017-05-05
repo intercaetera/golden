@@ -66,6 +66,8 @@ $("#add-player form").addEventListener("submit", () => {
   const runnerfaction = $("#add-player-runner").value
   const runnerid = $("#add-player-runner").options[$("#add-player-runner").selectedIndex].text
 
+  const points = $("#add-player-points").value
+
   //Create an object to pass to the class constructor.
   const playerObject = {
     name: name,
@@ -73,7 +75,8 @@ $("#add-player form").addEventListener("submit", () => {
     corpfaction: corpfaction,
     corpid: corpid,
     runnerfaction: runnerfaction,
-    runnerid: runnerid
+    runnerid: runnerid,
+    points: points
   }
 
   //Construct a class and push it to the structure.

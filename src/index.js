@@ -13,13 +13,11 @@ let win
 function createWindow () {
   // Create the browser window.
   win = new BrowserWindow({
-    width: 800,
+    width: 900,
     height: 600,
     center: true,
     autoHideMenuBar: true
   })
-
-  win.maximize()
 
   global.config = {
     current: null
