@@ -1,3 +1,5 @@
+import { toast } from './js/lib/ui'
+
 function $(q) {
   return document.querySelector(q)
 }
@@ -22,5 +24,5 @@ function convertFactionToIcon(faction) {
 }
 
 function notCreated() {
-  alert("You first need to either create or load a tournament.")
+  toast("You first need to either create or load a tournament.", "negative")
 }

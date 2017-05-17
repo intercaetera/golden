@@ -286,3 +286,36 @@ export function redrawHistory() {
     option.value = each.structure
   }
 }
+
+// Generate a toast.
+export function toast(content, type, timeout = 2000, buttonText, buttonFunction) {
+  const container = $("#toasts")
+
+  let toast = document.createElement('div')
+  container.appendChild(toast)
+  toast.classList.add("toast")
+  if(type) toast.classList.add(type)
+
+  let span = document.createElement('span')
+  toast.appendChild(span)
+  span.textContent = content
+
+  if(buttonText) {
+    let button = document.createElement('button')
+    toast.appendChild(button)
+    button.textContent = buttonText
+    button.classList.add('btn', 'btn-default')
+    button.addEventListener("click", buttonFunction)
+  }
+
+  toast.addEventListener("click", close)
+
+  setTimeout(close, timeout)
+
+  function close() {
+    toast.classList.add("fading")
+    toast.addEventListener('animationend', () => {
+      toast.remove()
+    })
+  }
+}

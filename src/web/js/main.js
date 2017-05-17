@@ -6,7 +6,7 @@ import shortid from 'shortid'
 
 import { Player, Round, Match, Cut } from './js/tournament'
 import { serialise, deserialise } from './js/lib/cjson'
-import { redrawPlayers, redrawRounds, redrawMatches, redrawWebServices, redrawHistory } from './js/lib/ui'
+import { redrawPlayers, redrawRounds, redrawMatches, redrawWebServices, redrawHistory, toast } from './js/lib/ui'
 
 let structure = {
   "meta": {
@@ -82,7 +82,7 @@ $("#add-player form").addEventListener("submit", () => {
   //Construct a class and push it to the structure.
   structure.players.push(new Player(playerObject))
 
-  alert("Player created!")
+  toast("Player created!", "positive", 2000)
 
   redrawPlayers()
 })
@@ -140,7 +140,8 @@ $("#new-tournament-confirm").addEventListener("click", () => {
     "location": $("#new-tournament-location").value.trim(),
     "id": uuid.v4(),
     "shortid": shortid.generate(),
-    "rank": $("#new-tournament-rank").value
+    "rank": $("#new-tournament-rank").value,
+    "monolith": $("#new-tournament-web-services").checked
   }
 
   $("#new-tournament").classList.add("inactive")
@@ -155,13 +156,14 @@ $("#new-tournament-confirm").addEventListener("click", () => {
     defaultPath: path.join(DEFAULT_PATH, `${structure.meta.name}.cjson`)
   }, (source) => {
     if(!source) {
-      alert("Error: Tournament was not saved.")
+      toast("Error: Tournament was not saved.", "negative")
       return
     }
     else {
       filePath = source
       fs.writeFile(filePath, serialise(structure), (err) => {
         if(err) throw err
+        else toast("Tournament created", "positive")
       })
 
     }
@@ -200,12 +202,10 @@ $("#btn-save-tournament").addEventListener("click", () => {
   if(filePath) {
     fs.writeFile(filePath, serialised, (err) => {
       if(err) throw err
-      // structure = deserialise(JSON.stringify(structure))
+      else {
+        toast("Tournament saved!", "positive")
+      }
     })
-  }
-
-  if(structure.meta.monolith === undefined) {
-    structure.meta.monolith = confirm("Using web services will upload your tournament data to an external website.\n\nEnable web services?\n\n(You can change this later from the Web Services tab.)")
   }
 
   if(structure.meta.monolith === true) {
@@ -245,6 +245,7 @@ $("#btn-load-tournament").addEventListener("click", () => {
     fs.readFile(filePath, "utf-8", (err, data) => {
       if(err) throw err
       structure = deserialise(data)
+      toast("Tournament loaded!", "positive")
 
       if(!structure.gameHistory) {
         structure.gameHistory = []
@@ -263,6 +264,8 @@ $("#history-form").addEventListener("submit", () => {
     structure = deserialise(selected.value)
 
     structure.gameHistory = historyCache
+
+    toast("Old tournament status restored.")
   }
 })
 

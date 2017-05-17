@@ -18,6 +18,12 @@
         option(value="regionals") Regional Championship
         option(value="nationals") National Championship
         option(value="worlds") Worlds Championship
+    .checkbox
+      label(title="Web services will send your tournament data to an external website for other people and your players to view each time you save your tournament. This can be changed later.")
+        input(type="checkbox", checked)#new-tournament-web-services
+        | Enable web services
+        sup
+          span ?
 
     .form-group
       .btn-group

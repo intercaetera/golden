@@ -36,7 +36,7 @@
 
   overflow auto
 
-  z-index 50
+  z-index 10
 
 #nothing
   width 100%
@@ -89,3 +89,71 @@
   #monolith-link
     padding 1em
     user-select auto !important
+
+
+// CUSTOM COMPONENTS
+#toasts
+  position fixed
+  z-index 100
+  top 3em
+  max-width 640px
+  width 100%
+
+  margin-left 50%
+  transform translateX(-50%)
+
+  display flex
+  flex-direction column
+
+  .toast
+    background rgba(#ABB1B1, .9)
+    border 1px #ABB1B1 solid
+    color #333
+    max-width 640px
+
+    padding 1em
+    margin 1em
+    border-radius 4px
+
+    display flex
+    align-items center
+
+    animation toast-appear .5s ease-in-out
+
+    span
+      padding-right 2em
+      flex 10
+      width 100%
+
+    button
+      flex 1
+      width 100%
+
+    &.negative
+      background rgba(red, .9)
+      border 1px red solid
+      color white
+
+    &.positive
+      background rgba(green, .9)
+      border 1px green solid
+      color white
+
+    &.fading
+      animation toast-disappear .5s ease-in-out forwards
+
+@keyframes toast-appear
+  0%
+    opacity 0
+    transform translateY(-20%)
+  100%
+    opacity 1
+    transform translateY(0)
+
+@keyframes toast-disappear
+  0%
+    opacity 1
+    transform translateY(0)
+  100%
+    opacity 0
+    transform translateY(-20%)
