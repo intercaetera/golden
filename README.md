@@ -8,8 +8,7 @@
 [![GitHub license](https://img.shields.io/badge/license-GPL-blue.svg)](https://raw.githubusercontent.com/MrHuds0n/golden/photon/LICENSE)
 [![Donate](https://img.shields.io/badge/donate-paypal-blue.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=mail%40mrhudson%2eyt&lc=PL&item_name=Golden&no_note=0&cn=Donation%20message&no_shipping=2&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
 
-
-[![Twitter](https://img.shields.io/twitter/url/https/github.com/MrHuds0n/golden.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=%5Bobject%20Object%5D)
+![Screenshot](http://i.imgur.com/BULZIcW.png)
 
 ## Installation:
 
