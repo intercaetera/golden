@@ -14,6 +14,9 @@ import RUNNERS from './js/data/RUNNERS.json'
    else if(e.ctrlKey && e.keyCode == 80) {
      addPlayerDialog()
    }
+   else if(e.ctrlKey && e.keyCode == 73) {
+     openQuickscore()
+   }
  })
 
 /************************************************
@@ -84,6 +87,21 @@ function newTournament() {
 $("#new-tournament-cancel").addEventListener("click", () => {
   $("#new-tournament").classList.add("inactive")
 })
+
+$("#btn-quickscore").addEventListener("click", openQuickscore)
+$("#quickscore-close").addEventListener("click", (e) => {
+  e.preventDefault()
+  openQuickscore()
+})
+function openQuickscore() {
+  if(!structure.meta.id) {
+    notCreated()
+    return
+  }
+
+  $("#quickscore").classList.toggle('inactive')
+  $("#quickscore-table").focus()
+}
 
 /************************************************
  ********************* PAGES ********************

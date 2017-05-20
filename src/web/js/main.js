@@ -293,6 +293,48 @@ $("#history-form").addEventListener("submit", () => {
   }
 })
 
+// Quickscore
+$("#form-quickscore").addEventListener('submit', () => {
+  const table = parseInt($("#quickscore-table").value)
+  const match = findMatch(table)
+
+  const p1 = parseInt($("#quickscore-p1").value)
+  const p2 = parseInt($("#quickscore-p2").value)
+
+  if(match) {
+    match.outcome(p1, p2)
+    redrawMatches()
+    redrawRounds()
+    redrawPlayers()
+
+    $("#quickscore").classList.add('inactive')
+  }
+  else
+    toast("Error: Match not found.", "negative")
+})
+
+$("#quickscore-table").addEventListener('input', () => {
+  const table = parseInt($("#quickscore-table").value)
+  const match = findMatch(table)
+
+  if(match) {
+    $("#quickscore-p1name").textContent = match.player1.name
+    $("#quickscore-p2name").textContent = match.player2.name
+  }
+  else {
+    $("#quickscore-p1name").textContent = "Player 1"
+    $("#quickscore-p2name").textContent = "Player 2"
+  }
+})
+
+function findMatch(table) {
+  for(let each of structure.rounds[structure.rounds.length-1].matches) {
+    if(each.table === table) return each
+  }
+
+  return undefined
+}
+
 // Easter egg
 let accumulator = 0
 $("#welcome-logo").addEventListener("click", () => {

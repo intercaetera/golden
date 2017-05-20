@@ -18,6 +18,22 @@ html
 
   body
     #toasts
+    #quickscore.padded-more.inactive
+      form#form-quickscore
+        .form-group
+          label Table
+          input(type="number").form-control#quickscore-table
+        .form-group
+          label#quickscore-p1name Player 1
+          input(type="number", placeholder="Score...").form-control#quickscore-p1
+        .form-group
+          label#quickscore-p2name Player 2
+          input(type="number", placeholder="Score...").form-control#quickscore-p2
+        .form-group
+          input(type="submit", value="Score").btn.btn-primary.btn-large
+        .form-group
+          button.btn.btn-default.btn-mini#quickscore-close Close
+
     .window
       header.toolbar
         .toolbar-actions
@@ -36,6 +52,8 @@ html
             button(title="New round (Ctrl+U)").btn.btn-default#btn-new-round
               i.icon.icon-paper-plane
               span.padded-less New Round
+            button(title="Quickscore (Ctrl+I)").btn.btn-default#btn-quickscore
+              i.icon.icon-gauge
 
       .window-content
         include addplayer
