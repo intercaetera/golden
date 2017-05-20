@@ -32,6 +32,16 @@ let interval
 let time = 0
 const audio = new Audio('assets/wav/honk.wav')
 
+// Register keyboard shortcuts
+document.addEventListener('keyup', (e) => {
+  if(e.ctrlKey && e.keyCode == 83) {
+    saveTournament()
+  }
+  else if(e.ctrlKey && e.keyCode == 79) {
+    loadTournament()
+  }
+})
+
 // Redraw the rounds on entering the page.
 $("#nav-rounds").addEventListener("click", redrawRounds)
 
@@ -134,6 +144,8 @@ $("#toggle-web-services").addEventListener("click", () => {
 
 //Create a new tournament
 $("#new-tournament-confirm").addEventListener("click", () => {
+  structure = {}
+
   structure.meta = {
     "name": $("#new-tournament-name").value.trim(),
     "host": $("#new-tournament-host").value.trim(),
@@ -156,14 +168,18 @@ $("#new-tournament-confirm").addEventListener("click", () => {
     defaultPath: path.join(DEFAULT_PATH, `${structure.meta.name}.cjson`)
   }, (source) => {
     if(!source) {
-      toast("Error: Tournament was not saved.", "negative")
+      toast("Error: Tournament was not created.", "negative")
+      structure = {}
       return
     }
     else {
       filePath = source
       fs.writeFile(filePath, serialise(structure), (err) => {
         if(err) throw err
-        else toast("Tournament created", "positive")
+        else {
+          toast("Tournament created", "positive")
+          document.title = `Golden - ${structure.meta.name}`
+        }
       })
 
     }
@@ -173,63 +189,62 @@ $("#new-tournament-confirm").addEventListener("click", () => {
 // Save a tournament.
 $("#btn-save-tournament").addEventListener("click", saveTournament)
 function saveTournament() {
-  () => {
-    if(!structure.meta.id) {
-      notCreated()
-      return
-    }
+  if(!structure.meta.id) {
+    notCreated()
+    return
+  }
 
-    const serialised = serialise(structure)
+  const serialised = serialise(structure)
 
-    //Add an element to the save history.
-    let infoString = new Date().toString()
-    infoString = `${infoString} (${structure.players.length} players, ${structure.rounds.length} rounds)`
+  //Add an element to the save history.
+  let infoString = new Date().toString()
+  infoString = `${infoString} (${structure.players.length} players, ${structure.rounds.length} rounds)`
 
-    const gameHistoryElement = {
-      "date": infoString,
-      "structure": serialised
-    }
+  const gameHistoryElement = {
+    "date": infoString,
+    "structure": serialised
+  }
 
-    if(!structure.gameHistory) {
-      structure.gameHistory = []
-    }
+  if(!structure.gameHistory) {
+    structure.gameHistory = []
+  }
 
-    structure.gameHistory.push(gameHistoryElement)    //Add the tournament to the undo history.
-    if(structure.gameHistory.length > 30) {   //Truncate the gameHistory so it's not too long.
-      structure.gameHistory.length = 30
-    }
+  structure.gameHistory.push(gameHistoryElement)    //Add the tournament to the undo history.
+  if(structure.gameHistory.length > 30) {   //Truncate the gameHistory so it's not too long.
+    structure.gameHistory.length = 30
+  }
 
-    redrawHistory()
+  redrawHistory()
 
-    if(filePath) {
-      fs.writeFile(filePath, serialised, (err) => {
-        if(err) throw err
-        else {
-          toast("Tournament saved!", "positive")
-        }
+  if(filePath) {
+    fs.writeFile(filePath, serialised, (err) => {
+      if(err) throw err
+      else {
+        toast("Tournament saved!", "positive")
+      }
+    })
+  }
+
+  if(structure.meta.monolith === true) {
+    fetch(API+"api/"+structure.meta.id, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        data: serialised
       })
-    }
-
-    if(structure.meta.monolith === true) {
-      fetch(API+"api/"+structure.meta.id, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          data: serialised
-        })
-      })
-      .then((res) => {
-        console.log("Sent tournament data to Monolith");
-        console.log("Request returned with status: " + res.status);
-      })
-    }
+    })
+    .then((res) => {
+      console.log("Sent tournament data to Monolith");
+      console.log("Request returned with status: " + res.status);
+    })
   }
 }
 
 // Load a tournament
-$("#btn-load-tournament").addEventListener("click", () => {
+$("#btn-load-tournament").addEventListener("click", loadTournament)
+function loadTournament() {
   remote.dialog.showOpenDialog(remote.getCurrentWindow(), {
     title: "Load a tournament",
     filters: [
@@ -253,9 +268,11 @@ $("#btn-load-tournament").addEventListener("click", () => {
       if(!structure.gameHistory) {
         structure.gameHistory = []
       }
+
+      document.title = `Golden - ${structure.meta.name}`
     })
   })
-})
+}
 
 // Save history.
 $("#history-form").addEventListener("submit", () => {
