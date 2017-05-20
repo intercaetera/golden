@@ -5,6 +5,18 @@ import CORPS from './js/data/CORPS.json'
 import RUNNERS from './js/data/RUNNERS.json'
 
 /************************************************
+ *************** KEYBOARD SHORTCUTS *************
+ ************************************************/
+ document.addEventListener('keyup', (e) => {
+   if(e.ctrlKey && e.keyCode == 78) {
+     newTournament()
+   }
+   else if(e.ctrlKey && e.keyCode == 80) {
+     addPlayerDialog()
+   }
+ })
+
+/************************************************
  ***************** INITIAL EVENTS ***************
  ************************************************/
 
@@ -47,7 +59,8 @@ for(let each of forms) {
 /************************************************
  ********************* BUTTONS ******************
  ************************************************/
-$("#btn-add-player").addEventListener("click", () => {
+$("#btn-add-player").addEventListener("click", addPlayerDialog)
+function addPlayerDialog() {
   //Block if the tournament is not loaded.
   if(!structure.meta.id) {
     notCreated()
@@ -56,16 +69,17 @@ $("#btn-add-player").addEventListener("click", () => {
 
   $("#add-player").classList.toggle("inactive")
   $("#new-tournament").classList.add("inactive")
-})
+}
 
 $("#add-player-cancel").addEventListener("click", () => {
   $("#add-player").classList.add("inactive")
 })
 
-$("#btn-new-tournament").addEventListener("click", () => {
+$("#btn-new-tournament").addEventListener("click", newTournament)
+function newTournament() {
   $("#new-tournament").classList.toggle("inactive")
   $("#add-player").classList.add("inactive")
-})
+}
 
 $("#new-tournament-cancel").addEventListener("click", () => {
   $("#new-tournament").classList.add("inactive")

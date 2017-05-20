@@ -40,6 +40,9 @@ document.addEventListener('keyup', (e) => {
   else if(e.ctrlKey && e.keyCode == 79) {
     loadTournament()
   }
+  else if(e.ctrlKey && e.keyCode == 85) {
+    newRound()
+  }
 })
 
 // Redraw the rounds on entering the page.
@@ -98,7 +101,8 @@ $("#add-player form").addEventListener("submit", () => {
 })
 
 // Generate a new round
-$("#btn-new-round").addEventListener("click", () => {
+$("#btn-new-round").addEventListener("click", newRound)
+function newRound() {
   //Block if the tournament is not loaded.
   if(!structure.meta.id) {
     notCreated()
@@ -133,7 +137,7 @@ $("#btn-new-round").addEventListener("click", () => {
   redrawMatches()
   redrawRounds()
   time = 65 * 60 * 1000
-})
+}
 
 $("#toggle-web-services").addEventListener("click", () => {
   if(structure.meta.monolith === true) structure.meta.monolith = false
