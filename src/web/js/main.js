@@ -66,7 +66,7 @@ $("#add-player form").addEventListener("submit", () => {
   const runnerfaction = $("#add-player-runner").value
   const runnerid = $("#add-player-runner").options[$("#add-player-runner").selectedIndex].text
 
-  const points = $("#add-player-points").value
+  const points = parseInt($("#add-player-points").value)
 
   //Create an object to pass to the class constructor.
   const playerObject = {
@@ -171,59 +171,62 @@ $("#new-tournament-confirm").addEventListener("click", () => {
 })
 
 // Save a tournament.
-$("#btn-save-tournament").addEventListener("click", () => {
-  if(!structure.meta.id) {
-    notCreated()
-    return
-  }
+$("#btn-save-tournament").addEventListener("click", saveTournament)
+function saveTournament() {
+  () => {
+    if(!structure.meta.id) {
+      notCreated()
+      return
+    }
 
-  const serialised = serialise(structure)
+    const serialised = serialise(structure)
 
-  //Add an element to the save history.
-  let infoString = new Date().toString()
-  infoString = `${infoString} (${structure.players.length} players, ${structure.rounds.length} rounds)`
+    //Add an element to the save history.
+    let infoString = new Date().toString()
+    infoString = `${infoString} (${structure.players.length} players, ${structure.rounds.length} rounds)`
 
-  const gameHistoryElement = {
-    "date": infoString,
-    "structure": serialised
-  }
+    const gameHistoryElement = {
+      "date": infoString,
+      "structure": serialised
+    }
 
-  if(!structure.gameHistory) {
-    structure.gameHistory = []
-  }
+    if(!structure.gameHistory) {
+      structure.gameHistory = []
+    }
 
-  structure.gameHistory.push(gameHistoryElement)    //Add the tournament to the undo history.
-  if(structure.gameHistory.length > 30) {   //Truncate the gameHistory so it's not too long.
-    structure.gameHistory.length = 30
-  }
+    structure.gameHistory.push(gameHistoryElement)    //Add the tournament to the undo history.
+    if(structure.gameHistory.length > 30) {   //Truncate the gameHistory so it's not too long.
+      structure.gameHistory.length = 30
+    }
 
-  redrawHistory()
+    redrawHistory()
 
-  if(filePath) {
-    fs.writeFile(filePath, serialised, (err) => {
-      if(err) throw err
-      else {
-        toast("Tournament saved!", "positive")
-      }
-    })
-  }
-
-  if(structure.meta.monolith === true) {
-    fetch(API+"api/"+structure.meta.id, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        data: serialised
+    if(filePath) {
+      fs.writeFile(filePath, serialised, (err) => {
+        if(err) throw err
+        else {
+          toast("Tournament saved!", "positive")
+        }
       })
-    })
-    .then((res) => {
-      console.log("Sent tournament data to Monolith");
-      console.log("Request returned with status: " + res.status);
-    })
+    }
+
+    if(structure.meta.monolith === true) {
+      fetch(API+"api/"+structure.meta.id, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          data: serialised
+        })
+      })
+      .then((res) => {
+        console.log("Sent tournament data to Monolith");
+        console.log("Request returned with status: " + res.status);
+      })
+    }
   }
-})
+}
 
 // Load a tournament
 $("#btn-load-tournament").addEventListener("click", () => {
