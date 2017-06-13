@@ -8,17 +8,7 @@ import { Player, Round, Match, Cut } from './js/tournament'
 import { serialise, deserialise } from './js/lib/cjson'
 import { redrawPlayers, redrawRounds, redrawMatches, redrawWebServices, redrawHistory, toast } from './js/lib/ui'
 
-let structure = {
-  "meta": {
-    "name": "",
-    "location": "",
-    "host": "",
-    "rank": ""
-  },
-  "players": [ ],
-  "rounds": [ ],
-  "gameHistory": [ ]
-}
+let structure = {}
 
 // Monolith globals.
 const API = "http://85.255.12.57/"
@@ -150,14 +140,19 @@ $("#toggle-web-services").addEventListener("click", () => {
 $("#new-tournament-confirm").addEventListener("click", () => {
   structure = {}
 
-  structure.meta = {
-    "name": $("#new-tournament-name").value.trim(),
-    "host": $("#new-tournament-host").value.trim(),
-    "location": $("#new-tournament-location").value.trim(),
-    "id": uuid.v4(),
-    "shortid": shortid.generate(),
-    "rank": $("#new-tournament-rank").value,
-    "monolith": $("#new-tournament-web-services").checked
+  structure= {
+    meta: {
+      "name": $("#new-tournament-name").value.trim(),
+      "host": $("#new-tournament-host").value.trim(),
+      "location": $("#new-tournament-location").value.trim(),
+      "id": uuid.v4(),
+      "shortid": shortid.generate(),
+      "rank": $("#new-tournament-rank").value,
+      "monolith": $("#new-tournament-web-services").checked
+    },
+    players: [],
+    rounds: [],
+    gameHistory: []
   }
 
   $("#new-tournament").classList.add("inactive")
