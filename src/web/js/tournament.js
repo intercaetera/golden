@@ -133,13 +133,16 @@ export class Round {
 
       this.players = sorted
 
+      console.log(sorted);
+
       //Award superbyes
       let i = 1
-      while(i<sorted.length) {
+      while(i<=sorted.length) {
         let each = sorted[sorted.length-i]
 
         if(each.superbye) {
           each.awardBye()
+          console.log(each);
           sorted.splice(sorted.length-i, 1)
         }
         else {
@@ -149,11 +152,11 @@ export class Round {
 
       //If there's an odd number of players, give the lowest ranked one a bye.
       if(sorted.length % 2 !== 0) {
-        i = 0
+        i = sorted.length-1
         do {
           let each = sorted[i]
           if(each.bye) {
-            i++
+            i--
           }
           else {
             each.awardBye()
@@ -165,6 +168,7 @@ export class Round {
 
       //Handle the matches.
 
+      console.log("starting pairing");
       //Assign priorities. These are the players a particular player will want to play.
       for(let player1 of sorted) {
         player1.priorities = []
