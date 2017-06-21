@@ -5,7 +5,7 @@ import uuid from 'uuid'
 import shortid from 'shortid'
 
 import { Player, Round, Match, Cut } from './js/tournament'
-import { serialise, deserialise } from './js/lib/cjson'
+import { serialise, deserialise, findPlayer as findPlayerById } from './js/lib/cjson'
 import { redrawPlayers, redrawRounds, redrawMatches, redrawWebServices, redrawHistory, toast } from './js/lib/ui'
 
 let structure = {}
@@ -320,6 +320,46 @@ $("#quickscore-table").addEventListener('input', () => {
     $("#quickscore-p1name").textContent = "Player 1"
     $("#quickscore-p2name").textContent = "Player 2"
   }
+})
+
+//Edit player
+$("#manage-player-delete").addEventListener("click", (e) => {
+  e.preventDefault()
+
+  if(confirm("Are you sure?")) {
+    for(let i=0; i<structure.players.length; i++) {
+      if($("#manage-player-id").value === structure.players[i].id) {
+        structure.players.splice(i, 1)
+        break
+      }
+    }
+  }
+
+  redrawPlayers()
+})
+
+$("#form-manage-player").addEventListener('submit', () => {
+  let player = findPlayerById(structure.players, $("#manage-player-id").value)
+
+  if(!$("#manage-player-name").value.trim()) {
+    alert("Player name cannot be empty!")
+    return
+  }
+
+  player.name = $("#manage-player-name").value.trim()
+
+  player.superbye = $("#manage-player-superbye").checked
+  player.dropped = $("#manage-player-dropped").checked
+
+  player.corpfaction = $("#manage-player-corp").value
+  player.corpid = $("#manage-player-corp").options[$("#manage-player-corp").selectedIndex].text
+
+  player.runnerfaction = $("#manage-player-runner").value
+  player.runnerid = $("#manage-player-runner").options[$("#manage-player-runner").selectedIndex].text
+
+  player.points = parseInt($("#manage-player-points").value)
+
+  redrawPlayers()
 })
 
 function findMatch(table) {

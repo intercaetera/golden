@@ -1,4 +1,33 @@
 table.table-striped
+  #manage-player.popup.padded-more.inactive
+    form#form-manage-player
+      input(type='text', hidden)#manage-player-id
+      .form-group
+        label Name
+        input(type="text").form-control#manage-player-name
+      .form-group
+        label Corp
+        select.form-control#manage-player-corp
+      .form-group
+        label Runner
+        select.form-control#manage-player-runner
+      .form-group
+        label Points
+        input(type="number", value="0").form-control#manage-player-points
+      .checkbox
+        label
+          input(type="checkbox")#manage-player-superbye
+          | Superbye
+      .checkbox
+        label
+          input(type="checkbox")#manage-player-dropped
+          | Dropped
+      .form-group
+        input(type='submit', value='Edit').btn.btn-primary.btn-large#manage-player-edit
+      .form-group
+        button.btn.btn-negative.btn-mini#manage-player-delete Delete
+      .form-group
+        button.btn.btn-default.btn-mini#manage-player-close Close
   thead
     tr
       td Name

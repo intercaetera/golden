@@ -81,13 +81,13 @@ export function deserialise(input) {
     output.rounds[i] = new Round(undefined, matches)
   }
 
-  function findPlayer(array, uuid) {
-    for(let each of array) {
-      if(each.id === uuid) {
-        return each
-      }
+  return output
+}
+
+export function findPlayer(array, uuid) {
+  for(let each of array) {
+    if(each.id === uuid) {
+      return each
     }
   }
-
-  return output
 }

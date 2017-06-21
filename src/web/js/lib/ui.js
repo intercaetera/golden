@@ -71,20 +71,37 @@ export function redrawPlayers() {
 
     createTableCell(average)
 
-    let drop = document.createElement("button")
-    createTableCell().appendChild(drop)
-    drop.textContent = "Drop"
-    drop.classList.add("btn", "btn-negative", "btn-mini")
+    let edit = document.createElement("button")
+    createTableCell().appendChild(edit)
+    edit.textContent = "Edit"
+    edit.classList.add("btn", "btn-mini", "btn-default")
 
-    drop.addEventListener("click", () => {
-      let i = structure.players.indexOf(player)
-      if(!structure.players[i].dropped) {
-        structure.players[i].dropped = true
+    edit.addEventListener("click", () => {
+      $("#manage-player").classList.remove("inactive")
+
+      $("#manage-player-id").value = player.id
+      $("#manage-player-name").value = player.name
+
+      const corpDropdown = $("#manage-player-corp")
+      for(let i=0; i<corpDropdown.options.length; i++) {
+        if(corpDropdown.options[i].text == player.corpid) {
+          corpDropdown.selectedIndex = i
+          break
+        }
       }
-      else {
-        structure.players[i].dropped = false
+
+      const runnerDropdown = $("#manage-player-runner")
+      for(let i=0; i<runnerDropdown.options.length; i++) {
+        if(runnerDropdown.options[i].text == player.runnerid) {
+          runnerDropdown.selectedIndex = i
+          break
+        }
       }
-      redrawPlayers()
+
+      $("#manage-player-points").value = player.points
+
+      $("#manage-player-dropped").checked = player.dropped ? true : false
+
     })
 
 
