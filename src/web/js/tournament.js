@@ -133,8 +133,6 @@ export class Round {
 
       this.players = sorted
 
-      console.log(sorted);
-
       //Award superbyes
       let i = 1
       while(i<=sorted.length) {
@@ -142,7 +140,6 @@ export class Round {
 
         if(each.superbye) {
           each.awardBye()
-          console.log(each);
           sorted.splice(sorted.length-i, 1)
         }
         else {
@@ -177,6 +174,7 @@ export class Round {
 
           if(player1 === player2) continue
           if(player1.hasPlayed(player2)) continue
+          if(player1.points < player2.points) continue
 
           player1.priorities.push(player2)
         }
@@ -189,7 +187,7 @@ export class Round {
       // Initial sorting, sort by length of prorities to maximise the probability of
       // good pairing.
       let sortedByPriorities = sorted.slice()
-      sortedByPriorities = sortedByPriorities.sort((a, b) => (a.priorities.length > b.priorities.length) ? -1 : 1)
+      // sortedByPriorities = sortedByPriorities.sort((a, b) => (a.priorities.length > b.priorities.length) ? -1 : 1)
 
       // "Round loop"
       while(!goodPairing) {
@@ -210,7 +208,7 @@ export class Round {
         //Create a table of players sorted by how many priorities they have (ascending)
         if(!goodPairing) {
           sortedByPriorities = sorted.slice()
-          sortedByPriorities = sortedByPriorities.sort((a, b) => (a.priorities.length > b.priorities.length) ? -1 : 1)
+          // sortedByPriorities = sortedByPriorities.sort((a, b) => (a.priorities.length > b.priorities.length) ? -1 : 1)
 
           // This loop will remove priorities from the front of the array
           // each time a bad pairing is generated.
@@ -222,7 +220,7 @@ export class Round {
         // Generate pairings. ("Pairing loop")
         while (sortedByPriorities.length > 0) {
 
-          let player1 = sortedByPriorities.pop() // Set the first player.
+          let player1 = sortedByPriorities.shift() // Set the first player.
           let playerFound = false //This flag determines if a player has been found, i.e. the loop didn't complete.
 
           //Loop through player1 priorities. ("Priorities loop")
