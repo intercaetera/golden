@@ -8,7 +8,17 @@ import { Player, Round, Match, Cut } from './js/tournament'
 import { serialise, deserialise, findPlayer as findPlayerById } from './js/lib/cjson'
 import { redrawPlayers, redrawRounds, redrawMatches, redrawWebServices, redrawHistory, toast } from './js/lib/ui'
 
-let structure = {}
+let structure = {
+  meta: {
+    "name": "",
+    "location": "",
+    "host": "",
+    "rank": ""
+  },
+  "players": { },
+  "rounds": { },
+  "gameHistory": { }
+}
 
 // Monolith globals.
 const API = "http://85.255.12.57/"
@@ -138,25 +148,6 @@ $("#toggle-web-services").addEventListener("click", () => {
 
 //Create a new tournament
 $("#new-tournament-confirm").addEventListener("click", () => {
-  structure = {}
-
-  structure= {
-    meta: {
-      "name": $("#new-tournament-name").value.trim(),
-      "host": $("#new-tournament-host").value.trim(),
-      "location": $("#new-tournament-location").value.trim(),
-      "id": uuid.v4(),
-      "shortid": shortid.generate(),
-      "rank": $("#new-tournament-rank").value,
-      "monolith": $("#new-tournament-web-services").checked
-    },
-    players: [],
-    rounds: [],
-    gameHistory: []
-  }
-
-  $("#new-tournament").classList.add("inactive")
-
   remote.dialog.showSaveDialog(remote.getCurrentWindow(), {
     title: "Save tournament",
     filters: [
@@ -168,11 +159,30 @@ $("#new-tournament-confirm").addEventListener("click", () => {
   }, (source) => {
     if(!source) {
       toast("Error: Tournament was not created.", "negative")
-      structure = {}
       return
     }
     else {
       filePath = source
+
+      structure = {}
+
+      structure = {
+        meta: {
+          "name": $("#new-tournament-name").value.trim(),
+          "host": $("#new-tournament-host").value.trim(),
+          "location": $("#new-tournament-location").value.trim(),
+          "id": uuid.v4(),
+          "shortid": shortid.generate(),
+          "rank": $("#new-tournament-rank").value,
+          "monolith": $("#new-tournament-web-services").checked
+        },
+        players: [],
+        rounds: [],
+        gameHistory: []
+      }
+
+      $("#new-tournament").classList.add("inactive")
+
       fs.writeFile(filePath, serialise(structure), (err) => {
         if(err) throw err
         else {
